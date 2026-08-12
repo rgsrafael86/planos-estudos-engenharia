@@ -137,7 +137,7 @@ Para cada sessão elegível:
 
 1. use data, horário e duração do `agenda_semestre.json`;
 2. consulte a continuidade no NotebookLM;
-3. defina objetivo, módulos, fontes, vídeos (OBRIGATÓRIO: encontre e inclua pelo menos 1 vídeo relevante e verificado do YouTube sobre o tema, mesmo que o NotebookLM não forneça links. Busque ativamente para enriquecer a aula) e questões;
+3. defina objetivo, módulos, fontes, vídeos (OBRIGATÓRIO: encontre e inclua pelo menos 1 vídeo relevante e verificado do YouTube sobre o tema, mesmo que o NotebookLM não forneça links. Busque ativamente para enriquecer a aula) e questões (OBRIGATÓRIO: gere exatamente 6 questões de múltipla escolha);
 4. ajuste o volume ao tempo disponível;
 5. use `R.G.` como estudante;
 6. não exponha URLs privadas do NotebookLM ou Google Drive;
@@ -181,7 +181,7 @@ Bloqueie a geração quando houver:
 - JSON inválido;
 - conteúdo demonstrativo;
 - menos de um módulo;
-- menos de quatro questões;
+- menos de seis questões (Obrigatório possuir exatamente 6 questões);
 - questão sem quatro alternativas;
 - `answer` fora de 0 a 3;
 - IDs duplicados;
@@ -210,6 +210,14 @@ Antes de publicar, teste:
 12. ausência de conteúdo duplicado ou demonstrativo.
 
 Não publique se qualquer teste falhar.
+
+## Testes Prévios (Pré-commit)
+
+Antes de realizar o `git push` para publicar o plano, você **DEVE OBRIGATORIAMENTE** executar o script de validação para garantir a integridade dos dados JSON do plano:
+```bash
+python .agents/scripts/validate_plan.py <caminho_do_index.html_gerado>
+```
+Se o script retornar `[FALHA NA VALIDACAO]`, você não tem permissão para prosseguir. Corrija o plano até o script retornar `[SUCESSO]`.
 
 ## Publicação no GitHub Pages
 
