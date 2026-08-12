@@ -433,9 +433,9 @@
                     </div>
                     <div class="progress-legend">
                         <div class="legend-item"><div class="dot completed"></div> Concluídos (${counts.COMPLETED})</div>
-                        <div class="legend-item"><div class="dot pending"></div> A Fazer (${counts.PENDING + counts.VALIDATED})</div>
-                        <div class="legend-item"><div class="dot late"></div> Atrasados (${counts.LATE})</div>
-                    </div>
+                          <div class="legend-item"><div class="dot pending"></div> A Fazer (${counts.PENDING + counts.VALIDATED})</div>
+                          <div class="legend-item"><div class="dot late"></div> Acumulados (${counts.LATE})</div>
+                      </div>
                 </div>
             `;
 
@@ -468,8 +468,8 @@
                     let badgeClass = 'pending';
                     let badgeText = 'A Gerar';
                     
-                    if(s.calc_status === 'VALIDATED') { badgeClass = 'validated'; badgeText = 'Disponível'; }
-                    if(s.calc_status === 'LATE') { badgeClass = 'late'; badgeText = 'Atrasado'; }
+                    if(s.calc_status === 'VALIDATED') { badgeClass = 'validated'; badgeText = '📖 Disponível'; }
+                    if(s.calc_status === 'LATE') { badgeClass = 'late'; badgeText = 'Acumulado'; }
                     if(s.calc_status === 'COMPLETED') { badgeClass = 'completed'; badgeText = 'Concluído'; }
                     if(s.calc_status === 'GENERATING') { badgeClass = 'pending'; badgeText = 'Gerando...'; }
 
