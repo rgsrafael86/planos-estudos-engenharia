@@ -129,8 +129,8 @@
       "location": "Blumenau — Sala A-16",
       "original_description": "Aula presencial · Eng. Produção EPR0338/6 (Noturno) · Campus Blumenau · Prof. Antonio Prim · Sala A-16",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "PENDING",
-      "plan_url": "",
+      "plan_status": "VALIDATED",
+      "plan_url": "https://rgsrafael86.github.io/planos-estudos-engenharia/planos/planejamento-estrategico/2026-08-06/index.html",
       "plan_generated_at": "",
       "plan_validation": ""
     },
@@ -150,8 +150,8 @@
       "location": "Blumenau — Sala A-209",
       "original_description": "Aula presencial · Eng. Produção EPR0338/6 (Noturno) · Campus Blumenau · Sala A-209",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "PENDING",
-      "plan_url": "",
+      "plan_status": "VALIDATED",
+      "plan_url": "https://rgsrafael86.github.io/planos-estudos-engenharia/planos/manutencao-industrial/2026-08-07/index.html",
       "plan_generated_at": "",
       "plan_validation": ""
     },
@@ -213,8 +213,8 @@
       "location": "Blumenau — Sala A-16",
       "original_description": "Aula presencial · Eng. Produção EPR0338/6 (Noturno) · Campus Blumenau · Sala A-16\nHorário: 18:50–21:50\n\n🎯 Tópicos da Aula e Plano de Estudos:\n- Pirâmide da Automação Industrial e Níveis de Controle (Nível 1 ao Nível 5)\n- Sensores Industriais (Indutivos, Capacitivos, Ópticos, Ultrassônicos)\n- Atuadores Pneumáticos, Válvulas Solenoides e Estrutura de I/O em CLP\n\n🔗 Link do Plano de Estudos (Web App): https://script.google.com/macros/s/AKfycbw9h4zoSrCRUYA0XpZt1uoBZePNPeSz5I1-RPqpR2HmrDt0Xbz9Tbo-gDTJ1ie2q4qt/exec?id=1i3DhtSZcYwiFeP7hgv-LSJRnzopMfhSx",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "FAILED",
-      "plan_url": "",
+      "plan_status": "VALIDATED",
+      "plan_url": "https://rgsrafael86.github.io/planos-estudos-engenharia/planos/automacao-industrial/2026-08-10/index.html",
       "plan_generated_at": "",
       "plan_validation": "Plano anterior não aprovado por Rafael"
     },
