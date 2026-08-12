@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub de Estudos - Engenharia de Produção</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --primary-neon: #38bdf8;
+            --accent-purple: #818cf8;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #22c55e;
+            --warning: #eab308;
+            --danger: #ef4444;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% -20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%);
+        }
+
+        /* Hero Section */
+        header {
+            padding: 3rem 2rem;
+            text-align: center;
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        .logo-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            padding: 20px;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+            animation: pulseGlow 3s infinite alternate;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0 0 0.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary-neon), var(--accent-purple));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin: 0 0 2rem;
+        }
+
+        /* Metrics Dashboard */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            padding: 0 1rem;
+            animation: slideUp 1s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .metric-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.1);
+        }
+
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-neon);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            padding: 0 1rem;
+            animation: slideUp 1s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        .progress-track {
+            height: 12px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            display: flex;
+        }
+
+        .progress-fill.completed { background: var(--success); }
+        .progress-fill.pending { background: var(--warning); }
+        .progress-fill.late { background: var(--danger); }
+
+        .progress-legend {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot.completed { background: var(--success); }
+        .dot.pending { background: var(--warning); }
+        .dot.late { background: var(--danger); }
+
+        /* Shelves (Disciplines) */
+        main {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 0 1rem;
+        }
+
+        .shelf {
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .shelf h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .shelf-count {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: var(--glass-bg);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .plan-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+        }
+
+        .plan-card[data-status="VALIDATED"] { cursor: pointer; }
+        .plan-card[data-status="VALIDATED"]::before { background: var(--primary-neon); }
+        .plan-card[data-status="VALIDATED"]:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.15);
+            border-color: var(--primary-neon);
+        }
+
+        .plan-card[data-status="PENDING"] { opacity: 0.6; cursor: not-allowed; }
+        .plan-card[data-status="PENDING"]::before { background: var(--warning); }
+        
+        .plan-card[data-status="LATE"] { opacity: 0.8; }
+        .plan-card[data-status="LATE"]::before { background: var(--danger); }
+        
+        .plan-card[data-status="COMPLETED"] { opacity: 0.8; }
+        .plan-card[data-status="COMPLETED"]::before { background: var(--success); }
+
+        .card-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 0 1rem;
+            line-height: 1.4;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        .badge.validated { background: rgba(56, 189, 248, 0.2); color: var(--primary-neon); }
+        .badge.pending { background: rgba(234, 179, 8, 0.2); color: var(--warning); }
+        .badge.late { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
+        .badge.completed { background: rgba(34, 197, 94, 0.2); color: var(--success); }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 20px rgba(56, 189, 248, 0.1); }
+            100% { box-shadow: 0 0 40px rgba(129, 140, 248, 0.4); }
+        }
+        
+        .loader {
+            text-align: center;
+            padding: 4rem;
+            color: var(--primary-neon);
+            font-size: 1.2rem;
+            animation: pulseGlow 1s infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="Minerva Logo">
+        </div>
+        <h1>Portal de Estudos</h1>
+        <p class="subtitle">Engenharia de Produção - 6º Semestre</p>
+    </header>
+
+    <div id="app">
+        <div class="loader">Sincronizando com a Agenda...</div>
+    </div>
+
+    <script>
+        // Função para formatar data ISO (YYYY-MM-DD) para PT-BR
+        function formatarData(dataIso) {
+            const partes = dataIso.split('-');
+            return `${partes[2]}/${partes[1]}/${partes[0]}`;
+        }
+
+        async function init() {
+            try {
+                // Tenta buscar o arquivo da agenda localmente (copiado no momento da geracao)
+                const response = await fetch('./agenda_semestre.json');
+                const data = await response.json();
+
+                if(data.schema_version !== "3.0") {
+                    throw new Error("Schema incorreto");
+                }
+
+                const sessoes = data.sessions;
+                const hojeStr = new Date().toISOString().split('T')[0];
+
+                let totalHoras = 0;
+                let statusCount = { COMPLETED: 0, PENDING: 0, LATE: 0, VALIDATED: 0, OTHER: 0 };
+                let disciplinasMap = {};
+
+                // Processar sessões
+                sessoes.forEach(s => {
+                    totalHoras += (s.available_minutes / 60);
+                    
+                    let statusAtual = s.plan_status || 'PENDING';
+                    
+                    // Lógica de Atraso
+                    if (statusAtual === 'PENDING' && s.date < hojeStr) {
+                        statusAtual = 'LATE';
+                    }
+
+                    if(statusCount[statusAtual] !== undefined) {
+                        statusCount[statusAtual]++;
+                    } else {
+                        statusCount.OTHER++;
+                    }
+
+                    // Agrupar por disciplina
+                    if(!disciplinasMap[s.discipline]) {
+                        disciplinasMap[s.discipline] = [];
+                    }
+                    // Armazena a sessão ajustada com status calculado
+                    let s_ajustada = {...s, calc_status: statusAtual};
+                    disciplinasMap[s.discipline].push(s_ajustada);
+                });
+
+                const totalSessoes = sessoes.length;
+                const pctConcluido = totalSessoes > 0 ? ((statusCount.COMPLETED / totalSessoes) * 100).toFixed(1) : 0;
+                const pctPendente = totalSessoes > 0 ? (((statusCount.PENDING + statusCount.VALIDATED) / totalSessoes) * 100).toFixed(1) : 0;
+                const pctAtrasado = totalSessoes > 0 ? ((statusCount.LATE / totalSessoes) * 100).toFixed(1) : 0;
+
+                renderUI(data.semester.name, totalSessoes, Math.round(totalHoras), pctConcluido, pctPendente, pctAtrasado, statusCount, disciplinasMap);
+
+            } catch (error) {
+                document.getElementById('app').innerHTML = `<div class="loader" style="color:var(--danger)">Erro ao carregar agenda_semestre.json. Verifique se o arquivo está na raiz.</div>`;
+                console.error(error);
+            }
+        }
+
+        function renderUI(semestreNome, totalSessoes, totalHoras, pctC, pctP, pctA, counts, disciplinasMap) {
+            
+            // Build Dashboards
+            const dashHTML = `
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">${totalHoras}h</div>
+                        <div class="metric-label">Carga Horária</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">${totalSessoes}</div>
+                        <div class="metric-label">Sessões Totais</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">${pctC}%</div>
+                        <div class="metric-label">Progresso Geral</div>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-track">
+                        <div class="progress-fill completed" style="width: ${pctC}%"></div>
+                        <div class="progress-fill pending" style="width: ${pctP}%"></div>
+                        <div class="progress-fill late" style="width: ${pctA}%"></div>
+                    </div>
+                    <div class="progress-legend">
+                        <div class="legend-item"><div class="dot completed"></div> Concluídos (${counts.COMPLETED})</div>
+                        <div class="legend-item"><div class="dot pending"></div> A Fazer (${counts.PENDING + counts.VALIDATED})</div>
+                        <div class="legend-item"><div class="dot late"></div> Atrasados (${counts.LATE})</div>
+                    </div>
+                </div>
+            `;
+
+            // Build Shelves
+            let shelvesHTML = `<main>`;
+            
+            for(let disc in disciplinasMap) {
+                const sessoesDisc = disciplinasMap[disc];
+                
+                // Sort by date
+                sessoesDisc.sort((a,b) => a.date.localeCompare(b.date));
+
+                shelvesHTML += `
+                    <div class="shelf">
+                        <h2>${disc} <span class="shelf-count">${sessoesDisc.length} planos</span></h2>
+                        <div class="cards-container">
+                `;
+
+                sessoesDisc.forEach(s => {
+                    // Badge Text and Class
+                    let badgeClass = 'pending';
+                    let badgeText = 'A Gerar';
+                    
+                    if(s.calc_status === 'VALIDATED') { badgeClass = 'validated'; badgeText = 'Disponível'; }
+                    if(s.calc_status === 'LATE') { badgeClass = 'late'; badgeText = 'Atrasado'; }
+                    if(s.calc_status === 'COMPLETED') { badgeClass = 'completed'; badgeText = 'Concluído'; }
+                    if(s.calc_status === 'GENERATING') { badgeClass = 'pending'; badgeText = 'Gerando...'; }
+
+                    // Link logic
+                    let href = '#';
+                    let target = '';
+                    if(s.calc_status === 'VALIDATED' && s.plan_url) {
+                        // Se houver uma URL completa gravada
+                        href = s.plan_url;
+                        target = 'target="_blank"';
+                    } else if(s.calc_status === 'VALIDATED') {
+                        // Fallback para arquivo local se a URL não existir mas o status for VALIDATED
+                        href = `planos/${s.discipline_slug}/${s.date}/index.html`;
+                        target = 'target="_blank"';
+                    }
+
+                    // Se nao for clicavel, usa div em vez de a
+                    const Tag = (s.calc_status === 'VALIDATED') ? 'a' : 'div';
+                    const linkAttrs = (Tag === 'a') ? `href="${href}" ${target}` : '';
+
+                    shelvesHTML += `
+                        <${Tag} ${linkAttrs} class="plan-card" data-status="${s.calc_status}">
+                            <div class="card-date">${formatarData(s.date)} • ${s.start} - ${s.end}</div>
+                            <h3 class="card-title">${s.session_type.replace(/_/g, ' ')}</h3>
+                            <div class="card-footer">
+                                <span>${s.available_minutes} min</span>
+                                <span class="badge ${badgeClass}">${badgeText}</span>
+                            </div>
+                        </${Tag}>
+                    `;
+                });
+
+                shelvesHTML += `</div></div>`;
+            }
+            shelvesHTML += `</main>`;
+
+            document.getElementById('app').innerHTML = dashHTML + shelvesHTML;
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
