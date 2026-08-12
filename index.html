@@ -310,8 +310,7 @@
 
         async function init() {
             try {
-                // Tenta buscar o arquivo da agenda localmente (copiado no momento da geracao)
-                const response = await fetch('./agenda_semestre.json');
+                const response = await fetch('agenda_semestre.json?t=' + Date.now());
                 const data = await response.json();
 
                 if(data.schema_version !== "3.0") {
@@ -448,7 +447,8 @@
                         'EXAM_N1': 'Avaliação N1',
                         'EXAM_N2': 'Avaliação N2',
                         'EXAM_FINAL': 'Exame Final',
-                        'OTHER_ACADEMIC': 'Atividade Acadêmica'
+                        'OTHER_ACADEMIC': 'Atividade Acadêmica',
+                        'ONLINE_STUDY': 'Estudo Online'
                     };
                     const sessionTypeName = typeMap[s.session_type] || s.session_type.replace(/_/g, ' ');
 
