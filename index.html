@@ -442,9 +442,9 @@
             
             // Renderizar Filtros
             const filterContainer = document.getElementById('filters');
-            let filterHTML = <button class="filter-chip active" data-filter="all">Todas as Disciplinas</button>;
+            let filterHTML = `<button class="filter-chip active" data-filter="all">Todas as Disciplinas</button>`;
             Object.keys(disciplinasMap).sort().forEach(disc => {
-                filterHTML += <button class="filter-chip" data-filter=""></button>;
+                filterHTML += `<button class="filter-chip" data-filter="${disc}">${disc}</button>`;
             });
             if (filterContainer) filterContainer.innerHTML = filterHTML;
 
@@ -458,7 +458,7 @@
                 sessoesDisc.sort((a,b) => a.date.localeCompare(b.date));
 
                 shelvesHTML += `
-                    <div class="shelf" data-discipline="">
+                    <div class="shelf" data-discipline="${disc}">
                         <h2>${disc} <span class="shelf-count">${sessoesDisc.length} planos</span></h2>
                         <div class="cards-container">
                 `;
