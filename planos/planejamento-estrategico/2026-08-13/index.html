@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Plano de estudos interativo">
+<title>Template plano de estudos blindado</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<style>
+:root{--p:#1a73e8;--ok:#188038;--bad:#c5221f;--warn:#9a6700;--bg:#f4f7fb;--card:#fff;--soft:#f8fafc;--txt:#1e293b;--muted:#64748b;--line:#e2e8f0;--shadow:0 8px 24px rgba(15,23,42,.07);--r:16px}
+[data-theme="dark"]{--p:#8ab4f8;--ok:#81c995;--bad:#f28b82;--warn:#fdd663;--bg:#0f172a;--card:#1e293b;--soft:#334155;--txt:#f8fafc;--muted:#a8b3c5;--line:#475569;--shadow:0 8px 24px rgba(0,0,0,.28)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}button,input{font:inherit}button,a{touch-action:manipulation}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #fbbc04;outline-offset:3px}.container{width:min(1040px,calc(100% - 24px));margin:auto}.hero{padding:25px 0 29px;background:linear-gradient(135deg,#1e40af,#1d4ed8 60%,#3b82f6);color:#fff;border-radius:0 0 24px 24px}.hero-grid{display:grid;grid-template-columns:1fr auto;gap:16px}.eyebrow{margin:0 0 6px;font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.07em}.hero h1{margin:0;font-size:clamp(24px,5vw,36px);line-height:1.18}.subtitle{margin:8px 0 0;max-width:760px;font-size:14px}.toolbar{display:flex;flex-wrap:wrap;gap:8px}.tool,.primary,.danger{padding:10px 13px;border-radius:11px;font-weight:750;cursor:pointer}.tool{color:#fff;background:#ffffff1f;border:1px solid #ffffff66}.primary{color:#fff;background:var(--p);border:1px solid var(--p)}.danger{color:var(--bad);background:transparent;border:1px solid var(--bad)}.status{margin:14px auto 0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--muted);font-weight:700}.status.ok{color:var(--ok);border-color:var(--ok)}.status.error{color:var(--bad);border-color:var(--bad)}.fatal{margin:20px auto;padding:20px;border:2px solid var(--bad);border-radius:14px;background:var(--card)}.fatal h2{color:var(--bad);margin-top:0}.fatal li{margin:5px 0}.progress-shell{position:sticky;top:0;z-index:50;padding:11px 0;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}.progress-row{display:flex;gap:12px;align-items:center}.track{height:10px;flex:1;background:var(--line);border-radius:999px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--p),var(--ok));transition:.3s}.progress-text{min-width:170px;text-align:right;color:var(--muted);font-size:13px;font-weight:800}main{padding:18px 0 56px}.section{margin-top:22px}.section h2{margin:0 0 11px;font-size:20px}.intro{margin:-3px 0 12px;color:var(--muted);font-size:13.5px}.card,.metric{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}.card{padding:18px;margin-bottom:12px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.metric{padding:14px;text-align:center}.metric strong{display:block;color:var(--p);font-size:22px}.metric span{color:var(--muted);font-size:12px}.details{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 18px}.detail{padding-bottom:8px;border-bottom:1px solid var(--line)}.label{display:block;color:var(--muted);font-size:11px;font-weight:850;text-transform:uppercase}.value{font-weight:650}.schedule{display:grid}.slot{display:grid;grid-template-columns:112px 74px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.slot:last-child{border:0}.slot-time{color:var(--p);font-weight:850}.slot-duration{color:var(--muted);font-size:13px}.slot-activity{font-weight:650}.modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}.module{display:flex;flex-direction:column;gap:10px}.module h3{margin:0;font-size:17px}.meta{color:var(--muted);font-size:13px}.topics{margin:0;padding-left:20px;font-size:14px}.source,.video-card{padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}.box-title{margin:0 0 6px;color:var(--p);font-size:11px;font-weight:900;text-transform:uppercase}.small{margin:4px 0;font-size:13px;overflow-wrap:anywhere}.small b{color:var(--muted)}.video-list{display:grid;gap:8px}.video-title{margin:0;font-size:14px}.video-meta{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:6px;color:var(--muted);font-size:12px}.video-purpose{margin:7px 0 0;font-size:13px}.video-warning{margin:7px 0 0;color:var(--warn);font-size:12px;font-weight:800}.video-link{display:flex;justify-content:center;margin-top:9px;padding:9px 12px;border-radius:9px;background:var(--p);color:#fff;text-decoration:none;font-size:13px;font-weight:800}.check{display:flex;align-items:center;gap:10px;margin-top:auto;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--soft);font-weight:750}.check input{width:21px;height:21px;accent-color:var(--ok)}.q-head{display:flex;justify-content:space-between;gap:12px}.q-no{color:var(--p);font-size:11px;font-weight:900;text-transform:uppercase}.q-title{margin:4px 0 12px;font-size:16px;font-weight:750}.badge{white-space:nowrap;padding:4px 9px;border:1px solid var(--line);border-radius:999px;background:var(--soft);color:var(--muted);font-size:11px;font-weight:850}.options{display:grid;gap:9px}.option{display:flex;align-items:center;gap:12px;width:100%;padding:13px 14px;text-align:left;color:var(--txt);background:var(--card);border:1.5px solid var(--line);border-radius:11px;cursor:pointer}.option:hover:not(:disabled){border-color:var(--p);background:var(--soft)}.option:disabled{opacity:1;cursor:default}.letter{display:grid;place-items:center;min-width:31px;height:31px;border:1px solid var(--line);border-radius:50%;background:var(--soft);color:var(--p);font-weight:850}.correct,.reveal{background:color-mix(in srgb,var(--ok) 10%,var(--card))!important;border-color:var(--ok)!important}.wrong{background:color-mix(in srgb,var(--bad) 10%,var(--card))!important;border-color:var(--bad)!important}.correct .letter,.reveal .letter{background:var(--ok);color:#fff}.wrong .letter{background:var(--bad);color:#fff}.feedback{display:none;margin-top:12px;padding:13px;border-left:4px solid;border-radius:9px}.feedback.correct,.feedback.wrong{display:block}.feedback.correct{border-color:var(--ok)}.feedback.wrong{border-color:var(--bad)}.result{text-align:center}.score{font-size:50px;color:var(--p);font-weight:900}.actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.hidden{display:none!important}footer{padding:20px 0;border-top:1px solid var(--line);color:var(--muted);text-align:center;font-size:12px}
+@media(max-width:760px){.hero-grid,.grid3,.details{grid-template-columns:1fr}.toolbar{margin-top:8px}.slot{grid-template-columns:1fr;gap:2px}.progress-row{flex-direction:column;align-items:stretch}.progress-text{text-align:left}.q-head{flex-direction:column}}
+@media print{.toolbar,.progress-shell,.actions,.check,.status{display:none!important}body{background:#fff!important;color:#000!important;font-size:10.5pt}.container{width:100%;max-width:none}.hero{padding:8px 0;background:#fff!important;color:#000!important;border-bottom:2px solid #222}.card,.metric,.source,.video-card,.option{box-shadow:none!important;background:#fff!important;color:#000!important;border-color:#999!important;break-inside:avoid}.video-link{color:#000!important;background:#fff!important;border:1px solid #777}.question{break-inside:avoid}@page{size:A4;margin:12mm}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="container hero-grid"><div><p class="eyebrow" id="course"></p><h1 id="title">Carregando plano...</h1><p class="subtitle" id="subtitle"></p></div><div class="toolbar"><button class="tool" id="themeBtn" type="button">🌙 Tema</button><button class="tool" id="printBtn" type="button">🖨️ Imprimir</button><button class="tool" id="resetTop" type="button">↻ Reiniciar</button></div></div></header>
+<div class="container status" id="appStatus" role="status" data-ready="false">Carregando e validando o plano de estudos...</div>
+<section class="container fatal hidden" id="fatalError" role="alert"><h2>O plano não pôde ser iniciado</h2><p>Foram encontrados erros no arquivo:</p><ul id="fatalErrorList"></ul></section>
+<div class="progress-shell"><div class="container progress-row"><div class="track" id="track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar" id="bar"></div></div><span class="progress-text" id="progressText">0 de 0 etapas • 0%</span></div></div>
+<main class="container" id="appMain">
+<section class="section"><h2>Visão geral</h2><div class="grid3" id="metrics"></div></section>
+<section class="section"><h2>Identificação</h2><div class="card details" id="details"></div></section>
+<section class="section"><h2>Objetivo de aprendizagem</h2><div class="card" id="objective"></div></section>
+<section class="section" id="scheduleSection"><h2>Cronograma da sessão</h2><p class="intro" id="scheduleIntro"></p><div class="card schedule" id="schedule"></div></section>
+<section class="section"><h2>Roteiro de estudos</h2><p class="intro">As fontes e os vídeos ficam no módulo correspondente.</p><div class="modules" id="modules"></div></section>
+<section class="section"><h2 id="quizTitle">Verificação da aprendizagem</h2><p class="intro">Cada questão aceita uma tentativa e mostra a explicação imediatamente.</p><div id="quiz"></div></section>
+<section class="section hidden" id="result"><div class="card result"><h2>Resultado final</h2><div class="score" id="score">0%</div><p id="resultMsg"></p><p id="resultDetail"></p><div class="actions"><button class="primary" id="reviewBtn" type="button">Revisar questões</button><button class="danger" id="resetBottom" type="button">Reiniciar agora</button></div></div></section>
+</main>
+<footer><div class="container" id="footer"></div></footer>
+
+<!--
+======================================================================
+TEMPLATE BLINDADO DE PLANO DE ESTUDOS
+INSTRUÇÕES OBRIGATÓRIAS PARA O AGENTE GERADOR
+Motor: RAFAEL-STUDY-ENGINE v3.0.0
+======================================================================
+
+FINALIDADE
+Este arquivo é um motor fixo para gerar planos de estudos interativos.
+O agente deve produzir somente dados acadêmicos em JSON. O agente não
+é autorizado a reconstruir, resumir, reformatar ou editar o motor.
+
+ÁREA AUTORIZADA
+1. Substitua somente o conteúdo JSON existente dentro do elemento:
+   <script id="studyPlanData" type="application/json"> ... </script>
+2. A área autorizada está delimitada por:
+   STUDY_PLAN_START
+   STUDY_PLAN_END
+3. Preserve os dois marcadores e a tag script.
+4. Não escreva "const STUDY_PLAN". Forneça apenas JSON válido.
+
+ÁREA PROTEGIDA
+Não altere nenhum conteúdo fora da área autorizada, incluindo:
+- DOCTYPE, html, head e body;
+- meta tags e links do KaTeX;
+- CSS, cores, classes, responsividade e impressão;
+- IDs dos elementos e contêineres;
+- HTML estrutural;
+- funções JavaScript;
+- validação, renderização e auditoria;
+- progresso, resultado, reinício, tema e impressão;
+- configuração matemática;
+- TEMPLATE_ENGINE_ID e TEMPLATE_ENGINE_VERSION.
+
+REGRAS DE JSON
+- Use obrigatoriamente aspas duplas em propriedades e textos.
+- Não use comentários dentro do JSON.
+- Não use funções, variáveis, template literals ou código JavaScript.
+- Não use vírgula depois do último item de objetos ou listas.
+- Escape aspas internas com barra invertida.
+- Para uma barra invertida que precise chegar ao LaTeX, use duas barras
+  no JSON. Exemplo: "$\\frac{A}{B}$".
+- Não inclua tags script, style, iframe ou código executável nos textos.
+- Não copie o HTML já renderizado para metrics, details, schedule,
+  modules, quiz ou result.
+
+IDENTIFICAÇÃO DO PLANO
+- id: obrigatório, único e estável.
+- Formato recomendado: disciplina-aaaa-mm-dd-assunto.
+- title: assunto principal da sessão.
+- subtitle: contexto curto da sessão.
+- institution, course, discipline e disciplineCode: use dados confirmados.
+- professor: deixe vazio quando não estiver confirmado. Não invente.
+- student: "Rafael Guimaraes dos Santos" em planos pessoais.
+- classGroup: turma, semestre ou local somente quando confirmado.
+- author: "Gemini Spark".
+- targetDate e studyDate: DD/MM/AAAA.
+- estimatedTime: deve corresponder à janela real da agenda.
+- availableMinutes: número inteiro, sem "min".
+
+GOOGLE AGENDA E CRONOGRAMA
+- Consulte o Google Agenda antes de gerar o plano.
+- Use scheduledStart e scheduledEnd no formato HH:MM de 24 horas.
+- Não invente horários ausentes.
+- schedule deve ser sempre uma lista, mesmo quando vazia.
+- Cada item precisa de start, end, duration e activity.
+- Os itens devem estar em ordem cronológica.
+- Não crie sobreposição de horários.
+- A primeira atividade não pode começar antes de scheduledStart.
+- A última atividade não pode terminar depois de scheduledEnd.
+- A soma dos intervalos não pode ultrapassar availableMinutes.
+- duration deve corresponder ao intervalo start-end.
+- A quantidade de módulos e exercícios deve caber nessa janela.
+- Vídeos devem ocupar tempo real no cronograma.
+
+NOTEBOOKLM E FONTES
+- Consulte o NotebookLM correspondente à disciplina.
+- Use somente informações apoiadas nas fontes disponíveis.
+- Não invente páginas, capítulos, documentos, autores ou links.
+- Cada módulo deve possuir source com:
+  origin, document, location, pages, searchHint e url.
+- Campos não confirmados devem ficar vazios.
+- searchHint deve ajudar Rafael a localizar o assunto rapidamente.
+- url deve ficar vazio ou conter uma URL HTTPS confirmada.
+
+MÓDULOS
+- modules deve conter pelo menos um módulo.
+- A quantidade de módulos é variável conforme o tempo da agenda.
+- Cada módulo precisa de id único, title, duration, topics, source e videos.
+- topics deve ser uma lista com pelo menos um tópico.
+- videos deve ser sempre uma lista.
+- Quando não existir vídeo adequado, use "videos": [].
+- Não crie um módulo separado apenas para simular uma questão.
+
+VÍDEOS
+- A quantidade de vídeos é variável e pode ser zero.
+- Prefira no máximo um vídeo principal por módulo e três por sessão.
+- Inclua somente vídeos relevantes, abertos e verificados.
+- Para cada vídeo, informe:
+  title, platform, channel, duration, watchFrom, watchTo, purpose,
+  relatedTopic, url, verifiedAt e verificationStatus.
+- url deve começar com https://.
+- duration e trecho recomendado devem caber no cronograma.
+- verifiedAt deve usar DD/MM/AAAA.
+- Se o vídeo estiver aprovado, use verificationStatus vazio.
+- Use verificationStatus apenas para pendências ou alertas reais.
+- Não afirme que um vídeo foi verificado sem abri-lo.
+
+QUESTÕES
+- questions deve conter pelo menos quatro questões.
+- Ajuste a quantidade de questões ao tempo disponível:
+  até 30 min: 4 a 6;
+  31 a 60 min: 6 a 8;
+  61 a 90 min: 8 a 12;
+  acima de 90 min: 10 a 15.
+- Cada questão precisa de id único, prompt, options, answer e explanation.
+- options deve conter exatamente quatro alternativas não vazias.
+- Deve existir somente uma resposta inequivocamente correta.
+- answer é um índice inteiro: 0=A, 1=B, 2=C, 3=D.
+- Não escreva A), B), C) ou D) dentro das alternativas.
+- explanation deve ensinar o conceito, não apenas repetir a resposta.
+- Combine recordação, compreensão, aplicação e análise.
+- Evite alternativas absurdas, pegadinhas e ambiguidade.
+
+FÓRMULAS
+- Use fórmulas somente quando contribuírem para o estudo.
+- Fórmulas simples podem usar Unicode: ×, ÷, ≤, ≥, ≠, ² e ³.
+- Para fórmulas complexas, use LaTeX entre $...$ ou $$...$$.
+- No JSON, duplique barras invertidas.
+- Exemplo correto: "$MTTR = \\frac{T}{N}$".
+- Não altere a função renderMath nem os delimitadores do KaTeX.
+
+NOME E GRAVAÇÃO DO ARQUIVO
+- Nome recomendado: AAAA-MM-DD_Disciplina_Assunto.html.
+- Salve como HTML real em UTF-8 e MIME type text/html.
+- Não crie Google Docs, DOCX, ZIP ou arquivo renomeado para .html.
+- O conteúdo final deve começar com <!DOCTYPE html>.
+- Preserve a URL-base do Web App publicada por Rafael.
+- A URL final segue o padrão URL_BASE?id=ID_DO_ARQUIVO_NO_DRIVE.
+
+VALIDAÇÃO ANTES DE PUBLICAR
+- Confirme que o JSON pode ser analisado por JSON.parse.
+- Confirme que o motor continua RAFAEL-STUDY-ENGINE v3.0.0.
+- Confirme que o HTML não contém conteúdo estático duplicado.
+- Confirme que módulos, questões e alternativas foram renderizados.
+- Responda uma questão e confirme feedback e progresso.
+- Responda todas as questões e confirme o resultado final.
+- Marque e desmarque um módulo e confirme o progresso.
+- Teste Reiniciar e confirme retorno a zero.
+- Teste os links dos vídeos.
+- Teste a URL final fornecida pelo Apps Script.
+- Registre "Plano criado e validado" somente após todos os testes.
+- Se qualquer teste falhar, não publique a URL como plano pronto.
+
+COMPORTAMENTO EM CASO DE ERRO
+- Não tente corrigir o motor.
+- Não preencha contêineres manualmente.
+- Não simplifique removendo progresso, resultado ou questões.
+- Interrompa a publicação e registre o erro real.
+- Corrija somente o JSON ou solicite manutenção do template.
+
+CHECKLIST FINAL DO AGENTE
+[ ] Agenda consultada
+[ ] NotebookLM consultado
+[ ] JSON válido
+[ ] ID único
+[ ] Cronograma dentro da agenda
+[ ] Fontes confirmadas
+[ ] Vídeos confirmados ou lista vazia
+[ ] Questões válidas e suficientes
+[ ] Motor e versão preservados
+[ ] HTML salvo como text/html
+[ ] URL do Apps Script abre
+[ ] Progresso funciona
+[ ] Resultado final funciona
+[ ] Reinício funciona
+[ ] Registro no documento dos agentes concluído
+
+Se for necessário alterar qualquer elemento fora do JSON, interrompa a
+execução. O agente não possui autorização para modificar o motor.
+======================================================================
+-->
+<!-- STUDY_PLAN_START -->
+<script id="studyPlanData" type="application/json">
+{
+  "title": "Planejamento Estratégico",
+  "subtitle": "Aula 02 - Introdução ao Planejamento Estratégico II",
+  "objective": "Apresentar os fundamentos da estrutura organizacional, a divisão do trabalho, os níveis hierárquicos (propriedade, governança, gestão e operação) e a constituição jurídica das empresas como pré-requisitos para o planejamento estratégico.",
+  "estimatedTime": "180 min",
+  "modules": [
+    {
+      "id": "m1",
+      "title": "Estrutura Organizacional e Hierarquia",
+      "duration": "45 min",
+      "topics": [
+        "Definição de estrutura organizacional e por que começar pela estrutura antes da estratégia",
+        "Os quatro níveis hierárquicos: Propriedade, Governança, Gestão e Operação",
+        "A pirâmide hierárquica e a relação entre nível, horizonte de tempo e detalhe de decisão",
+        "**PERGUNTAS SUGERIDAS PARA O PROFESSOR (19:00-19:10):**",
+        "1. No cenário de empresas familiares de médio porte, como o comitê informal de sócios pode realizar a transição para um conselho de administração estruturado (Governança) sem burocratizar excessivamente a tomada de decisão?",
+        "2. De que maneira a escolha da estrutura de departamentalização (como funcional ou por produtos) pode influenciar a flexibilidade do planejamento estratégico diante de cenários altamente mutáveis?",
+        "3. A Lei das Estatais impõe regras de governança mais rígidas para empresas públicas e de economia mista no Brasil. Como essas restrições legais afetam a velocidade de implementação e revisão das estratégias dessas empresas se comparadas às de capital privado?"
+      ],
+      "source": "Aula 02 - Introdução ao Planejamento estratégico II.pdf",
+      "videos": [
+        {
+          "title": "Estrutura Organizacional e Departamentalização",
+          "url": "https://www.youtube.com/watch?v=gvYdpnYWqdc",
+          "channel": "YouTube",
+          "duration": "15 min",
+          "watchFrom": "0:00",
+          "watchTo": "15:00",
+          "relatedTopic": "Tipos de Estrutura",
+          "purpose": "Apoio visual aos conceitos da aula.",
+          "verificationStatus": "VALIDATED",
+          "verifiedAt": "2026-08-12"
+        }
+      ]
+    },
+    {
+      "id": "m2",
+      "title": "Divisão do Trabalho, Departamentalização e Tipos de Autoridade",
+      "duration": "45 min",
+      "topics": [
+        "Diferenciação vertical (níveis hierárquicos) e horizontal (departamentalização)",
+        "Critérios de departamentalização (funcional, produto, cliente, território)",
+        "Tipos de autoridade: Linha, Funcional e Assessoria (staff)",
+        "Amplitude de poder e controle"
+      ],
+      "source": "Aula 02 - Introdução ao Planejamento estratégico II.pdf"
+    },
+    {
+      "id": "m3",
+      "title": "Constituição Jurídica, Porte e Natureza do Capital",
+      "duration": "30 min",
+      "topics": [
+        "Definição de personalidade jurídica no Código Civil brasileiro",
+        "Contrato Social (Ltda.) vs. Estatuto Social (S.A.)",
+        "Classificação quanto ao porte e à natureza do capital (privado, estatal, economia mista)"
+      ],
+      "source": "Aula 02 - Introdução ao Planejamento estratégico II.pdf"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Por que a aula propõe o estudo da estrutura organizacional antes das ferramentas estratégicas, como a missão e a matriz SWOT?",
+      "options": [
+        "Porque o planejamento estratégico é um processo focado exclusivamente nas rotinas da operação diária de curtíssimo prazo.",
+        "Porque as ferramentas estratégicas pressupõem o conhecimento prévio de quem decide, quem responde por quê, e sob qual forma jurídica a empresa existe.",
+        "Porque a estrutura organizacional substitui completamente a necessidade de se definir a missão e a visão de uma empresa.",
+        "Porque a estrutura jurídica determina que somente as pequenas empresas familiares precisam de conselho de administração."
+      ],
+      "answer": 1,
+      "explanation": "De acordo com o material da Aula 02, começar pela estrutura é fundamental porque ferramentas como missão, SWOT, PDCA e OKRs pressupõem saber quem decide, quem responde por quê, e a forma jurídica sob a qual a empresa existe."
+    },
+    {
+      "id": "q2",
+      "prompt": "Na pirâmide hierárquica completa apresentada, como são caracterizados os níveis hierárquicos superiores quanto ao seu horizonte de tempo e detalhe de decisão?",
+      "options": [
+        "Eles possuem menor horizonte de tempo e maior detalhe na decisão.",
+        "Eles possuem maior horizonte de tempo e maior detalhe na decisão.",
+        "Eles possuem maior horizonte de tempo e menor detalhe na decisão, estando mais próximos do capital e menos da execução.",
+        "Eles possuem menor horizonte de tempo e menor detalhe na decisão, atuando na rotina diária."
+      ],
+      "answer": 2,
+      "explanation": "Na hierarquia organizacional, quanto mais alto se está na pirâmide hierárquica (como Propriedade e Governança), maior é o horizonte de tempo considerado, menor é o detalhe da decisão e mais próximo se está do capital em comparação com a execução."
+    },
+    {
+      "id": "q3",
+      "prompt": "Qual é a principal distinção instrumental entre o Contrato Social e o Estatuto Social apresentada na Aula 02?",
+      "options": [
+        "O Contrato Social regula as sociedades anônimas (S.A.), enquanto o Estatuto Social regula as cooperativas.",
+        "O Contrato Social é o documento constitutivo das sociedades limitadas (Ltda.), enquanto o Estatuto Social é o das sociedades anônimas (S.A.).",
+        "O Contrato Social é de uso restrito de estatais, enquanto o Estatuto Social serve apenas para empresas unipessoais (SLU).",
+        "O Contrato Social regula a governança de conselhos de administração, enquanto o Estatuto Social define apenas a operação diária."
+      ],
+      "answer": 1,
+      "explanation": "De acordo com os slides da Aula 02, o Contrato Social é o documento constitutivo das sociedades limitadas (Ltda.), definindo sócios, capital e regras de administração, enquanto o Estatuto Social é o documento constitutivo das sociedades anônimas (S.A.), detalhando ações, conselho, diretoria e regras de governança."
+    }
+  ],
+  "id": "planejamento-estrate-gico-2026-08-13-1850",
+  "institution": "UNIASSELVI",
+  "course": "Engenharia de Produção",
+  "discipline": "Planejamento Estratégico",
+  "disciplineCode": "PLN-EST",
+  "professor": "Prof. Antônio",
+  "student": "Rafael Guimarães",
+  "classGroup": "6º Semestre",
+  "studyDate": "13 de Agosto de 2026",
+  "scheduledStart": "18:50",
+  "scheduledEnd": "21:50",
+  "availableMinutes": 180,
+  "scheduleSource": "agenda_semestre.json",
+  "schedule": [
+    {
+      "start": "18:50",
+      "end": "19:00",
+      "duration": "10m",
+      "activity": "Leitura do material pré-aula e organização do ambiente."
+    },
+    {
+      "start": "19:00",
+      "end": "19:10",
+      "duration": "10m",
+      "activity": "Perguntas sobre aulas anteriores (Trabalho em grupo. 3 perguntas definidas no Módulo 1)."
+    },
+    {
+      "start": "19:10",
+      "end": "20:30",
+      "duration": "1h20m",
+      "activity": "Estudo dos módulos: Estrutura Organizacional, Departamentalização e Tipos de Autoridade."
+    },
+    {
+      "start": "20:30",
+      "end": "21:50",
+      "duration": "1h20m",
+      "activity": "Resolução de simulados e vídeos complementares."
+    }
+  ]
+}
+</script>
+<!-- STUDY_PLAN_END -->
+
+<script>
+(() => {
+"use strict";
+const TEMPLATE_ENGINE_ID = "RAFAEL-STUDY-ENGINE";
+const TEMPLATE_ENGINE_VERSION = "3.0.0";
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let STUDY_PLAN = null;
+let state = {done:{},answers:{},theme:"light"};
+let storageKey = "";
+
+const $ = id => document.getElementById(id);
+const esc = value => String(value ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+const text = (id,value) => { const el=$(id); if(el) el.textContent=value ?? ""; };
+const safeLink = url => /^https:\/\//i.test(String(url || "").trim()) ? String(url).trim() : "";
+const parseMinutes = value => { const m=String(value||"").match(/^(\d{1,2}):(\d{2})$/); if(!m) return null; const h=+m[1],min=+m[2]; return h<24&&min<60?h*60+min:null; };
+const duplicateValues = values => values.filter((v,i,a)=>v&&a.indexOf(v)!==i);
+
+function parsePlan(){
+  const raw=$("studyPlanData")?.textContent || "";
+  try { return JSON.parse(raw); }
+  catch(error){ throw new Error("JSON do STUDY_PLAN inválido: " + error.message); }
+}
+
+function validatePlan(plan){
+  const errors=[];
+  const required=["id","title","discipline","studyDate","objective"];
+  required.forEach(k=>{if(!String(plan?.[k]??"").trim()) errors.push(`Campo obrigatório ausente: ${k}.`);});
+  if(!Array.isArray(plan?.modules)||!plan.modules.length) errors.push("O plano deve possuir pelo menos um módulo.");
+  if(!Array.isArray(plan?.questions)||plan.questions.length<4) errors.push("O plano deve possuir pelo menos quatro questões.");
+  if(!Array.isArray(plan?.schedule)) errors.push("O campo schedule deve ser uma lista.");
+  const modules=Array.isArray(plan?.modules)?plan.modules:[];
+  const questions=Array.isArray(plan?.questions)?plan.questions:[];
+  const ids=[...modules,...questions].map(x=>x?.id);
+  const duplicates=duplicateValues(ids);
+  if(duplicates.length) errors.push("IDs duplicados: "+[...new Set(duplicates)].join(", ")+".");
+  modules.forEach((m,i)=>{
+    if(!m?.id||!m?.title) errors.push(`Módulo ${i+1} sem id ou título.`);
+    if(!Array.isArray(m?.topics)||!m.topics.length) errors.push(`Módulo ${m?.id||i+1} sem tópicos.`);
+    if(m?.videos!==undefined&&!Array.isArray(m.videos)) errors.push(`videos do módulo ${m?.id||i+1} deve ser uma lista.`);
+    (Array.isArray(m?.videos)?m.videos:[]).forEach((v,j)=>{
+      if(!v?.title) errors.push(`Vídeo ${j+1} do módulo ${m.id} sem título.`);
+      if(!safeLink(v?.url)) errors.push(`Vídeo ${j+1} do módulo ${m.id} sem URL HTTPS válida.`);
+    });
+  });
+  questions.forEach((q,i)=>{
+    if(!q?.id||!q?.prompt) errors.push(`Questão ${i+1} sem id ou enunciado.`);
+    if(!Array.isArray(q?.options)||q.options.length!==4) errors.push(`Questão ${q?.id||i+1} deve possuir exatamente quatro alternativas.`);
+    if(!Number.isInteger(q?.answer)||q.answer<0||q.answer>3) errors.push(`Questão ${q?.id||i+1} possui resposta inválida.`);
+    if(!String(q?.explanation??"").trim()) errors.push(`Questão ${q?.id||i+1} sem explicação.`);
+  });
+  const start=parseMinutes(plan?.scheduledStart),end=parseMinutes(plan?.scheduledEnd);
+  if((plan?.scheduledStart||plan?.scheduledEnd)&&(start===null||end===null||end<=start)) errors.push("Horário inicial/final inválido.");
+  const schedule=Array.isArray(plan?.schedule)?plan.schedule:[];
+  let previousEnd=null,totalSchedule=0;
+  schedule.forEach((item,i)=>{
+    const a=parseMinutes(item?.start),b=parseMinutes(item?.end);
+    if(a===null||b===null||b<=a) errors.push(`Horário inválido no item ${i+1} do cronograma.`);
+    else { if(previousEnd!==null&&a<previousEnd) errors.push(`Sobreposição no item ${i+1} do cronograma.`); previousEnd=b; totalSchedule+=b-a; }
+  });
+  if(Number.isFinite(Number(plan?.availableMinutes))&&totalSchedule>Number(plan.availableMinutes)) errors.push("O cronograma ultrapassa availableMinutes.");
+  if(start!==null&&end!==null&&schedule.length){const first=parseMinutes(schedule[0].start),last=parseMinutes(schedule.at(-1).end);if(first<start||last>end) errors.push("O cronograma ultrapassa a janela da agenda.");}
+  return errors;
+}
+
+function showFatal(errors){
+  $("fatalErrorList").innerHTML=errors.map(e=>`<li>${esc(e)}</li>`).join("");
+  $("fatalError").classList.remove("hidden");
+  $("appMain").classList.add("hidden");
+  $("appStatus").className="container status error";
+  text("appStatus","Falha de validação. Este plano não deve ser publicado.");
+  document.title="Erro no plano de estudos";
+}
+
+function clearContainers(){["metrics","details","objective","schedule","modules","quiz"].forEach(id=>$(id)?.replaceChildren());}
+function defaults(){return{done:{},answers:{},theme:"light"};}
+function loadState(){try{return{...defaults(),...(JSON.parse(localStorage.getItem(storageKey))||{})};}catch{return defaults();}}
+function saveState(){try{localStorage.setItem(storageKey,JSON.stringify(state));}catch{}}
+
+function renderHeader(){
+ document.title=`${STUDY_PLAN.title} | Plano de estudos`;
+ text("course",[STUDY_PLAN.institution,STUDY_PLAN.course,STUDY_PLAN.disciplineCode].filter(Boolean).join(" • "));
+ text("title",STUDY_PLAN.title); text("subtitle",STUDY_PLAN.subtitle); text("objective",STUDY_PLAN.objective);
+ text("footer",`${STUDY_PLAN.author||"Plano de estudos"} • ${TEMPLATE_ENGINE_ID} v${TEMPLATE_ENGINE_VERSION} • Progresso salvo localmente`);
+ $("metrics").innerHTML=[[STUDY_PLAN.estimatedTime,"Tempo estimado"],[STUDY_PLAN.level,"Nível"],[STUDY_PLAN.targetDate,"Data-alvo"]].filter(x=>x[0]).map(([v,l])=>`<div class="metric"><strong>${esc(v)}</strong><span>${esc(l)}</span></div>`).join("");
+ $("details").innerHTML=[["Instituição",STUDY_PLAN.institution],["Curso",STUDY_PLAN.course],["Disciplina",STUDY_PLAN.discipline],["Código",STUDY_PLAN.disciplineCode],["Professor(a)",STUDY_PLAN.professor],["Estudante",STUDY_PLAN.student],["Turma / semestre",STUDY_PLAN.classGroup]].filter(x=>x[1]).map(([l,v])=>`<div class="detail"><span class="label">${esc(l)}</span><span class="value">${esc(v)}</span></div>`).join("");
+}
+function renderSchedule(){
+ const list=STUDY_PLAN.schedule||[]; if(!list.length){$("scheduleSection").classList.add("hidden");return;}
+ text("scheduleIntro",[STUDY_PLAN.studyDate,[STUDY_PLAN.scheduledStart,STUDY_PLAN.scheduledEnd].filter(Boolean).join("–"),STUDY_PLAN.availableMinutes?`${STUDY_PLAN.availableMinutes} minutos`:"",STUDY_PLAN.scheduleSource?`Fonte: ${STUDY_PLAN.scheduleSource}`:""].filter(Boolean).join(" • "));
+ $("schedule").innerHTML=list.map(x=>`<div class="slot"><span class="slot-time">${esc(x.start)}–${esc(x.end)}</span><span class="slot-duration">${esc(x.duration||"")}</span><span class="slot-activity">${esc(x.activity)}</span></div>`).join("");
+}
+function sourceBox(s){if(!s)return"";const rows=[["Origem",s.origin],["Documento",s.document],["Localização",s.location],["Páginas",s.pages],["Buscar por",s.searchHint]].filter(x=>x[1]);const link=safeLink(s.url);if(!rows.length&&!link)return"";return`<aside class="source"><p class="box-title">Onde encontrar o assunto</p>${rows.map(([l,v])=>`<p class="small"><b>${esc(l)}:</b> ${esc(v)}</p>`).join("")}${link?`<a class="video-link" href="${esc(link)}" target="_blank" rel="noopener noreferrer">Abrir fonte</a>`:""}</aside>`;}
+function videoBox(list){if(!Array.isArray(list)||!list.length)return"";const cards=list.map(v=>{const url=safeLink(v.url);if(!url)return"";const range=[v.watchFrom,v.watchTo].filter(Boolean).join("–");const meta=[["Canal",v.channel],["Duração",v.duration],["Trecho",range],["Relacionado a",v.relatedTopic],["Verificado em",v.verifiedAt]].filter(x=>x[1]);return`<article class="video-card"><h4 class="video-title">${esc(v.title)}</h4><div class="video-meta">${meta.map(([l,x])=>`<span>${esc(l)}: ${esc(x)}</span>`).join("")}</div>${v.purpose?`<p class="video-purpose"><b>Por que assistir:</b> ${esc(v.purpose)}</p>`:""}${v.verificationStatus?`<p class="video-warning">${esc(v.verificationStatus)}</p>`:""}<a class="video-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">▶ Abrir vídeo</a></article>`;}).filter(Boolean).join("");return cards?`<section class="video-list"><p class="box-title">Vídeos complementares</p>${cards}</section>`:"";}
+function renderModules(){const el=$("modules");el.innerHTML=STUDY_PLAN.modules.map(m=>`<article class="card module"><div><h3>${esc(m.title)}</h3><div class="meta">⏱ ${esc(m.duration||"")}</div></div><ul class="topics">${m.topics.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>${sourceBox(m.source)}${videoBox(m.videos)}<label class="check"><input type="checkbox" data-module="${esc(m.id)}" ${state.done[m.id]?"checked":""}> Etapa concluída</label></article>`).join("");el.addEventListener("change",e=>{const input=e.target.closest("[data-module]");if(!input)return;state.done[input.dataset.module]=input.checked;saveState();updateProgress();});}
+function renderQuiz(){const el=$("quiz");el.innerHTML=STUDY_PLAN.questions.map((q,n)=>`<article class="card question" id="card-${esc(q.id)}"><div class="q-head"><div><div class="q-no">Questão ${n+1} de ${STUDY_PLAN.questions.length}</div><div class="q-title">${esc(q.prompt)}</div></div><span class="badge">Não respondida</span></div><div class="options">${q.options.map((o,i)=>`<button class="option" type="button" data-q="${esc(q.id)}" data-i="${i}"><span class="letter">${letters[i]}</span><span>${esc(o)}</span></button>`).join("")}</div><div class="feedback" role="status"></div></article>`).join("");el.addEventListener("click",e=>{const b=e.target.closest(".option");if(!b||b.disabled)return;answer(b.dataset.q,+b.dataset.i);});Object.entries(state.answers).forEach(([id,i])=>paint(id,+i));renderMath(document.body);}
+function answer(id,i){if(Object.hasOwn(state.answers,id))return;state.answers[id]=i;saveState();paint(id,i);updateProgress();updateResult();}
+function paint(id,i){const q=STUDY_PLAN.questions.find(x=>x.id===id),card=$(`card-${id}`);if(!q||!card)return;const ok=i===q.answer;card.querySelectorAll(".option").forEach((b,n)=>{b.disabled=true;if(n===q.answer)b.classList.add(n===i?"correct":"reveal");if(n===i&&!ok)b.classList.add("wrong");});const badge=card.querySelector(".badge");badge.textContent=ok?"Correta":"Revisar";badge.style.color=ok?"var(--ok)":"var(--bad)";const f=card.querySelector(".feedback");f.className=`feedback ${ok?"correct":"wrong"}`;f.innerHTML=`<strong>${ok?"Resposta correta!":`Resposta incorreta. A correta é ${letters[q.answer]}.`}</strong><p>${esc(q.explanation)}</p>`;renderMath(f);}
+function stats(){const qs=STUDY_PLAN.questions.filter(q=>Object.hasOwn(state.answers,q.id));return{answered:qs.length,correct:qs.filter(q=>Number(state.answers[q.id])===Number(q.answer)).length,done:STUDY_PLAN.modules.filter(m=>Boolean(state.done[m.id])).length};}
+function updateProgress(){const s=stats(),total=STUDY_PLAN.questions.length+STUDY_PLAN.modules.length,completed=s.answered+s.done,p=total?Math.min(100,Math.round(completed/total*100)):0;$("bar").style.width=`${p}%`;$("track").setAttribute("aria-valuenow",String(p));text("progressText",`${completed} de ${total} etapas • ${p}%`);}
+function updateResult(){const s=stats(),total=STUDY_PLAN.questions.length,sec=$("result");if(!total||s.answered<total){sec.classList.add("hidden");return;}const p=Math.round(s.correct/total*100);text("score",`${p}%`);text("resultDetail",`${s.correct} acerto(s) em ${total} questão(ões).`);text("resultMsg",p>=80?"Ótimo desempenho. Você concluiu a verificação.":p>=60?"Bom avanço. Revise os itens marcados.":"Reforce os módulos e tente novamente.");sec.classList.remove("hidden");sec.scrollIntoView({behavior:"smooth",block:"start"});}
+function renderMath(el=document.body,attempt=0){if(window.renderMathInElement){try{window.renderMathInElement(el,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false},{left:"\\(",right:"\\)",display:false},{left:"\\[",right:"\\]",display:true}],throwOnError:false});}catch(error){console.warn("KaTeX:",error);}return;}if(attempt<30)setTimeout(()=>renderMath(el,attempt+1),100);}
+function applyTheme(t){state.theme=t==="dark"?"dark":"light";document.documentElement.dataset.theme=state.theme;text("themeBtn",state.theme==="dark"?"☀️ Tema":"🌙 Tema");saveState();}
+function resetPlan(e){e?.preventDefault();state.done={};state.answers={};saveState();document.querySelectorAll("[data-module]").forEach(x=>x.checked=false);document.querySelectorAll(".question").forEach(c=>{c.querySelectorAll(".option").forEach(b=>{b.disabled=false;b.classList.remove("correct","wrong","reveal");});const badge=c.querySelector(".badge");badge.textContent="Não respondida";badge.style.color="";const f=c.querySelector(".feedback");f.className="feedback";f.replaceChildren();});$("result").classList.add("hidden");updateProgress();$("modules").scrollIntoView({behavior:"smooth"});}
+function printPlan(e){e?.preventDefault();const b=$("printBtn"),old=b.textContent,oldTheme=document.documentElement.dataset.theme;b.textContent="Abrindo impressão...";document.documentElement.dataset.theme="light";let restored=false;const restore=()=>{if(restored)return;restored=true;b.textContent=old;document.documentElement.dataset.theme=oldTheme||state.theme;};addEventListener("afterprint",restore,{once:true});try{window.focus();window.print();}catch{restore();alert("Use Ctrl+P no navegador para imprimir.");}setTimeout(restore,2000);}
+function renderAudit(){const errors=[];if(document.querySelectorAll(".module").length!==STUDY_PLAN.modules.length)errors.push("Quantidade de módulos renderizados incorreta.");if(document.querySelectorAll(".question").length!==STUDY_PLAN.questions.length)errors.push("Quantidade de questões renderizadas incorreta.");if(document.querySelectorAll(".option").length!==STUDY_PLAN.questions.length*4)errors.push("Quantidade de alternativas renderizadas incorreta.");const ids=[...document.querySelectorAll("[id]")].map(x=>x.id).filter(Boolean);if(new Set(ids).size!==ids.length)errors.push("Existem IDs HTML duplicados.");return errors;}
+function bind(){$("themeBtn").addEventListener("click",()=>applyTheme(state.theme==="dark"?"light":"dark"));$("printBtn").addEventListener("click",printPlan);$("resetTop").addEventListener("click",resetPlan);$("resetBottom").addEventListener("click",resetPlan);$("reviewBtn").addEventListener("click",()=>{const q=STUDY_PLAN.questions.find(q=>state.answers[q.id]!==q.answer);$(q?`card-${q.id}`:"quizTitle").scrollIntoView({behavior:"smooth"});});}
+function init(){
+ try{
+  STUDY_PLAN=parsePlan(); const errors=validatePlan(STUDY_PLAN); if(errors.length){showFatal(errors);return;}
+  storageKey=`study-plan:${STUDY_PLAN.id}`; state=loadState();
+  state.answers=Object.fromEntries(Object.entries(state.answers||{}).filter(([id])=>STUDY_PLAN.questions.some(q=>q.id===id)));
+  state.done=Object.fromEntries(Object.entries(state.done||{}).filter(([id])=>STUDY_PLAN.modules.some(m=>m.id===id))); saveState();
+  clearContainers(); renderHeader(); renderSchedule(); renderModules(); renderQuiz(); bind(); applyTheme(state.theme); updateProgress(); updateResult();
+  const audit=renderAudit(); if(audit.length){showFatal(audit);return;}
+  $("appStatus").dataset.ready="true"; $("appStatus").style.display = "none";
+ }catch(error){showFatal([error.message||String(error)]);}
+}
+setTimeout(()=>{if($("appStatus")?.dataset.ready!=="true"&&!$("appStatus")?.classList.contains("error")){showFatal(["O motor não concluiu a inicialização em 5 segundos."]);}},5000);
+init();
+})();
+</script>
+</body>
+</html>
