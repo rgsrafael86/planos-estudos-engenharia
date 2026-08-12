@@ -152,6 +152,44 @@
         .dot.pending { background: var(--warning); }
         .dot.late { background: var(--danger); }
 
+        
+        /* Filters */
+        .filter-container {
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            padding: 0 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            animation: slideUp 1s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+
+        .filter-chip {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 8px 16px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .filter-chip:hover {
+            border-color: var(--primary-neon);
+            color: var(--text-light);
+        }
+
+        .filter-chip.active {
+            background: rgba(56, 189, 248, 0.2);
+            border-color: var(--primary-neon);
+            color: var(--primary-neon);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        }
+
         /* Shelves (Disciplines) */
         main {
             max-width: 1200px;
@@ -297,6 +335,11 @@
         <p class="subtitle">Engenharia de Produção - 6º Semestre</p>
     </header>
 
+    <div id="filters" class="filter-container">
+        <!-- Filtros injetados via JS -->
+    </div>
+
+
     <div id="app">
         <div class="loader">Sincronizando com a Agenda...</div>
     </div>
@@ -396,6 +439,15 @@
                 </div>
             `;
 
+            
+            // Renderizar Filtros
+            const filterContainer = document.getElementById('filters');
+            let filterHTML = <button class="filter-chip active" data-filter="all">Todas as Disciplinas</button>;
+            Object.keys(disciplinasMap).sort().forEach(disc => {
+                filterHTML += <button class="filter-chip" data-filter=""></button>;
+            });
+            if (filterContainer) filterContainer.innerHTML = filterHTML;
+
             // Build Shelves
             let shelvesHTML = `<main>`;
             
@@ -406,7 +458,7 @@
                 sessoesDisc.sort((a,b) => a.date.localeCompare(b.date));
 
                 shelvesHTML += `
-                    <div class="shelf">
+                    <div class="shelf" data-discipline="">
                         <h2>${disc} <span class="shelf-count">${sessoesDisc.length} planos</span></h2>
                         <div class="cards-container">
                 `;
@@ -469,9 +521,28 @@
             shelvesHTML += `</main>`;
 
             document.getElementById('app').innerHTML = dashHTML + shelvesHTML;
+
+            // EventListeners para os Filtros
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.addEventListener('click', (e) => {
+                    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                    e.target.classList.add('active');
+                    
+                    const filter = e.target.getAttribute('data-filter');
+                    
+                    document.querySelectorAll('.shelf').forEach(shelf => {
+                        if(filter === 'all' || shelf.getAttribute('data-discipline') === filter) {
+                            shelf.style.display = 'block';
+                        } else {
+                            shelf.style.display = 'none';
+                        }
+                    });
+                });
+            });
         }
 
         window.onload = init;
+
     </script>
 </body>
 </html>
