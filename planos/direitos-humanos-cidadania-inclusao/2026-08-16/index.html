@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -431,7 +431,7 @@ function init(){
   state.done=Object.fromEntries(Object.entries(state.done||{}).filter(([id])=>STUDY_PLAN.modules.some(m=>m.id===id))); saveState();
   clearContainers(); renderHeader(); renderSchedule(); renderModules(); renderQuiz(); bind(); applyTheme(state.theme); updateProgress(); updateResult();
   const audit=renderAudit(); if(audit.length){showFatal(audit);return;}
-  $("appStatus").dataset.ready="true"; $("appStatus").className="container status ok"; text("appStatus",`Plano carregado com sucesso • Motor ${TEMPLATE_ENGINE_VERSION}`);
+  $("appStatus").dataset.ready="true"; $("appStatus").style.display = "none";
  }catch(error){showFatal([error.message||String(error)]);}
 }
 setTimeout(()=>{if($("appStatus")?.dataset.ready!=="true"&&!$("appStatus")?.classList.contains("error")){showFatal(["O motor não concluiu a inicialização em 5 segundos."]);}},5000);

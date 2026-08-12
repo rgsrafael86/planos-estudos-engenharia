@@ -439,10 +439,23 @@
                     const Tag = (s.calc_status === 'VALIDATED') ? 'a' : 'div';
                     const linkAttrs = (Tag === 'a') ? `href="${href}" ${target}` : '';
 
+                    // Mapeamento de Tipos de Sessão
+                    const typeMap = {
+                        'PRESENTIAL_CLASS': 'Aula Presencial',
+                        'PRE_CLASS': 'Estudo Pré-Aula',
+                        'DIRECTED_STUDY': 'Estudo Dirigido',
+                        'WEEKLY_REVIEW': 'Revisão Semanal',
+                        'EXAM_N1': 'Avaliação N1',
+                        'EXAM_N2': 'Avaliação N2',
+                        'EXAM_FINAL': 'Exame Final',
+                        'OTHER_ACADEMIC': 'Atividade Acadêmica'
+                    };
+                    const sessionTypeName = typeMap[s.session_type] || s.session_type.replace(/_/g, ' ');
+
                     shelvesHTML += `
                         <${Tag} ${linkAttrs} class="plan-card" data-status="${s.calc_status}">
                             <div class="card-date">${formatarData(s.date)} • ${s.start} - ${s.end}</div>
-                            <h3 class="card-title">${s.session_type.replace(/_/g, ' ')}</h3>
+                            <h3 class="card-title">${sessionTypeName}</h3>
                             <div class="card-footer">
                                 <span>${s.available_minutes} min</span>
                                 <span class="badge ${badgeClass}">${badgeText}</span>
