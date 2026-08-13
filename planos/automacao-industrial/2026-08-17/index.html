@@ -46,144 +46,7 @@ O agente deve produzir somente dados acadêmicos em JSON. O agente não
 
 ÁREA AUTORIZADA
 1. Substitua somente o conteúdo JSON existente dentro do elemento:
-   <script id="studyPlanData" type="application/json">
-{
-  "title": "Automação Industrial",
-  "subtitle": "Sensoriamento",
-  "objective": "Compreender os princípios de funcionamento dos principais sensores industriais.",
-  "estimatedTime": "90 min",
-  "modules": [
-    {
-      "id": "m1",
-      "title": "Introdução aos Sensores",
-      "duration": "30 min",
-      "topics": [
-        "Classificação dos sensores",
-        "Características dos sensores",
-        "Arquitetura dos sensores"
-      ],
-      "videos": [
-        {
-          "id": "mmhD2TO3LmA",
-          "title": "Sensoriamento na Indústria",
-          "duration": "15 min"
-        }
-      ]
-    },
-    {
-      "id": "m2",
-      "title": "Tipos de Sensores e Aplicações",
-      "duration": "30 min",
-      "topics": [
-        "Sensores discretos",
-        "Sensores de contato",
-        "Sensores de proximidade",
-        "Aplicação dos sensores"
-      ]
-    },
-    {
-      "id": "m3",
-      "title": "Interfaceamento e Instalação",
-      "duration": "30 min",
-      "topics": [
-        "Interfaceamento dos sensores discretos com CLPs",
-        "Considerações para instalação de sensores"
-      ]
-    }
-  ],
-  "questions": [
-    {
-      "id": "q1",
-      "prompt": "Com base no conteúdo de Sensores apresentado na Unidade 2, como é denominada a categoria de sensores que engloba os sensores de contato e os de proximidade na ementa?",
-      "options": [
-        "Sensores discretos",
-        "Sensores analógicos contínuos",
-        "Sensores de malha fechada",
-        "Sensores de eventos estáticos"
-      ],
-      "answer": 0,
-      "explanation": "A ementa da Unidade 2 divide o estudo de Sensores partindo de 'Sensores discretos' e detalhando subcategorias como 'Sensores de contato' e 'Sensores de proximidade'."
-    },
-    {
-      "id": "q2",
-      "prompt": "Quais são as duas principais subcategorias de sensores discretos detalhadas nos tópicos de estudo da Unidade 2?",
-      "options": [
-        "Sensores de contato e sensores de proximidade",
-        "Sensores de vazão e sensores de temperatura",
-        "Sensores de pressão e sensores de nível",
-        "Sensores analógicos e sensores digitais paralelos"
-      ],
-      "answer": 0,
-      "explanation": "A ementa de Automação Industrial lista de forma expressa no Tópico 2 da Unidade 2: 'Sensores discretos, Sensores de contato, Sensores de proximidade'."
-    },
-    {
-      "id": "q3",
-      "prompt": "Qual dispositivo eletrônico é expressamente indicado na ementa como o destino do interfaceamento dos sensores discretos?",
-      "options": [
-        "CLPs (Controladores Lógicos Programáveis)",
-        "PIMS (Plant Information Management System)",
-        "Máquinas CNC (Controle Numérico Computadorizado)",
-        "Válvulas eletropneumáticas proporcionais"
-      ],
-      "answer": 0,
-      "explanation": "A estrutura de tópicos da Unidade 2 aborda especificamente o 'Interfaceamento dos sensores discretos como CLPs' (ou seja, a conexão com Controladores Lógicos Programáveis)."
-    },
-    {
-      "id": "q4",
-      "prompt": "Além de classificar e selecionar os sensores, qual etapa prática crucial é apresentada na ementa para garantir o funcionamento físico correto no ambiente fabril?",
-      "options": [
-        "Considerações para instalação de sensores",
-        "Programação de tabelas de decisão no PIMS",
-        "Modelamento heterárquico do sensor",
-        "Redundância de sinais analógicos de vazão"
-      ],
-      "answer": 0,
-      "explanation": "A ementa prevê o estudo de 'Considerações para instalação de sensores' para garantir o funcionamento e a integridade desses dispositivos no ambiente físico de produção."
-    },
-    {
-      "id": "q5",
-      "prompt": "O conteúdo programático da ementa detalha tópicos específicos para o estudo de Sensores na Unidade 2. Qual das opções a seguir apresenta um tema que NÃO faz parte desses tópicos de sensores?",
-      "options": [
-        "Estimativa de esforço de engenharia de software",
-        "Classificação dos sensores",
-        "Interfaceamento dos sensores com CLPs",
-        "Características dos sensores"
-      ],
-      "answer": 0,
-      "explanation": "A 'Estimativa de esforço de engenharia' é um conteúdo do Tópico 3 da Unidade 3 (Gestão de Automação), não pertencendo à ementa de sensores da Unidade 2."
-    },
-    {
-      "id": "q6",
-      "prompt": "Ao planejar uma linha de manufatura automatizada, qual conceito programático deve ser estudado para compreender as funções e o posicionamento prático desses dispositivos na planta industrial?",
-      "options": [
-        "Aplicação dos sensores",
-        "Linguagem de programação textual de CLPs",
-        "História do controle numérico",
-        "Estrutura do controle heterárquico"
-      ],
-      "answer": 0,
-      "explanation": "A ementa lista o tópico 'Aplicação dos sensores' na Unidade 2, cujo foco é identificar a utilização prática de sensores em diferentes partes da automação da planta."
-    }
-  ],
-  "schedule": [
-    {
-      "time": "00:00-00:30",
-      "duration": "30m",
-      "activity": "Introdução aos Sensores e Vídeo"
-    },
-    {
-      "time": "00:30-01:00",
-      "duration": "30m",
-      "activity": "Estudo dos Tipos de Sensores e Aplicações"
-    },
-    {
-      "time": "01:00-01:30",
-      "duration": "30m",
-      "activity": "Resolução de Simulado e Análise de Casos"
-    }
-  ]
-}
-</script>
+   <script id="studyPlanData" type="application/json"> ... </script>
 2. A área autorizada está delimitada por:
    STUDY_PLAN_START
    STUDY_PLAN_END
@@ -354,138 +217,175 @@ execução. O agente não possui autorização para modificar o motor.
 <!-- STUDY_PLAN_START -->
 <script id="studyPlanData" type="application/json">
 {
-  "title": "Automação Industrial",
-  "subtitle": "Sensoriamento",
-  "objective": "Compreender os princípios de funcionamento dos principais sensores industriais.",
-  "estimatedTime": "90 min",
+  "id": "automac-a-o-industrial-2026-08-17-1850",
+  "title": "Automação Industrial — Modelagem e Controle de Sistemas",
+  "subtitle": "Aula presencial · Eng. Produção EPR0338/6 (Noturno) · Campus Blumenau · Sala A-16",
+  "institution": "UNIASSELVI",
+  "course": "Engenharia de Produção",
+  "discipline": "Automação Industrial",
+  "disciplineCode": "EPR0338/6",
+  "professor": "",
+  "student": "R.G.",
+  "classGroup": "Blumenau — Sala A-16",
+  "author": "Gemini Spark",
+  "estimatedTime": "180 min",
+  "level": "Intermediário",
+  "targetDate": "17/08/2026",
+  "studyDate": "17/08/2026",
+  "scheduledStart": "18:50",
+  "scheduledEnd": "21:50",
+  "availableMinutes": 180,
+  "scheduleSource": "Google Agenda",
+  "contentSource": "NotebookLM (Unidade 2, Tópico 3)",
+  "objective": "Compreender o modelamento e o controle de manufaturas e sistemas industriais, focando em arquiteturas de controle e desenvolvimento de software de controle.",
+  "schedule": [
+    {
+      "start": "18:50",
+      "end": "19:50",
+      "duration": "60 min",
+      "activity": "Módulo 1 — Arquiteturas de Controle de Sistemas"
+    },
+    {
+      "start": "19:50",
+      "end": "20:50",
+      "duration": "60 min",
+      "activity": "Módulo 2 — Padrões de Comunicação e Orientação a Objetos"
+    },
+    {
+      "start": "20:50",
+      "end": "21:50",
+      "duration": "60 min",
+      "activity": "Módulo 3 — Verificação e Prática de Fixação"
+    }
+  ],
   "modules": [
     {
-      "id": "m1",
-      "title": "Introdução aos Sensores",
-      "duration": "30 min",
+      "id": "arq-controle",
+      "title": "1. Arquiteturas de Controle de Sistemas de Manufatura",
+      "duration": "60 min",
       "topics": [
-        "Classificação dos sensores",
-        "Características dos sensores",
-        "Arquitetura dos sensores"
+        "Modelamento e controle de manufaturas",
+        "Estrutura de controle centralizada",
+        "Estrutura de controle hierárquico",
+        "Estrutura de controle heterárquico"
       ],
+      "source": {
+        "origin": "Apostila UNIASSELVI (NotebookLM)",
+        "document": "Automação Industrial",
+        "location": "Unidade 2, Tópico 3",
+        "pages": "",
+        "searchHint": "Modelagem e controle de sistemas industriais arquiteturas",
+        "url": ""
+      },
       "videos": [
         {
-          "id": "mmhD2TO3LmA",
-          "title": "Sensoriamento na Indústria",
-          "duration": "15 min"
+          "title": "Arquiteturas de Automação Industrial",
+          "platform": "YouTube",
+          "channel": "Automação Prática",
+          "duration": "10:00",
+          "watchFrom": "0:00",
+          "watchTo": "10:00",
+          "purpose": "Entender as diferenças práticas entre controle centralizado, hierárquico e heterárquico.",
+          "relatedTopic": "Arquiteturas de Controle",
+          "url": "https://www.youtube.com/watch?v=kYvMvHlQ9aU",
+          "verifiedAt": "13/08/2026",
+          "verificationStatus": ""
         }
       ]
     },
     {
-      "id": "m2",
-      "title": "Tipos de Sensores e Aplicações",
-      "duration": "30 min",
+      "id": "padroes-comunicacao",
+      "title": "2. Desenvolvimento de Software de Controle",
+      "duration": "60 min",
       "topics": [
-        "Sensores discretos",
-        "Sensores de contato",
-        "Sensores de proximidade",
-        "Aplicação dos sensores"
-      ]
-    },
-    {
-      "id": "m3",
-      "title": "Interfaceamento e Instalação",
-      "duration": "30 min",
-      "topics": [
-        "Interfaceamento dos sensores discretos com CLPs",
-        "Considerações para instalação de sensores"
-      ]
+        "Padrões de comunicação na indústria",
+        "Desenvolvimento orientado a objetos para automação",
+        "Modelos formais no desenvolvimento de software de controle",
+        "Necessidades correntes em sistemas industriais"
+      ],
+      "source": {
+        "origin": "Apostila UNIASSELVI (NotebookLM)",
+        "document": "Automação Industrial",
+        "location": "Unidade 2, Tópico 3",
+        "pages": "",
+        "searchHint": "desenvolvimento orientado a objetos modelos formais",
+        "url": ""
+      },
+      "videos": []
     }
   ],
   "questions": [
     {
       "id": "q1",
-      "prompt": "Com base no conteúdo de Sensores apresentado na Unidade 2, como é denominada a categoria de sensores que engloba os sensores de contato e os de proximidade na ementa?",
+      "prompt": "Na modelagem e controle de manufaturas, qual estrutura de controle concentra todas as decisões em um único nó de processamento?",
       "options": [
-        "Sensores discretos",
-        "Sensores analógicos contínuos",
-        "Sensores de malha fechada",
-        "Sensores de eventos estáticos"
+        "Estrutura de controle centralizada",
+        "Estrutura de controle hierárquico",
+        "Estrutura de controle heterárquico",
+        "Estrutura de controle distribuída autônoma"
       ],
       "answer": 0,
-      "explanation": "A ementa da Unidade 2 divide o estudo de Sensores partindo de 'Sensores discretos' e detalhando subcategorias como 'Sensores de contato' e 'Sensores de proximidade'."
+      "explanation": "A estrutura centralizada concentra a inteligência e o poder de decisão em um único elemento principal."
     },
     {
       "id": "q2",
-      "prompt": "Quais são as duas principais subcategorias de sensores discretos detalhadas nos tópicos de estudo da Unidade 2?",
+      "prompt": "Qual é a principal característica da estrutura de controle heterárquico?",
       "options": [
-        "Sensores de contato e sensores de proximidade",
-        "Sensores de vazão e sensores de temperatura",
-        "Sensores de pressão e sensores de nível",
-        "Sensores analógicos e sensores digitais paralelos"
+        "Subordinação estrita entre níveis",
+        "Uso exclusivo de CLP sem rede",
+        "Nós operam como entidades autônomas cooperativas, sem um mestre absoluto",
+        "Processamento feito exclusivamente na nuvem"
       ],
-      "answer": 0,
-      "explanation": "A ementa de Automação Industrial lista de forma expressa no Tópico 2 da Unidade 2: 'Sensores discretos, Sensores de contato, Sensores de proximidade'."
+      "answer": 2,
+      "explanation": "A estrutura heterárquica se destaca por permitir que os elementos do sistema tomem decisões de forma cooperativa e distribuída, sem a subordinação rígida de um modelo hierárquico."
     },
     {
       "id": "q3",
-      "prompt": "Qual dispositivo eletrônico é expressamente indicado na ementa como o destino do interfaceamento dos sensores discretos?",
+      "prompt": "O desenvolvimento de software para controle moderno frequentemente utiliza qual paradigma para organizar o código em torno de entidades do mundo real?",
       "options": [
-        "CLPs (Controladores Lógicos Programáveis)",
-        "PIMS (Plant Information Management System)",
-        "Máquinas CNC (Controle Numérico Computadorizado)",
-        "Válvulas eletropneumáticas proporcionais"
+        "Programação Linear",
+        "Desenvolvimento Orientado a Objetos (POO)",
+        "Lógica Ladder pura e sequencial",
+        "Programação Funcional de baixo nível"
       ],
-      "answer": 0,
-      "explanation": "A estrutura de tópicos da Unidade 2 aborda especificamente o 'Interfaceamento dos sensores discretos como CLPs' (ou seja, a conexão com Controladores Lógicos Programáveis)."
+      "answer": 1,
+      "explanation": "A Orientação a Objetos é aplicada na automação para modelar válvulas, esteiras e sensores como objetos de software, facilitando a reutilização e o controle."
     },
     {
       "id": "q4",
-      "prompt": "Além de classificar e selecionar os sensores, qual etapa prática crucial é apresentada na ementa para garantir o funcionamento físico correto no ambiente fabril?",
+      "prompt": "Por que o uso de modelos formais é importante no desenvolvimento de software de controle?",
       "options": [
-        "Considerações para instalação de sensores",
-        "Programação de tabelas de decisão no PIMS",
-        "Modelamento heterárquico do sensor",
-        "Redundância de sinais analógicos de vazão"
+        "Para melhorar os gráficos das IHMs",
+        "Para criar animações 3D da planta",
+        "Para permitir verificação matemática e garantir que o software não entrará em estados inseguros",
+        "Para reduzir o tamanho dos cabos de rede"
       ],
-      "answer": 0,
-      "explanation": "A ementa prevê o estudo de 'Considerações para instalação de sensores' para garantir o funcionamento e a integridade desses dispositivos no ambiente físico de produção."
+      "answer": 2,
+      "explanation": "Modelos formais, como Redes de Petri, permitem provar matematicamente a correção e a segurança da lógica de controle antes da implementação."
     },
     {
       "id": "q5",
-      "prompt": "O conteúdo programático da ementa detalha tópicos específicos para o estudo de Sensores na Unidade 2. Qual das opções a seguir apresenta um tema que NÃO faz parte desses tópicos de sensores?",
+      "prompt": "Qual arquitetura divide o controle da fábrica em níveis organizacionais, da máquina até o planejamento corporativo?",
       "options": [
-        "Estimativa de esforço de engenharia de software",
-        "Classificação dos sensores",
-        "Interfaceamento dos sensores com CLPs",
-        "Características dos sensores"
+        "Centralizada",
+        "Hierárquico",
+        "Heterárquico",
+        "Ad-hoc"
       ],
-      "answer": 0,
-      "explanation": "A 'Estimativa de esforço de engenharia' é um conteúdo do Tópico 3 da Unidade 3 (Gestão de Automação), não pertencendo à ementa de sensores da Unidade 2."
+      "answer": 1,
+      "explanation": "O controle hierárquico, como visto na Pirâmide da Automação, divide as funções em níveis distintos com subordinação direta."
     },
     {
       "id": "q6",
-      "prompt": "Ao planejar uma linha de manufatura automatizada, qual conceito programático deve ser estudado para compreender as funções e o posicionamento prático desses dispositivos na planta industrial?",
+      "prompt": "Em relação aos padrões de comunicação na automação industrial, qual afirmativa reflete uma necessidade atual?",
       "options": [
-        "Aplicação dos sensores",
-        "Linguagem de programação textual de CLPs",
-        "História do controle numérico",
-        "Estrutura do controle heterárquico"
+        "Isolamento total de cada máquina",
+        "Falta de integração com redes corporativas",
+        "Interoperabilidade entre equipamentos de diferentes fabricantes através de redes industriais",
+        "Uso exclusivo de comunicação analógica ponto-a-ponto"
       ],
-      "answer": 0,
-      "explanation": "A ementa lista o tópico 'Aplicação dos sensores' na Unidade 2, cujo foco é identificar a utilização prática de sensores em diferentes partes da automação da planta."
-    }
-  ],
-  "schedule": [
-    {
-      "time": "00:00-00:30",
-      "duration": "30m",
-      "activity": "Introdução aos Sensores e Vídeo"
-    },
-    {
-      "time": "00:30-01:00",
-      "duration": "30m",
-      "activity": "Estudo dos Tipos de Sensores e Aplicações"
-    },
-    {
-      "time": "01:00-01:30",
-      "duration": "30m",
-      "activity": "Resolução de Simulado e Análise de Casos"
+      "answer": 2,
+      "explanation": "Os padrões de comunicação modernos buscam a interoperabilidade, permitindo que diferentes componentes e sistemas troquem dados perfeitamente de forma digital."
     }
   ]
 }
