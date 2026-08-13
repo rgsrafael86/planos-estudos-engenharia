@@ -75,7 +75,7 @@ Para cada disciplina:
 
 1. localize o notebook correto;
 2. use somente as fontes do notebook;
-3. leia a ementa e o histórico disponível;
+3. leia a ementa e o histórico disponível (Se o campo `current_content` do plano anterior estiver vazio no `agenda_semestre.json`, OBRIGATORIAMENTE abra o arquivo `index.html` do último plano validado daquela disciplina e extraia o bloco JSON para saber onde o aluno parou);
 4. conte as sessões futuras daquela disciplina no semestre;
 5. identifique avaliações N1, N2 e exame final;
 6. distribua a ementa entre as sessões disponíveis;
