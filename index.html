@@ -771,10 +771,8 @@
                 let statusCount = { COMPLETED: 0, PENDING: 0, LATE: 0, VALIDATED: 0, GENERATING: 0, OTHER: 0 };
                 let disciplinasMap = {};
 
-                // Processar sessões
+                // Processar sessões de estudo reais (excluindo marcos multidias genéricos de calendário)
                 sessoes.forEach(s => {
-                    totalHoras += (s.available_minutes / 60);
-                    
                     let statusAtual = s.plan_status || 'PENDING';
                     
                     // Lógica de Atraso
@@ -782,13 +780,20 @@
                         statusAtual = 'LATE';
                     }
 
-                    if(statusCount[statusAtual] !== undefined) {
-                        statusCount[statusAtual]++;
-                    } else {
-                        statusCount.OTHER++;
+                    // Apenas contabiliza carga horária e métricas de sessões de estudo acadêmicas reais
+                    const isMarcoGenerico = (s.discipline === 'Engenharia de Produção');
+                    
+                    if (!isMarcoGenerico) {
+                        totalHoras += (s.available_minutes / 60);
+
+                        if(statusCount[statusAtual] !== undefined) {
+                            statusCount[statusAtual]++;
+                        } else {
+                            statusCount.OTHER++;
+                        }
                     }
 
-                    let s_ajustada = {...s, calc_status: statusAtual};
+                    let s_ajustada = {...s, calc_status: statusAtual, is_marco: isMarcoGenerico};
                     state.allSessions.push(s_ajustada);
 
                     // Agrupar por disciplina
@@ -800,7 +805,10 @@
 
                 state.disciplinasMap = disciplinasMap;
 
-                const totalSessoes = sessoes.length;
+                // Sessões reais de estudo (165 sessões)
+                const sessoesEstudo = sessoes.filter(s => s.discipline !== 'Engenharia de Produção');
+                const totalSessoes = sessoesEstudo.length;
+
                 const pctC = totalSessoes > 0 ? ((statusCount.COMPLETED / totalSessoes) * 100).toFixed(1) : 0;
                 const pctV = totalSessoes > 0 ? ((statusCount.VALIDATED / totalSessoes) * 100).toFixed(1) : 0;
                 const pctP = totalSessoes > 0 ? ((statusCount.PENDING / totalSessoes) * 100).toFixed(1) : 0;
