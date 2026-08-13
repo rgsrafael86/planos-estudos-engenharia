@@ -531,6 +531,12 @@
         
         .plan-card[data-status="COMPLETED"] { opacity: 0.85; border-color: rgba(16, 185, 129, 0.2); }
         .plan-card[data-status="COMPLETED"]::before { background: var(--success); }
+        a.plan-card[data-status="COMPLETED"] { cursor: pointer; opacity: 1; }
+        a.plan-card[data-status="COMPLETED"]:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 14px 30px rgba(16, 185, 129, 0.2);
+            border-color: var(--success);
+        }
 
         .card-header-row {
             display: flex;
@@ -1018,14 +1024,6 @@
                 `;
 
                 sessoesFiltradas.forEach(s => {
-                    let badgeClass = 'pending';
-                    let badgeText = '⏳ A Gerar';
-                    
-                    if(s.calc_status === 'VALIDATED') { badgeClass = 'validated'; badgeText = '📖 Disponível'; }
-                    if(s.calc_status === 'LATE') { badgeClass = 'late'; badgeText = '⚠️ Acumulado'; }
-                    if(s.calc_status === 'COMPLETED') { badgeClass = 'completed'; badgeText = '✅ Concluído'; }
-                    if(s.calc_status === 'GENERATING') { badgeClass = 'pending'; badgeText = '⚙️ Gerando...'; }
-
                     let href = '#';
                     let target = '';
                     
@@ -1041,6 +1039,17 @@
                     const isClickable = (href !== '#');
                     const Tag = isClickable ? 'a' : 'div';
                     const linkAttrs = isClickable ? `href="${href}" ${target}` : '';
+
+                    let badgeClass = 'pending';
+                    let badgeText = '⏳ A Gerar';
+                    
+                    if(s.calc_status === 'VALIDATED') { badgeClass = 'validated'; badgeText = '📖 Disponível'; }
+                    if(s.calc_status === 'LATE') { badgeClass = 'late'; badgeText = '⚠️ Acumulado'; }
+                    if(s.calc_status === 'COMPLETED') { 
+                        badgeClass = 'completed'; 
+                        badgeText = isClickable ? '📖 Concluído' : '✅ Concluído'; 
+                    }
+                    if(s.calc_status === 'GENERATING') { badgeClass = 'pending'; badgeText = '⚙️ Gerando...'; }
 
                     const sessionTypeName = typeMap[s.session_type] || s.session_type.replace(/_/g, ' ');
                     const sessionIcon = typeIcons[s.session_type] || '📑';
