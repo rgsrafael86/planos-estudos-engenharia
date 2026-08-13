@@ -1028,7 +1028,9 @@
 
                     let href = '#';
                     let target = '';
-                    if(s.calc_status === 'VALIDATED' && s.plan_url) {
+                    
+                    // Se houver uma URL gravada (seja o status VALIDATED ou COMPLETED), mantém o link acessível
+                    if(s.plan_url && s.plan_url !== '') {
                         href = s.plan_url;
                         target = 'target="_blank"';
                     } else if(s.calc_status === 'VALIDATED') {
@@ -1036,8 +1038,9 @@
                         target = 'target="_blank"';
                     }
 
-                    const Tag = (s.calc_status === 'VALIDATED') ? 'a' : 'div';
-                    const linkAttrs = (Tag === 'a') ? `href="${href}" ${target}` : '';
+                    const isClickable = (href !== '#');
+                    const Tag = isClickable ? 'a' : 'div';
+                    const linkAttrs = isClickable ? `href="${href}" ${target}` : '';
 
                     const sessionTypeName = typeMap[s.session_type] || s.session_type.replace(/_/g, ' ');
                     const sessionIcon = typeIcons[s.session_type] || '📑';
