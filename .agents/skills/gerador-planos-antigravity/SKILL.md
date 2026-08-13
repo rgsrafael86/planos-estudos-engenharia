@@ -320,3 +320,7 @@ Testes:
 Status gravado na agenda:
 Erro:
 ```
+
+## Troubleshooting
+Caso a autenticacao do NotebookLM expire (Auth tokens were reloaded from disk but are no longer valid), o usuario deve executar o comando de login no terminal:
+`C:\Users\rgsra\AppData\Local\Python\pythoncore-3.14-64\Scripts\nlm.exe login`

@@ -3,304 +3,672 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hub de Estudos - Engenharia de Produção</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Portal de Estudos - Engenharia de Produção</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --glass-bg: rgba(30, 41, 59, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-dark: #070b14;
+            --bg-card: rgba(15, 23, 42, 0.65);
+            --glass-bg: rgba(30, 41, 59, 0.5);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-border-hover: rgba(56, 189, 248, 0.3);
             --primary-neon: #38bdf8;
             --accent-purple: #818cf8;
+            --accent-cyan: #06b6d4;
             --text-light: #f8fafc;
             --text-muted: #94a3b8;
-            --success: #22c55e;
-            --warning: #eab308;
+            --text-dim: #64748b;
+            --success: #10b981;
+            --warning: #f59e0b;
             --danger: #ef4444;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow-glow: 0 0 35px rgba(56, 189, 248, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-light);
             overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% -20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%);
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 85% 30%, rgba(129, 140, 248, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 15% 70%, rgba(6, 182, 212, 0.06) 0%, transparent 50%);
+            background-attachment: fixed;
         }
 
-        /* Hero Section */
+        /* Container Limit */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header Section */
         header {
-            padding: 3rem 2rem;
+            padding: 3.5rem 1.5rem 2rem;
             text-align: center;
-            animation: fadeInDown 1s ease-out forwards;
+            position: relative;
+            animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .badge-academic {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            color: var(--primary-neon);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.2rem;
+            backdrop-filter: blur(10px);
         }
 
         .logo-container {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             margin: 0 auto 1.5rem;
             border-radius: 50%;
-            background: var(--glass-bg);
-            padding: 20px;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
-            animation: pulseGlow 3s infinite alternate;
+            background: var(--bg-card);
+            padding: 18px;
+            box-shadow: var(--shadow-glow);
+            animation: pulseGlow 4s infinite alternate ease-in-out;
             border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(16px);
+            position: relative;
+        }
+
+        .logo-container::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-neon), transparent, var(--accent-purple));
+            z-index: -1;
+            opacity: 0.5;
         }
 
         .logo-container img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.4));
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin: 0 0 0.5rem;
+            font-size: 2.8rem;
+            margin: 0 0 0.4rem;
             font-weight: 800;
-            background: linear-gradient(to right, var(--primary-neon), var(--accent-purple));
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--primary-neon) 70%, var(--accent-purple) 100%);
             -webkit-background-clip: text;
-            color: transparent;
+            -webkit-text-fill-color: transparent;
         }
 
         p.subtitle {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--text-muted);
             margin: 0 0 2rem;
+            font-weight: 400;
+        }
+
+        .live-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            background: rgba(15, 23, 42, 0.8);
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 8px var(--success);
         }
 
         /* Metrics Dashboard */
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            max-width: 1000px;
-            margin: 0 auto 3rem;
-            padding: 0 1rem;
-            animation: slideUp 1s ease-out 0.2s forwards;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
             opacity: 0;
         }
 
         .metric-card {
-            background: var(--glass-bg);
+            background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
+            border-radius: var(--radius-lg);
             padding: 1.5rem;
             text-align: center;
-            backdrop-filter: blur(12px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(16px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--glass-border-hover), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .metric-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.1);
+            transform: translateY(-4px);
+            border-color: var(--glass-border-hover);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .metric-card:hover::before {
+            opacity: 1;
+        }
+
+        .metric-icon {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
         }
 
         .metric-value {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             font-weight: 800;
-            color: var(--primary-neon);
-            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(180deg, #ffffff, var(--primary-neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .metric-label {
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
+            font-weight: 600;
         }
 
-        /* Progress Bar */
-        .progress-container {
-            max-width: 1000px;
-            margin: 0 auto 3rem;
-            padding: 0 1rem;
-            animation: slideUp 1s ease-out 0.4s forwards;
+        /* Progress Bar Section */
+        .progress-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(16px);
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
             opacity: 0;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            font-weight: 600;
         }
 
         .progress-track {
             height: 12px;
-            background: rgba(0,0,0,0.4);
-            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
             overflow: hidden;
             border: 1px solid var(--glass-border);
             display: flex;
+            padding: 2px;
+            gap: 2px;
         }
 
-        .progress-fill.completed { background: var(--success); }
-        .progress-fill.pending { background: var(--warning); }
-        .progress-fill.late { background: var(--danger); }
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1s ease-out;
+        }
+
+        .progress-fill.completed { background: var(--success); box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
+        .progress-fill.validated { background: var(--primary-neon); box-shadow: 0 0 10px rgba(56, 189, 248, 0.4); }
+        .progress-fill.pending { background: var(--warning); box-shadow: 0 0 10px rgba(245, 158, 11, 0.4); }
+        .progress-fill.late { background: var(--danger); box-shadow: 0 0 10px rgba(239, 68, 68, 0.4); }
 
         .progress-legend {
             display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
             justify-content: space-between;
-            margin-top: 0.8rem;
+            margin-top: 1.2rem;
             font-size: 0.85rem;
             color: var(--text-muted);
+            padding-top: 0.8rem;
+            border-top: 1px solid var(--glass-border);
         }
-        
+
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background 0.2s ease;
         }
-        
-        .dot { width: 10px; height: 10px; border-radius: 50%; }
+
+        .legend-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
         .dot.completed { background: var(--success); }
+        .dot.validated { background: var(--primary-neon); }
         .dot.pending { background: var(--warning); }
         .dot.late { background: var(--danger); }
 
-        
-        /* Filters */
-        .filter-container {
-            max-width: 1000px;
-            margin: 0 auto 3rem;
-            padding: 0 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            justify-content: center;
-            animation: slideUp 1s ease-out 0.5s forwards;
+        /* Search & Controls Section */
+        .controls-section {
+            margin-bottom: 2.5rem;
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
             opacity: 0;
         }
 
-        .filter-chip {
+        .search-box {
+            position: relative;
+            margin-bottom: 1.2rem;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 1rem;
+            backdrop-filter: blur(16px);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-neon);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+            background: rgba(15, 23, 42, 0.85);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-dim);
+        }
+
+        .clear-search {
+            position: absolute;
+            right: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: none;
+            padding: 4px;
+            border-radius: 50%;
+        }
+
+        .clear-search:hover {
+            color: var(--text-light);
+        }
+
+        /* Status Filters */
+        .status-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-btn {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
             padding: 8px 16px;
             color: var(--text-muted);
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
+            transition: all 0.25s ease;
+            font-size: 0.88rem;
             font-weight: 600;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .filter-chip:hover {
+        .status-btn:hover {
+            border-color: var(--glass-border-hover);
+            color: var(--text-light);
+            transform: translateY(-1px);
+        }
+
+        .status-btn.active {
+            background: rgba(56, 189, 248, 0.18);
             border-color: var(--primary-neon);
+            color: var(--primary-neon);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+        }
+
+        .status-badge-count {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+        }
+
+        /* Discipline Chips */
+        .discipline-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            padding-top: 0.8rem;
+            border-top: 1px dashed var(--glass-border);
+        }
+
+        .disc-chip {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            padding: 6px 14px;
+            color: var(--text-dim);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        .disc-chip:hover {
+            border-color: var(--accent-purple);
             color: var(--text-light);
         }
 
-        .filter-chip.active {
-            background: rgba(56, 189, 248, 0.2);
-            border-color: var(--primary-neon);
-            color: var(--primary-neon);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        .disc-chip.active {
+            background: rgba(129, 140, 248, 0.2);
+            border-color: var(--accent-purple);
+            color: #a5b4fc;
         }
 
-        /* Shelves (Disciplines) */
+        /* Shelves Section */
         main {
-            max-width: 1200px;
-            margin: 0 auto 4rem;
-            padding: 0 1rem;
+            margin-bottom: 5rem;
         }
 
         .shelf {
-            margin-bottom: 3rem;
-            animation: fadeIn 1s ease-out 0.6s forwards;
-            opacity: 0;
+            margin-bottom: 3.5rem;
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        .shelf h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--glass-border);
+        .shelf-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-        }
-        
-        .shelf-count {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            background: var(--glass-bg);
-            padding: 4px 10px;
-            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--glass-border);
         }
 
+        .shelf-title {
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .shelf-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .shelf-count {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* Cards Grid */
         .cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.4rem;
         }
 
         .plan-card {
-            background: var(--glass-bg);
+            background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            padding: 1.4rem;
             text-decoration: none;
             color: var(--text-light);
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            backdrop-filter: blur(12px);
         }
 
         .plan-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            transition: height 0.3s ease;
         }
 
+        /* Status Variant Card Borders */
         .plan-card[data-status="VALIDATED"] { cursor: pointer; }
-        .plan-card[data-status="VALIDATED"]::before { background: var(--primary-neon); }
+        .plan-card[data-status="VALIDATED"]::before { background: linear-gradient(90deg, var(--primary-neon), var(--accent-cyan)); }
         .plan-card[data-status="VALIDATED"]:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.15);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 14px 30px rgba(56, 189, 248, 0.18);
             border-color: var(--primary-neon);
         }
 
-        .plan-card[data-status="PENDING"] { opacity: 0.6; cursor: not-allowed; }
+        .plan-card[data-status="PENDING"] { opacity: 0.75; cursor: not-allowed; }
         .plan-card[data-status="PENDING"]::before { background: var(--warning); }
         
-        .plan-card[data-status="LATE"] { opacity: 0.8; }
+        .plan-card[data-status="LATE"] { opacity: 0.85; border-color: rgba(239, 68, 68, 0.2); }
         .plan-card[data-status="LATE"]::before { background: var(--danger); }
         
-        .plan-card[data-status="COMPLETED"] { opacity: 0.8; }
+        .plan-card[data-status="COMPLETED"] { opacity: 0.85; border-color: rgba(16, 185, 129, 0.2); }
         .plan-card[data-status="COMPLETED"]::before { background: var(--success); }
 
-        .card-date {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
+        .card-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-date-badge {
+            font-size: 0.82rem;
+            color: var(--primary-neon);
             font-weight: 600;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-time {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            font-weight: 500;
         }
 
         .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 0 0 1rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem;
             line-height: 1.4;
+            color: var(--text-light);
+        }
+
+        .card-location {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .card-footer {
             margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--glass-border);
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 0.85rem;
         }
 
-        .badge {
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.75rem;
+        .card-duration {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
-        .badge.validated { background: rgba(56, 189, 248, 0.2); color: var(--primary-neon); }
-        .badge.pending { background: rgba(234, 179, 8, 0.2); color: var(--warning); }
-        .badge.late { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
-        .badge.completed { background: rgba(34, 197, 94, 0.2); color: var(--success); }
+        .badge {
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.76rem;
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .badge.validated { background: rgba(56, 189, 248, 0.18); color: var(--primary-neon); border: 1px solid rgba(56, 189, 248, 0.3); }
+        .badge.pending { background: rgba(245, 158, 11, 0.18); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.3); }
+        .badge.late { background: rgba(239, 68, 68, 0.18); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.3); }
+        .badge.completed { background: rgba(16, 185, 129, 0.18); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.3); }
+
+        .cta-arrow {
+            margin-left: 4px;
+            transition: transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .plan-card[data-status="VALIDATED"]:hover .cta-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--bg-card);
+            border: 1px dashed var(--glass-border);
+            border-radius: var(--radius-lg);
+            margin: 2rem 0;
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.6;
+        }
+
+        .empty-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .empty-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-reset-filters {
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid var(--primary-neon);
+            color: var(--primary-neon);
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-reset-filters:hover {
+            background: var(--primary-neon);
+            color: var(--bg-dark);
+        }
 
         /* Animations */
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
+            from { opacity: 0; transform: translateY(-25px); }
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes slideUp {
@@ -312,44 +680,80 @@
             to { opacity: 1; }
         }
         @keyframes pulseGlow {
-            0% { box-shadow: 0 0 20px rgba(56, 189, 248, 0.1); }
-            100% { box-shadow: 0 0 40px rgba(129, 140, 248, 0.4); }
+            0% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.15); }
+            100% { box-shadow: 0 0 45px rgba(129, 140, 248, 0.35); }
         }
         
         .loader {
             text-align: center;
-            padding: 4rem;
+            padding: 5rem 2rem;
             color: var(--primary-neon);
             font-size: 1.2rem;
-            animation: pulseGlow 1s infinite;
+            font-weight: 600;
+            animation: pulseGlow 1.5 infinite alternate;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 4rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.1rem; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .cards-container { grid-template-columns: 1fr; }
+            .progress-legend { flex-direction: column; gap: 0.6rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="assets/logo.png" alt="Minerva Logo">
+    <div class="container">
+        <header>
+            <div class="badge-academic">⚡ UNIASSELVI • 2026.2</div>
+            <div class="logo-container">
+                <img src="assets/logo.png" alt="Minerva Logo">
+            </div>
+            <h1>Portal de Estudos</h1>
+            <p class="subtitle">Engenharia de Produção — 6º Semestre</p>
+            <div class="live-status-pill">
+                <span class="live-dot"></span> Sincronizado com a Agenda Acadêmica
+            </div>
+        </header>
+
+        <div id="app">
+            <div class="loader">Sincronizando com a Agenda...</div>
         </div>
-        <h1>Portal de Estudos</h1>
-        <p class="subtitle">Engenharia de Produção - 6º Semestre</p>
-    </header>
-
-    <div id="filters" class="filter-container">
-        <!-- Filtros injetados via JS -->
     </div>
 
-
-    <div id="app">
-        <div class="loader">Sincronizando com a Agenda...</div>
-    </div>
+    <footer>
+        Engenharia de Produção Maintply • R.G. • 2026
+    </footer>
 
     <script>
-        // Função para formatar data ISO (YYYY-MM-DD) para PT-BR
-        function formatarData(dataIso) {
+        // Formatar data ISO (YYYY-MM-DD) para PT-BR com dia da semana
+        function formatarDataCompleta(dataIso) {
             const partes = dataIso.split('-');
-            return `${partes[2]}/${partes[1]}/${partes[0]}`;
+            const dataObj = new Date(partes[0], partes[1] - 1, partes[2]);
+            const diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+            const diaSem = diasSemana[dataObj.getDay()];
+            return `${diaSem} • ${partes[2]}/${partes[1]}/${partes[0]}`;
         }
+
+        // Estado Global dos Filtros
+        let state = {
+            searchQuery: '',
+            statusFilter: 'all',
+            disciplineFilter: 'all',
+            allSessions: [],
+            disciplinasMap: {}
+        };
 
         async function init() {
             try {
@@ -357,14 +761,14 @@
                 const data = await response.json();
 
                 if(data.schema_version !== "3.0") {
-                    throw new Error("Schema incorreto");
+                    throw new Error("Schema de agenda incompatível");
                 }
 
                 const sessoes = data.sessions;
                 const hojeStr = new Date().toISOString().split('T')[0];
 
                 let totalHoras = 0;
-                let statusCount = { COMPLETED: 0, PENDING: 0, LATE: 0, VALIDATED: 0, OTHER: 0 };
+                let statusCount = { COMPLETED: 0, PENDING: 0, LATE: 0, VALIDATED: 0, GENERATING: 0, OTHER: 0 };
                 let disciplinasMap = {};
 
                 // Processar sessões
@@ -384,133 +788,266 @@
                         statusCount.OTHER++;
                     }
 
+                    let s_ajustada = {...s, calc_status: statusAtual};
+                    state.allSessions.push(s_ajustada);
+
                     // Agrupar por disciplina
                     if(!disciplinasMap[s.discipline]) {
                         disciplinasMap[s.discipline] = [];
                     }
-                    // Armazena a sessão ajustada com status calculado
-                    let s_ajustada = {...s, calc_status: statusAtual};
                     disciplinasMap[s.discipline].push(s_ajustada);
                 });
 
-                const totalSessoes = sessoes.length;
-                const pctConcluido = totalSessoes > 0 ? ((statusCount.COMPLETED / totalSessoes) * 100).toFixed(1) : 0;
-                const pctPendente = totalSessoes > 0 ? (((statusCount.PENDING + statusCount.VALIDATED) / totalSessoes) * 100).toFixed(1) : 0;
-                const pctAtrasado = totalSessoes > 0 ? ((statusCount.LATE / totalSessoes) * 100).toFixed(1) : 0;
+                state.disciplinasMap = disciplinasMap;
 
-                renderUI(data.semester.name, totalSessoes, Math.round(totalHoras), pctConcluido, pctPendente, pctAtrasado, statusCount, disciplinasMap);
+                const totalSessoes = sessoes.length;
+                const pctC = totalSessoes > 0 ? ((statusCount.COMPLETED / totalSessoes) * 100).toFixed(1) : 0;
+                const pctV = totalSessoes > 0 ? ((statusCount.VALIDATED / totalSessoes) * 100).toFixed(1) : 0;
+                const pctP = totalSessoes > 0 ? ((statusCount.PENDING / totalSessoes) * 100).toFixed(1) : 0;
+                const pctA = totalSessoes > 0 ? ((statusCount.LATE / totalSessoes) * 100).toFixed(1) : 0;
+
+                renderLayout(data.semester.name, totalSessoes, Math.round(totalHoras), pctC, pctV, pctP, pctA, statusCount, disciplinasMap);
 
             } catch (error) {
-                document.getElementById('app').innerHTML = `<div class="loader" style="color:var(--danger)">Erro ao carregar agenda_semestre.json. Verifique se o arquivo está na raiz.</div>`;
+                document.getElementById('app').innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">⚠️</div>
+                        <div class="empty-title">Erro ao carregar os dados</div>
+                        <div class="empty-text">Não foi possível carregar agenda_semestre.json. Verifique se o arquivo está presente.</div>
+                    </div>`;
                 console.error(error);
             }
         }
 
-        function renderUI(semestreNome, totalSessoes, totalHoras, pctC, pctP, pctA, counts, disciplinasMap) {
-            
-            // Build Dashboards
-            const dashHTML = `
+        function renderLayout(semestreNome, totalSessoes, totalHoras, pctC, pctV, pctP, pctA, counts, disciplinasMap) {
+            const availableCount = counts.VALIDATED;
+
+            const html = `
+                <!-- Dashboard de Métricas -->
                 <div class="metrics-grid">
                     <div class="metric-card">
+                        <div class="metric-icon">⏱️</div>
                         <div class="metric-value">${totalHoras}h</div>
                         <div class="metric-label">Carga Horária</div>
                     </div>
                     <div class="metric-card">
+                        <div class="metric-icon">🗓️</div>
                         <div class="metric-value">${totalSessoes}</div>
                         <div class="metric-label">Sessões Totais</div>
                     </div>
                     <div class="metric-card">
+                        <div class="metric-icon">📖</div>
+                        <div class="metric-value" style="color:var(--primary-neon)">${availableCount}</div>
+                        <div class="metric-label">Planos Disponíveis</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">📊</div>
                         <div class="metric-value">${pctC}%</div>
                         <div class="metric-label">Progresso Geral</div>
                     </div>
                 </div>
 
-                <div class="progress-container">
+                <!-- Barra de Progresso Multissegmentada -->
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <span>Progresso do Semestre</span>
+                        <span style="color:var(--primary-neon)">${pctC}% Concluído</span>
+                    </div>
                     <div class="progress-track">
-                        <div class="progress-fill completed" style="width: ${pctC}%"></div>
-                        <div class="progress-fill pending" style="width: ${pctP}%"></div>
-                        <div class="progress-fill late" style="width: ${pctA}%"></div>
+                        <div class="progress-fill completed" style="width: ${pctC}%" title="Concluídos: ${pctC}%"></div>
+                        <div class="progress-fill validated" style="width: ${pctV}%" title="Disponíveis: ${pctV}%"></div>
+                        <div class="progress-fill pending" style="width: ${pctP}%" title="A Gerar: ${pctP}%"></div>
+                        <div class="progress-fill late" style="width: ${pctA}%" title="Acumulados: ${pctA}%"></div>
                     </div>
                     <div class="progress-legend">
-                        <div class="legend-item"><div class="dot completed"></div> Concluídos (${counts.COMPLETED})</div>
-                          <div class="legend-item"><div class="dot pending"></div> A Fazer (${counts.PENDING + counts.VALIDATED})</div>
-                          <div class="legend-item"><div class="dot late"></div> Acumulados (${counts.LATE})</div>
-                      </div>
+                        <div class="legend-item" onclick="setQuickStatusFilter('COMPLETED')">
+                            <div class="dot completed"></div> Concluídos (${counts.COMPLETED})
+                        </div>
+                        <div class="legend-item" onclick="setQuickStatusFilter('VALIDATED')">
+                            <div class="dot validated"></div> 📖 Disponíveis (${counts.VALIDATED})
+                        </div>
+                        <div class="legend-item" onclick="setQuickStatusFilter('PENDING')">
+                            <div class="dot pending"></div> ⏳ A Gerar (${counts.PENDING})
+                        </div>
+                        <div class="legend-item" onclick="setQuickStatusFilter('LATE')">
+                            <div class="dot late"></div> ⚠️ Acumulados (${counts.LATE})
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Painel de Busca e Filtros -->
+                <div class="controls-section">
+                    <!-- Live Search -->
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Buscar por disciplina, tipo de aula, sala ou data (ex: 27/07)..." oninput="handleSearch(this.value)">
+                        <button id="clearSearch" class="clear-search" onclick="clearSearchInput()">✕</button>
+                    </div>
+
+                    <!-- Status Filters -->
+                    <div class="status-filters">
+                        <button class="status-btn active" data-status="all" onclick="setStatusFilter('all')">
+                            Todas as Sessões <span class="status-badge-count">${totalSessoes}</span>
+                        </button>
+                        <button class="status-btn" data-status="VALIDATED" onclick="setStatusFilter('VALIDATED')">
+                            📖 Disponíveis <span class="status-badge-count">${counts.VALIDATED}</span>
+                        </button>
+                        <button class="status-btn" data-status="PENDING" onclick="setStatusFilter('PENDING')">
+                            ⏳ A Gerar <span class="status-badge-count">${counts.PENDING}</span>
+                        </button>
+                        <button class="status-btn" data-status="LATE" onclick="setStatusFilter('LATE')">
+                            ⚠️ Acumulados <span class="status-badge-count">${counts.LATE}</span>
+                        </button>
+                        <button class="status-btn" data-status="COMPLETED" onclick="setStatusFilter('COMPLETED')">
+                            ✅ Concluídos <span class="status-badge-count">${counts.COMPLETED}</span>
+                        </button>
+                    </div>
+
+                    <!-- Discipline Chips -->
+                    <div class="discipline-filters" id="discFilters">
+                        <button class="disc-chip active" data-disc="all" onclick="setDisciplineFilter('all')">Todas as Disciplinas</button>
+                        ${Object.keys(disciplinasMap).sort().map(disc => `
+                            <button class="disc-chip" data-disc="${disc}" onclick="setDisciplineFilter('${disc}')">${disc}</button>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Container Principal das Prateleiras -->
+                <main id="shelvesContainer">
+                    <!-- Injetado Dinamicamente -->
+                </main>
             `;
 
-            
-            // Renderizar Filtros
-            const filterContainer = document.getElementById('filters');
-            let filterHTML = `<button class="filter-chip active" data-filter="all">Todas as Disciplinas</button>`;
-            Object.keys(disciplinasMap).sort().forEach(disc => {
-                filterHTML += `<button class="filter-chip" data-filter="${disc}">${disc}</button>`;
-            });
-            if (filterContainer) filterContainer.innerHTML = filterHTML;
+            document.getElementById('app').innerHTML = html;
+            updateShelves();
+        }
 
-            // Build Shelves
-            let shelvesHTML = `<main>`;
-            
-            for(let disc in disciplinasMap) {
-                const sessoesDisc = disciplinasMap[disc];
+        // Atualização Dinâmica dos Cartões com base nos Filtros
+        function updateShelves() {
+            const container = document.getElementById('shelvesContainer');
+            if(!container) return;
+
+            let totalVisibleCards = 0;
+            let shelvesHTML = '';
+
+            const typeMap = {
+                'PRESENTIAL_CLASS': 'Aula Presencial',
+                'PRE_CLASS': 'Estudo Pré-Aula',
+                'DIRECTED_STUDY': 'Leitura Livre',
+                'WEEKLY_REVIEW': 'Revisão Semanal',
+                'EXAM_N1': 'Avaliação N1',
+                'EXAM_N2': 'Avaliação N2',
+                'EXAM_FINAL': 'Exame Final',
+                'OTHER_ACADEMIC': 'Atividade Acadêmica',
+                'ONLINE_STUDY': 'Estudo Online'
+            };
+
+            const typeIcons = {
+                'PRESENTIAL_CLASS': '🏛️',
+                'PRE_CLASS': '📖',
+                'DIRECTED_STUDY': '📝',
+                'WEEKLY_REVIEW': '🔄',
+                'EXAM_N1': '🎓',
+                'EXAM_N2': '🎓',
+                'EXAM_FINAL': '🎓',
+                'OTHER_ACADEMIC': '📌',
+                'ONLINE_STUDY': '💻'
+            };
+
+            const query = state.searchQuery.toLowerCase().trim();
+
+            for(let disc in state.disciplinasMap) {
+                // Verificar filtro de disciplina
+                if(state.disciplineFilter !== 'all' && state.disciplineFilter !== disc) {
+                    continue;
+                }
+
+                const sessoesDisc = state.disciplinasMap[disc];
                 
-                // Sort by date
-                sessoesDisc.sort((a,b) => a.date.localeCompare(b.date));
+                // Filtrar sessões da disciplina
+                const sessoesFiltradas = sessoesDisc.filter(s => {
+                    // Filtro de status
+                    if(state.statusFilter !== 'all' && s.calc_status !== state.statusFilter) {
+                        return false;
+                    }
+
+                    // Filtro de Busca Texto
+                    if(query !== '') {
+                        const dataPt = formatarDataCompleta(s.date).toLowerCase();
+                        const sessionName = (typeMap[s.session_type] || s.session_type).toLowerCase();
+                        const discName = s.discipline.toLowerCase();
+                        const location = (s.location || '').toLowerCase();
+                        
+                        const match = discName.includes(query) || 
+                                      sessionName.includes(query) || 
+                                      dataPt.includes(query) || 
+                                      s.date.includes(query) ||
+                                      location.includes(query);
+                        if(!match) return false;
+                    }
+
+                    return true;
+                });
+
+                if(sessoesFiltradas.length === 0) continue;
+
+                totalVisibleCards += sessoesFiltradas.length;
+
+                // Ordenar por data
+                sessoesFiltradas.sort((a,b) => a.date.localeCompare(b.date));
 
                 shelvesHTML += `
-                    <div class="shelf" data-discipline="${disc}">
-                        <h2>${disc} <span class="shelf-count">${sessoesDisc.length} planos</span></h2>
+                    <div class="shelf">
+                        <div class="shelf-header">
+                            <h2 class="shelf-title">
+                                <span>📚</span> ${disc}
+                            </h2>
+                            <div class="shelf-meta">
+                                <span class="shelf-count">${sessoesFiltradas.length} ${sessoesFiltradas.length === 1 ? 'sessão' : 'sessões'}</span>
+                            </div>
+                        </div>
                         <div class="cards-container">
                 `;
 
-                sessoesDisc.forEach(s => {
-                    // Badge Text and Class
+                sessoesFiltradas.forEach(s => {
                     let badgeClass = 'pending';
-                    let badgeText = 'A Gerar';
+                    let badgeText = '⏳ A Gerar';
                     
                     if(s.calc_status === 'VALIDATED') { badgeClass = 'validated'; badgeText = '📖 Disponível'; }
-                    if(s.calc_status === 'LATE') { badgeClass = 'late'; badgeText = 'Acumulado'; }
-                    if(s.calc_status === 'COMPLETED') { badgeClass = 'completed'; badgeText = 'Concluído'; }
-                    if(s.calc_status === 'GENERATING') { badgeClass = 'pending'; badgeText = 'Gerando...'; }
+                    if(s.calc_status === 'LATE') { badgeClass = 'late'; badgeText = '⚠️ Acumulado'; }
+                    if(s.calc_status === 'COMPLETED') { badgeClass = 'completed'; badgeText = '✅ Concluído'; }
+                    if(s.calc_status === 'GENERATING') { badgeClass = 'pending'; badgeText = '⚙️ Gerando...'; }
 
-                    // Link logic
                     let href = '#';
                     let target = '';
                     if(s.calc_status === 'VALIDATED' && s.plan_url) {
-                        // Se houver uma URL completa gravada
                         href = s.plan_url;
                         target = 'target="_blank"';
                     } else if(s.calc_status === 'VALIDATED') {
-                        // Fallback para arquivo local se a URL não existir mas o status for VALIDATED
                         href = `planos/${s.discipline_slug}/${s.date}/index.html`;
                         target = 'target="_blank"';
                     }
 
-                    // Se nao for clicavel, usa div em vez de a
                     const Tag = (s.calc_status === 'VALIDATED') ? 'a' : 'div';
                     const linkAttrs = (Tag === 'a') ? `href="${href}" ${target}` : '';
 
-                    // Mapeamento de Tipos de Sessão
-                    const typeMap = {
-                        'PRESENTIAL_CLASS': 'Aula Presencial',
-                        'PRE_CLASS': 'Estudo Pré-Aula',
-                        'DIRECTED_STUDY': 'Leitura Livre',
-                        'WEEKLY_REVIEW': 'Revisão Semanal',
-                        'EXAM_N1': 'Avaliação N1',
-                        'EXAM_N2': 'Avaliação N2',
-                        'EXAM_FINAL': 'Exame Final',
-                        'OTHER_ACADEMIC': 'Atividade Acadêmica',
-                        'ONLINE_STUDY': 'Estudo Online'
-                    };
                     const sessionTypeName = typeMap[s.session_type] || s.session_type.replace(/_/g, ' ');
+                    const sessionIcon = typeIcons[s.session_type] || '📑';
+                    const locationText = s.location ? `📍 ${s.location}` : '💻 Online';
 
                     shelvesHTML += `
                         <${Tag} ${linkAttrs} class="plan-card" data-status="${s.calc_status}">
-                            <div class="card-date">${formatarData(s.date)} • ${s.start} - ${s.end}</div>
-                            <h3 class="card-title">${sessionTypeName}</h3>
+                            <div class="card-header-row">
+                                <div class="card-date-badge">
+                                    📅 ${formatarDataCompleta(s.date)}
+                                </div>
+                                <div class="card-time">⏰ ${s.start} - ${s.end}</div>
+                            </div>
+                            <h3 class="card-title">${sessionIcon} ${sessionTypeName}</h3>
+                            <div class="card-location">${locationText}</div>
                             <div class="card-footer">
-                                <span>${s.available_minutes} min</span>
-                                <span class="badge ${badgeClass}">${badgeText}</span>
+                                <span class="card-duration">⏱️ ${s.available_minutes} min</span>
+                                <span class="badge ${badgeClass}">${badgeText} ${(Tag === 'a') ? '<span class="cta-arrow">→</span>' : ''}</span>
                             </div>
                         </${Tag}>
                     `;
@@ -518,31 +1055,83 @@
 
                 shelvesHTML += `</div></div>`;
             }
-            shelvesHTML += `</main>`;
 
-            document.getElementById('app').innerHTML = dashHTML + shelvesHTML;
-
-            // EventListeners para os Filtros
-            document.querySelectorAll('.filter-chip').forEach(chip => {
-                chip.addEventListener('click', (e) => {
-                    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-                    e.target.classList.add('active');
-                    
-                    const filter = e.target.getAttribute('data-filter');
-                    
-                    document.querySelectorAll('.shelf').forEach(shelf => {
-                        if(filter === 'all' || shelf.getAttribute('data-discipline') === filter) {
-                            shelf.style.display = 'block';
-                        } else {
-                            shelf.style.display = 'none';
-                        }
-                    });
-                });
-            });
+            if(totalVisibleCards === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">🔍</div>
+                        <div class="empty-title">Nenhum plano encontrado</div>
+                        <div class="empty-text">Não encontramos sessões correspondentes aos filtros selecionados.</div>
+                        <button class="btn-reset-filters" onclick="resetAllFilters()">Limpar Filtros</button>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = shelvesHTML;
+            }
         }
 
-        window.onload = init;
+        // Funções de Controle dos Filtros
+        function handleSearch(val) {
+            state.searchQuery = val;
+            const clearBtn = document.getElementById('clearSearch');
+            if(clearBtn) {
+                clearBtn.style.display = val.length > 0 ? 'block' : 'none';
+            }
+            updateShelves();
+        }
 
+        function clearSearchInput() {
+            const input = document.getElementById('searchInput');
+            if(input) {
+                input.value = '';
+                handleSearch('');
+            }
+        }
+
+        function setStatusFilter(status) {
+            state.statusFilter = status;
+            document.querySelectorAll('.status-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-status') === status);
+            });
+            updateShelves();
+        }
+
+        function setQuickStatusFilter(status) {
+            setStatusFilter(status);
+            // Scroll suave até a seção de filtros se estiver longe
+            document.querySelector('.controls-section')?.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function setDisciplineFilter(disc) {
+            state.disciplineFilter = disc;
+            document.querySelectorAll('.disc-chip').forEach(chip => {
+                chip.classList.toggle('active', chip.getAttribute('data-disc') === disc);
+            });
+            updateShelves();
+        }
+
+        function resetAllFilters() {
+            state.searchQuery = '';
+            state.statusFilter = 'all';
+            state.disciplineFilter = 'all';
+            
+            const input = document.getElementById('searchInput');
+            if(input) input.value = '';
+            document.getElementById('clearSearch').style.display = 'none';
+
+            setStatusFilter('all');
+            setDisciplineFilter('all');
+        }
+
+        // Suporte a atalho de teclado '/' para focar a busca
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+                e.preventDefault();
+                document.getElementById('searchInput')?.focus();
+            }
+        });
+
+        window.onload = init;
     </script>
 </body>
 </html>
