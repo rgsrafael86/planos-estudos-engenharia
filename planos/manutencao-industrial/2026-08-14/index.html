@@ -358,6 +358,12 @@ execução. O agente não possui autorização para modificar o motor.
 <!-- STUDY_PLAN_START -->
 <script id="studyPlanData" type="application/json">
 {
+  "id": "manutencao-industrial-2026-08-14-1850",
+  "discipline": "Manutenção Industrial",
+  "studyDate": "14/08/2026",
+  "scheduledStart": "18:50",
+  "scheduledEnd": "20:20",
+  "availableMinutes": 90,
   "title": "Manutenção Industrial",
   "subtitle": "MTBF e MTTR - Cálculos e Definições",
   "objective": "Compreender e calcular o Tempo Médio Entre Falhas e o Tempo Médio para Reparo.",
@@ -377,7 +383,8 @@ execução. O agente não possui autorização para modificar o motor.
         {
           "id": "fBlwqwl53Rc",
           "title": "Cálculo de MTBF e MTTR",
-          "duration": "15 min"
+          "duration": "15 min",
+          "url": "https://www.youtube.com/watch?v=fBlwqwl53Rc"
         }
       ]
     },
@@ -480,18 +487,21 @@ execução. O agente não possui autorização para modificar o motor.
   ],
   "schedule": [
     {
-      "time": "00:00-00:30",
-      "duration": "30m",
+      "start": "18:50",
+      "end": "19:20",
+      "duration": "30 min",
       "activity": "Conceitos de MTBF e MTTR"
     },
     {
-      "time": "00:30-01:00",
-      "duration": "30m",
+      "start": "19:20",
+      "end": "19:50",
+      "duration": "30 min",
       "activity": "Cálculo Aplicado e Exercícios"
     },
     {
-      "time": "01:00-01:30",
-      "duration": "30m",
+      "start": "19:50",
+      "end": "20:20",
+      "duration": "30 min",
       "activity": "Vídeo e Simulado de Fixação"
     }
   ]
