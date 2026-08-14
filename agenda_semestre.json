@@ -24,7 +24,7 @@
       "location": "Blumenau — Sala A-16",
       "original_description": "Aula presencial · Eng. Produção EPR0338/6 (Noturno) · Campus Blumenau · Sala A-16",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "PENDING",
+      "plan_status": "COMPLETED",
       "plan_url": "",
       "plan_generated_at": "",
       "plan_validation": ""
@@ -45,7 +45,7 @@
       "location": "Blumenau — Sala A-16",
       "original_description": "Aula presencial · Eng. Produção EPR0338/6 (Noturno) · Campus Blumenau · Prof. Antonio Prim · Sala A-16",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "PENDING",
+      "plan_status": "COMPLETED",
       "plan_url": "",
       "plan_generated_at": "",
       "plan_validation": ""
@@ -66,7 +66,7 @@
       "location": "Blumenau — Sala A-209",
       "original_description": "Aula presencial · Eng. Produção EPR0338/6 (Noturno) · Campus Blumenau · Sala A-209",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "PENDING",
+      "plan_status": "COMPLETED",
       "plan_url": "",
       "plan_generated_at": "",
       "plan_validation": ""
@@ -87,7 +87,7 @@
       "location": "Blumenau — Sala A-16",
       "original_description": "Aula presencial · Eng. Produção EPR0338/6 (Noturno) · Campus Blumenau · Sala A-16",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "PENDING",
+      "plan_status": "COMPLETED",
       "plan_url": "",
       "plan_generated_at": "",
       "plan_validation": ""
@@ -108,7 +108,7 @@
       "location": "",
       "original_description": "plan_id: epr0338-2026-2\nid: study-pes-20260805\ncategory: Faculdade - Estudo\nDisciplina: Planejamento Estratégico\nPré-aula (06/08):\n• Leitura do artigo: \"Estratégia empresarial: construindo estratégia para vencer no mercado competitivo\", págs. 649-650 (Conceito de Estratégia Empresarial) — VIII EIC / IV EPG (Univap)\nFoco: Leitura do artigo pré-aula, conceitos de Estratégia Empresarial, 5 Forças de Porter e Matriz SWOT.",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "PENDING",
+      "plan_status": "COMPLETED",
       "plan_url": "",
       "plan_generated_at": "",
       "plan_validation": ""
@@ -129,7 +129,7 @@
       "location": "Blumenau — Sala A-16",
       "original_description": "Aula presencial · Eng. Produção EPR0338/6 (Noturno) · Campus Blumenau · Prof. Antonio Prim · Sala A-16",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "VALIDATED",
+      "plan_status": "COMPLETED",
       "plan_url": "https://rgsrafael86.github.io/planos-estudos-engenharia/planos/planejamento-estrategico/2026-08-06/index.html",
       "plan_generated_at": "",
       "plan_validation": ""
@@ -150,7 +150,7 @@
       "location": "Blumenau — Sala A-209",
       "original_description": "Aula presencial · Eng. Produção EPR0338/6 (Noturno) · Campus Blumenau · Sala A-209",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "VALIDATED",
+      "plan_status": "COMPLETED",
       "plan_url": "https://rgsrafael86.github.io/planos-estudos-engenharia/planos/manutencao-industrial/2026-08-07/index.html",
       "plan_generated_at": "",
       "plan_validation": ""
@@ -171,7 +171,7 @@
       "location": "",
       "original_description": "plan_id: epr0338-2026-2\nid: weekly-plan-20260809\ncategory: Faculdade - Planejamento",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "PENDING",
+      "plan_status": "COMPLETED",
       "plan_url": "",
       "plan_generated_at": "",
       "plan_validation": ""
@@ -192,7 +192,7 @@
       "location": "",
       "original_description": "plan_id: epr0338-2026-2\nid: flex-project-20260809\ncategory: Faculdade - Projeto",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "PENDING",
+      "plan_status": "COMPLETED",
       "plan_url": "",
       "plan_generated_at": "",
       "plan_validation": ""
@@ -213,7 +213,7 @@
       "location": "Blumenau — Sala A-16",
       "original_description": "Aula presencial · Eng. Produção EPR0338/6 (Noturno) · Campus Blumenau · Sala A-16\nHorário: 18:50–21:50\n\n🎯 Tópicos da Aula e Plano de Estudos:\n- Pirâmide da Automação Industrial e Níveis de Controle (Nível 1 ao Nível 5)\n- Sensores Industriais (Indutivos, Capacitivos, Ópticos, Ultrassônicos)\n- Atuadores Pneumáticos, Válvulas Solenoides e Estrutura de I/O em CLP\n\n🔗 Link do Plano de Estudos (Web App): https://script.google.com/macros/s/AKfycbw9h4zoSrCRUYA0XpZt1uoBZePNPeSz5I1-RPqpR2HmrDt0Xbz9Tbo-gDTJ1ie2q4qt/exec?id=1i3DhtSZcYwiFeP7hgv-LSJRnzopMfhSx",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "VALIDATED",
+      "plan_status": "COMPLETED",
       "plan_url": "https://rgsrafael86.github.io/planos-estudos-engenharia/planos/automacao-industrial/2026-08-10/index.html",
       "plan_generated_at": "2026-08-13T19:43:02.222Z",
       "plan_validation": "APPROVED"
@@ -255,10 +255,11 @@
       "location": "",
       "original_description": "♻️ PLANO DIÁRIO PRONTO! Acesse aqui: https://script.google.com/macros/s/AKfycbw9h4zoSrCRUYA0XpZt1uoBZePNPeSz5I1-RPqpR2HmrDt0Xbz9Tbo-gDTJ1ie2q4qt/exec?id=1u95elJvuALmQb_-ulF1l15EjQ5gO-8eF\n\nplan_id: epr0338-2026-2\nid: study-pes-20260812\ncategory: Faculdade - Estudo\nDisciplina: Planejamento Estratégico",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "FAILED",
-      "plan_url": "",
-      "plan_generated_at": "",
-      "plan_validation": "Plano anterior não aprovado por Rafael"
+      "plan_status": "COMPLETED",
+      "plan_url": "https://rgsrafael86.github.io/planos-estudos-engenharia/planos/planejamento-estrategico/2026-08-12/index.html",
+      "plan_generated_at": "2026-08-14T02:37:31.754Z",
+      "plan_validation": "APPROVED",
+      "content_status": "READY"
     },
     {
       "session_id": "planejamento-estrate-gico-2026-08-13-1850",
@@ -276,7 +277,7 @@
       "location": "Blumenau — Sala A-16",
       "original_description": "Aula presencial · Eng. Produção EPR0338/6 (Noturno) · Campus Blumenau · Prof. Antonio Prim · Sala A-16",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "VALIDATED",
+      "plan_status": "COMPLETED",
       "plan_url": "https://rgsrafael86.github.io/planos-estudos-engenharia/planos/planejamento-estrategico/2026-08-13/index.html",
       "plan_generated_at": "",
       "plan_validation": ""
@@ -298,9 +299,9 @@
       "original_description": "Aula presencial · Eng. Produção EPR0338/6 (Noturno) · Campus Blumenau · Sala A-209",
       "academic_cycle": "BEFORE_N1",
       "plan_status": "VALIDATED",
-      "plan_url": "",
+      "plan_url": "https://rgsrafael86.github.io/planos-estudos-engenharia/planos/manutencao-industrial/2026-08-14/index.html",
       "plan_generated_at": "",
-      "plan_validation": ""
+      "plan_validation": "APPROVED"
     },
     {
       "session_id": "revisa-o-semanal-2026-08-16-1400",
@@ -340,9 +341,9 @@
       "original_description": "plan_id: epr0338-2026-2\nid: transversal-20260816\ncategory: Faculdade - Leitura\nDisciplina: Relações Étnico-Raciais e Diferentes Culturas",
       "academic_cycle": "BEFORE_N1",
       "plan_status": "VALIDATED",
-      "plan_url": "",
+      "plan_url": "https://rgsrafael86.github.io/planos-estudos-engenharia/planos/relacoes-etnico-raciais-e-diferentes-culturas/2026-08-16/index.html",
       "plan_generated_at": "",
-      "plan_validation": ""
+      "plan_validation": "APPROVED"
     },
     {
       "session_id": "revisa-o-semanal-2026-08-16-1520",
