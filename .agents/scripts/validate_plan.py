@@ -1,4 +1,4 @@
-﻿import sys
+import sys
 import json
 import re
 
@@ -36,15 +36,31 @@ def validate(html_path):
             if len(opts) != 4:
                 errors.append(f"A questao {idx+1} ({q.get('id')}) possui {len(opts)} alternativas. Deve possuir exatamente 4.")
                 
-        # 3. Videos
+        # 3. Videos e URLs
         has_video = False
         for m in modules:
-            if len(m.get("videos", [])) > 0:
+            for v in m.get("videos", []):
                 has_video = True
-                break
+                if not v.get("url") or not v.get("url").startswith("https://"):
+                    errors.append(f"Video '{v.get('title')}' sem URL valida (deve comecar com https://).")
         
         if not has_video:
             errors.append("O plano deve conter pelo menos 1 video validado.")
+            
+        # 4. Campos Obrigatorios da Raiz
+        required_root = ["id", "title", "discipline", "studyDate", "objective", "scheduledStart", "scheduledEnd", "availableMinutes"]
+        for k in required_root:
+            if not plan.get(k):
+                errors.append(f"Campo obrigatorio ausente ou vazio na raiz do JSON: {k}")
+
+        # 5. Formato do Schedule
+        schedule = plan.get("schedule", [])
+        if not schedule:
+            errors.append("O cronograma (schedule) esta vazio ou ausente.")
+        for idx, item in enumerate(schedule):
+            if not item.get("start") or not item.get("end"):
+                errors.append(f"Item {idx+1} do cronograma nao possui 'start' ou 'end'. Nao use 'time'.")
+
             
         if errors:
             print("[FALHA NA VALIDACAO]")
