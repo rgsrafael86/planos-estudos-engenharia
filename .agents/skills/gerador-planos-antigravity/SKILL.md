@@ -18,7 +18,7 @@ Gerar planos de estudos confiáveis e progressivos usando:
 ## Arquivos oficiais
 
 - Agenda: `agenda_semestre.json`
-- Template: `Template plano de estudos blindado completo.html`
+- Template: `templates/template_blindado.html`
 - Registro opcional de publicação: `planos_publicados.json`
 - Repositório recomendado: `planos-estudos-engenharia`
 

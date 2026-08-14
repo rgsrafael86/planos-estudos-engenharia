@@ -18,7 +18,7 @@ Produzir um plano acadêmico diário baseado na agenda real e nas fontes do Note
 - Estudante exibido no plano compartilhável: `R.G.`.
 
 ## Recursos oficiais
-- Template no Drive: `Template plano de estudos blindado completo.html`, ou versão oficial mais recente identificada como `RAFAEL-STUDY-ENGINE`.
+- Template local: `templates/template_blindado.html`, ou versão oficial mais recente identificada como `RAFAEL-STUDY-ENGINE`.
 - Motor esperado: `RAFAEL-STUDY-ENGINE v3.0.0`.
 - URL-base do Web App:
   `https://script.google.com/macros/s/AKfycbw9h4zoSrCRUYA0XpZt1uoBZePNPeSz5I1-RPqpR2HmrDt0Xbz9Tbo-gDTJ1ie2q4qt/exec`
