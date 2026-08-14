@@ -1,0 +1,12 @@
+const fs = require('fs');
+const filePath = 'C:/Maintply/planos-estudos-engenharia/planos/manutencao-industrial/2026-08-14/index.html';
+const content = fs.readFileSync(filePath, 'utf8');
+const scriptTag = '<script id="studyPlanData" type="application/json">';
+const scriptStart = content.indexOf(scriptTag);
+const scriptEnd = content.indexOf('</script>', scriptStart);
+let jsonStr = content.substring(scriptStart + scriptTag.length, scriptEnd).trim();
+const data = JSON.parse(jsonStr);
+console.log('Title:', data.title);
+console.log('Modules length:', data.modules.length);
+if (data.modules.length > 0) console.log('Module 1 title:', data.modules[0].title);
+console.log('Questions length:', data.questions.length);
