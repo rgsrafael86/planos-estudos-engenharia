@@ -17,9 +17,8 @@ Gerar planos de estudos confiáveis e progressivos usando:
 
 ## Arquivos oficiais
 
-- Agenda: `agenda_semestre.json`
+- Agenda: `agenda_semestre.json` (Única fonte da verdade. O arquivo `planos_publicados.json` foi descontinuado).
 - Template: `templates/template_blindado.html`
-- Registro opcional de publicação: `planos_publicados.json`
 - Repositório recomendado: `planos-estudos-engenharia`
 
 ## Princípio de propriedade dos dados
@@ -260,7 +259,10 @@ content_status: READY
 plan_url: URL pública
 plan_generated_at: timestamp ISO
 plan_validation: APPROVED
+error: ""
 ```
+
+*(Nota de Reconciliação: Se a sessão estava anteriormente como FAILED, atualizar `plan_validation = APPROVED` e zerar o erro (`error = ""`) é obrigatório para que o Gerente de Agenda destrave o evento no Google Agenda).*
 
 Preencha também:
 

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise Estratégica - Manutenção Industrial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --success: #10b981;
+            --gradient-text: linear-gradient(135deg, #60a5fa, #a78bfa);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .scenario-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease;
+        }
+
+        .scenario-card h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .machines-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .machine-box {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .machine-box h3 {
+            color: #e2e8f0;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .question-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .question-card:focus-within {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .question-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .q-number {
+            background: var(--accent);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .question-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            resize: vertical;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+            margin-top: 1rem;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .feedback-section {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 3px solid var(--success);
+            border-radius: 4px;
+            display: none;
+            color: #a7f3d0;
+            font-size: 0.95rem;
+        }
+
+        .feedback-section.active {
+            display: block;
+            animation: slideDown 0.4s ease;
+        }
+
+        .floating-action {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+        }
+
+        .print-btn {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+        }
+        
+        .print-btn:hover {
+            box-shadow: 0 15px 35px -5px rgba(59, 130, 246, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Divs que substituem textareas na impressao */
+        .print-text {
+            display: none;
+            padding: 1rem;
+            border: 1px solid #cbd5e1;
+            background: #f8fafc;
+            color: #1e293b;
+            border-radius: 4px;
+            min-height: 80px;
+            white-space: pre-wrap;
+            margin-top: 1rem;
+        }
+
+        /* Animações */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Estilos de Impressão */
+        @media print {
+            body {
+                background: white;
+                color: black;
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+            }
+            h1 {
+                background: none;
+                -webkit-text-fill-color: black;
+                color: black;
+            }
+            .scenario-card, .question-card {
+                background: white;
+                box-shadow: none;
+                border: 1px solid #cbd5e1;
+                break-inside: avoid;
+                margin-bottom: 2rem;
+                padding: 1.5rem;
+            }
+            .scenario-card { border-left: 4px solid #333; }
+            .machine-box { border: 1px solid #cbd5e1; background: #f8fafc; }
+            .machine-box h3, .question-title { color: black; }
+            .q-number { background: #333; color: white; }
+            
+            textarea, .btn, .floating-action, iframe, .scenario-card iframe {
+                display: none !important;
+            }
+            .print-text {
+                display: block;
+            }
+            .feedback-section {
+                display: block !important;
+                background: #f0fdf4;
+                border-left: 3px solid #16a34a;
+                color: #166534;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Indicadores e Estratégias</h1>
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">Atividade de Reposição - Estudo de Caso Interativo</p>
+        </header>
+
+        <section class="scenario-card">
+            <h2>O Cenário da Indústria</h2>
+            <p>Você acaba de assumir a equipe responsável pela manutenção de uma indústria. O seu primeiro desafio é analisar duas máquinas que realizam etapas cruciais da produção. Nos últimos 12 meses, estes foram os registros:</p>
+            
+            <div class="machines-compare">
+                <div class="machine-box">
+                    <h3>⚡ Máquina A</h3>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: #cbd5e1;">
+                        <li>Funcionou praticamente o ano todo.</li>
+                        <li>Apresentou apenas <b>1 falha</b>.</li>
+                        <li>Ficou apenas <b>20 minutos parada</b>.</li>
+                        <li>Retornou rapidamente à operação.</li>
+                    </ul>
+                </div>
+                <div class="machine-box">
+                    <h3>⚠️ Máquina B</h3>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: #cbd5e1;">
+                        <li>Apresentou apenas <b>1 falha</b> no ano.</li>
+                        <li>Ficou <b>3 dias parada</b>.</li>
+                        <li>Interrompeu a produção.</li>
+                        <li>Gerou atraso crítico na entrega de pedidos.</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 1.5rem; font-style: italic; color: var(--accent);">O impacto foi brutalmente diferente, embora a frequência da falha tenha sido a mesma. Analise e responda às questões abaixo como o Gestor de Manutenção.</p>
+        </section>
+
+        <!-- Questão 1 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="q-number">Q1</span>
+                <span class="question-title">Análise dos equipamentos</span>
+            </div>
+            <p>Qual das duas máquinas representa maior preocupação para a empresa? Por quê?</p>
+            <textarea id="q1" placeholder="Digite sua análise estratégica aqui..."></textarea>
+            <div class="print-text" id="print-q1"></div>
+            
+            <div style="margin-top: 1rem;">
+                <button class="btn btn-outline" onclick="toggleFeedback('fb1')">Revelar Insight</button>
+            </div>
+            <div class="feedback-section" id="fb1">
+                <strong>💡 Insight do Especialista:</strong> O MTTR (Tempo Médio de Reparo) e a severidade da consequência são mais cruciais que o simples MTBF (Tempo Médio Entre Falhas) neste cenário. A Máquina B é o gargalo de risco.
+            </div>
+        </div>
+
+        <!-- Questão 2 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="q-number">Q2</span>
+                <span class="question-title">O que você faria?</span>
+            </div>
+            <p>A empresa quer reduzir as paradas da máquina crítica. Cite pelo menos <strong>três ações</strong> que você adotaria para evitar ou reduzir os impactos de uma nova falha.</p>
+            <textarea id="q2" placeholder="Ex: 1. Ação X&#10;2. Ação Y&#10;3. Ação Z"></textarea>
+            <div class="print-text" id="print-q2"></div>
+            
+            <div style="margin-top: 1rem;">
+                <button class="btn btn-outline" onclick="toggleFeedback('fb2')">Revelar Insight</button>
+            </div>
+            <div class="feedback-section" id="fb2">
+                <strong>💡 Insight do Especialista:</strong> Ações ideais incluem: manter peças sobressalentes em estoque, realizar inspeções preventivas regulares, treinar a equipe para um reparo mais rápido, ou redesenhar o processo para adicionar redundância.
+            </div>
+        </div>
+
+        <!-- Questão 3 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="q-number">Q3</span>
+                <span class="question-title">Antes da falha</span>
+            </div>
+            <p>Você acredita que a equipe de manutenção deveria esperar a máquina apresentar uma falha para agir? Explique sua resposta.</p>
+            <textarea id="q3" placeholder="Sua visão sobre manutenção reativa vs preventiva..."></textarea>
+            <div class="print-text" id="print-q3"></div>
+            
+            <div style="margin-top: 1rem;">
+                <button class="btn btn-outline" onclick="toggleFeedback('fb3')">Revelar Insight</button>
+            </div>
+            <div class="feedback-section" id="fb3">
+                <strong>💡 Insight do Especialista:</strong> Jamais em equipamentos críticos. O custo da falha (produção parada) é muito maior que o custo da intervenção programada.
+            </div>
+        </div>
+
+        <!-- Questão 4 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="q-number">Q4</span>
+                <span class="question-title">Durante a operação</span>
+            </div>
+            <p>Imagine que a máquina esteja funcionando, mas apresente sinais (aumento de temperatura, vibração, ruído, aumento de consumo, perda de desempenho). O que a equipe poderia fazer diante desses sinais?</p>
+            <textarea id="q4" placeholder="O que fazer ao detectar anomalias?"></textarea>
+            <div class="print-text" id="print-q4"></div>
+            
+            <div style="margin-top: 1rem;">
+                <button class="btn btn-outline" onclick="toggleFeedback('fb4')">Revelar Insight</button>
+            </div>
+            <div class="feedback-section" id="fb4">
+                <strong>💡 Insight do Especialista:</strong> Esses são indícios de degradação. A ação imediata é programar uma intervenção preditiva antes que a quebra funcional ocorra, minimizando o impacto e controlando o momento da parada.
+            </div>
+        </div>
+
+        <!-- Questão 5 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="q-number">Q5</span>
+                <span class="question-title">Depois da falha</span>
+            </div>
+            <p>Se a máquina realmente parou. O que deveria acontecer depois do reparo? A equipe deveria só ligar de volta ou investigar algo? Explique.</p>
+            <textarea id="q5" placeholder="Sua política de pós-falha..."></textarea>
+            <div class="print-text" id="print-q5"></div>
+            
+            <div style="margin-top: 1rem;">
+                <button class="btn btn-outline" onclick="toggleFeedback('fb5')">Revelar Insight</button>
+            </div>
+            <div class="feedback-section" id="fb5">
+                <strong>💡 Insight do Especialista:</strong> Investigação é vital. Técnicas como RCA (Análise de Causa Raiz) e diagramas de Ishikawa garantem que o problema não se repita. Só ligar a máquina é atacar o sintoma, não a doença.
+            </div>
+        </div>
+
+        <!-- Questão 6 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="q-number">Q6</span>
+                <span class="question-title">Visão Estratégica das Equipes</span>
+            </div>
+            <p>Qual equipe gera melhores resultados para a indústria? <b>Equipe A</b> (só atua na falha) ou <b>Equipe B</b> (acompanha, inspeciona e antecipa problemas)? Explique sua escolha.</p>
+            <textarea id="q6" placeholder="Comparação entre perfis de equipe..."></textarea>
+            <div class="print-text" id="print-q6"></div>
+            
+            <div style="margin-top: 1rem;">
+                <button class="btn btn-outline" onclick="toggleFeedback('fb6')">Revelar Insight</button>
+            </div>
+            <div class="feedback-section" id="fb6">
+                <strong>💡 Insight do Especialista:</strong> A Equipe B aplica Manutenção Preditiva e Preventiva. Embora pareçam "gastar tempo" inspecionando, eles reduzem exponencialmente o lucro cessante e aumentam a disponibilidade dos ativos, gerando resultados financeiros muito superiores.
+            </div>
+        </div>
+
+        <!-- Vídeo de Referência -->
+        <div class="scenario-card" style="margin-top: 2rem; border-left-color: #8b5cf6;" id="video-referencia">
+            <h2 style="color: #a78bfa;">🎬 Vídeo de Referência (Bônus)</h2>
+            <p style="margin-bottom: 1rem; color: #cbd5e1;">Ainda na dúvida sobre as diferenças práticas entre os tipos de manutenção? Assista a um resumo rápido para nivelar os conceitos (Corretiva vs Preventiva vs Preditiva) antes de imprimir sua análise.</p>
+            
+            <div style="background: rgba(15, 23, 42, 0.5); border: 1px solid #334155; border-radius: 8px; padding: 2rem; text-align: center; margin-bottom: 1rem;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path>
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+                <h3 style="color: #f1f5f9; margin-bottom: 0.5rem;">Playlist Recomendada</h3>
+                <p style="color: #94a3b8; margin-bottom: 1.5rem; font-size: 0.95rem;">Os criadores de conteúdo técnico na área industrial frequentemente desativam a exibição em outros sites. Separamos a busca direta com as melhores aulas disponíveis.</p>
+                
+                <a href="https://www.youtube.com/results?search_query=diferen%C3%A7a+entre+manuten%C3%A7%C3%A3o+preventiva+corretiva+preditiva+industrial" target="_blank" class="btn" style="background: #ef4444;">
+                    Assistir Aulas no YouTube 
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-action">
+        <button class="btn print-btn" onclick="prepareAndPrint()">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            Salvar Relatório e Imprimir
+        </button>
+    </div>
+
+    <script>
+        function toggleFeedback(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('active');
+        }
+
+        // Antes de imprimir, copiar o conteúdo de todos os textareas para as divs ocultas
+        window.addEventListener('beforeprint', () => {
+            for(let i=1; i<=6; i++) {
+                const textarea = document.getElementById('q' + i);
+                const printDiv = document.getElementById('print-q' + i);
+                
+                // Se o usuario não escreveu nada, colocar uma mensagem padrao
+                if(textarea.value.trim() === '') {
+                    printDiv.innerHTML = '<em>[Nenhuma anotação registrada]</em>';
+                    printDiv.style.color = '#94a3b8';
+                } else {
+                    printDiv.innerText = textarea.value;
+                    printDiv.style.color = '#1e293b';
+                }
+            }
+        });
+
+        function prepareAndPrint() {
+            // Revelar todos os feedbacks antes de imprimir
+            for(let i=1; i<=6; i++) {
+                document.getElementById('fb' + i).classList.add('active');
+            }
+            // Disparar dialog de impressão
+            window.print();
+        }
+    </script>
+</body>
+</html>
