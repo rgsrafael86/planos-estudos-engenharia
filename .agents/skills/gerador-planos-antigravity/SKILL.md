@@ -234,6 +234,16 @@ https://rgsrafael86.github.io/planos-estudos-engenharia/planos/[discipline_slug]
 
 Após o deploy, abra e teste a URL pública. Teste local não equivale a validação pública.
 
+## Atualização do Dashboard Visual (Obrigatório)
+
+Sempre que criar um evento, adicionar um plano novo ou alterar dados em `agenda_semestre.json` que devam refletir nos painéis do usuário, você **OBRIGATORIAMENTE** precisa reconstruir o dashboard executando o script atualizador antes de dar `git push`:
+
+```bash
+C:\Users\rgsra\AppData\Local\Python\pythoncore-3.14-64\python.exe update_index.py
+```
+
+Sem isso, a interface não vai desenhar o novo "card" do plano recém gerado. Lembre-se de adicionar o arquivo `index.html` gerado na raiz ao seu commit.
+
 ## Atualização de agenda_semestre.json
 
 ### Ao iniciar
