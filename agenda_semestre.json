@@ -3668,6 +3668,27 @@
       "plan_url": "",
       "plan_generated_at": "",
       "plan_validation": ""
+    },
+    {
+      "session_id": "manutenc-a-o-industrial-pre-2026-08-21-1750",
+      "calendar_event_id": "custom_pre_aula_20260821",
+      "recurring_event_id": "custom_pre_aula",
+      "original_start": "2026-08-21T17:50:00-03:00",
+      "date": "2026-08-21",
+      "day_of_week": "sexta-feira",
+      "discipline": "Manutenção Industrial",
+      "discipline_slug": "manutenc-a-o-industrial",
+      "start": "17:50",
+      "end": "18:50",
+      "available_minutes": 60,
+      "session_type": "DIRECTED_STUDY",
+      "location": "Estudo Individual",
+      "original_description": "Atividade de reposição: Conectando indicadores e estratégias de manutenção (Pré-aula)",
+      "academic_cycle": "BEFORE_N1",
+      "plan_status": "COMPLETED",
+      "plan_url": "planos/manutenc-a-o-industrial/2026-08-21-pre-aula/index.html",
+      "plan_generated_at": "2026-08-15T11:46:00-03:00",
+      "plan_validation": "APPROVED"
     }
   ]
 }

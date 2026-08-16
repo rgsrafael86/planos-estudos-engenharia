@@ -733,6 +733,11 @@
             </div>
         </header>
 
+    <div id="filters" class="filter-container">
+        <!-- Filtros injetados via JS -->
+    </div>
+
+
         <div id="app">
             <div class="loader">Sincronizando com a Agenda...</div>
         </div>
@@ -1011,7 +1016,7 @@
                 sessoesFiltradas.sort((a,b) => a.date.localeCompare(b.date));
 
                 shelvesHTML += `
-                    <div class="shelf">
+                    <div class="shelf" data-discipline="">
                         <div class="shelf-header">
                             <h2 class="shelf-title">
                                 <span>📚</span> ${disc}
