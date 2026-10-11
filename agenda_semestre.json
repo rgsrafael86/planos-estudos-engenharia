@@ -1983,7 +1983,7 @@
       "location": "",
       "original_description": "[ESTUDO] Planejamento e Controle da Produção (PCP) — bloco dobrado 1/8 (semana de AV1, criado 11/10/2026)",
       "academic_cycle": "BEFORE_N1",
-      "plan_status": "PUBLISHED",
+      "plan_status": "VALIDATED",
       "plan_url": "https://rgsrafael86.github.io/planos-estudos-engenharia/planos/planejamento-e-controle-da-produc-a-o-pcp/2026-10-12/",
       "plan_validation": "APPROVED",
       "plan_generated_at": "2026-10-11T19:24:56-03:00",
@@ -2000,9 +2000,9 @@
       "modules_count": 2,
       "questions_count": 6,
       "videos_count": 4,
-      "validation_report": "validate_plan.py -> [SUCESSO] Plano validado com perfeicao! | portao proprio: 0 erros",
+      "validation_report": "validate_plan.py -> [SUCESSO] | URL publica HTTP 200 (49965 bytes) | motor RAFAEL-STUDY-ENGINE v3.0.0 preservado | sem URL privada | sem conteudo demo",
       "error": "",
-      "published_commit": ""
+      "published_commit": "20c0e26"
     },
     {
       "session_id": "automac-a-o-industrial-2026-10-12-1850",
