@@ -1991,7 +1991,7 @@
       "notebook_name": "PCP — Planejamento e Controle da Produção",
       "notebook_id": "ee3921f8-385e-4e5e-8e1b-7c72b018a829",
       "sources_used": [
-        "apostila PCP (254 p.) — Unidade 1, Tópicos 1 e 2 (p. 3-36)"
+        "apostila PCP (254 p.) — texto integral das p. 3-36 (68.882 chars) embutido no brief"
       ],
       "previous_content": "",
       "current_content": "Sistemas de produção e objetivos de desempenho; as quatro etapas do PCP (carregamento, sequenciamento, programação e controle)",
@@ -2000,7 +2000,7 @@
       "modules_count": 2,
       "questions_count": 6,
       "videos_count": 4,
-      "validation_report": "validate_plan.py -> [SUCESSO] | URL publica HTTP 200 (49965 bytes) | motor RAFAEL-STUDY-ENGINE v3.0.0 preservado | sem URL privada | sem conteudo demo",
+      "validation_report": "v2 | 18/18 citacoes literais conferidas contra a apostila | 0 reincidencias de termo fora da fonte | respostas A2 B1 C1 D2 | validate_plan.py [SUCESSO] | URL publica HTTP 200",
       "error": "",
       "published_commit": "20c0e26"
     },
