@@ -14,6 +14,27 @@ import sys
 import pypdfium2 as pdfium
 
 
+_RE_CABECALHO = re.compile(r"(T[ÓO]PICO|UNIDADE|TEMA)[^\n]*\n\s*(\d{1,3})\s*\n", re.I)
+
+
+def deslocamento(paginas: list[str]) -> int:
+    """Deslocamento entre índice do PDF e número IMPRESSO, decidido pela MAIORIA.
+
+    O deslocamento é propriedade do DOCUMENTO, não de cada página. Resolvê-lo página a
+    página deixa buracos: em PCP a página índice 75 abre com figura, o cabeçalho não casa
+    o padrão, ela vira chave 75 — e o material a numera 63. Citação correta, chave errada.
+    Aqui cada cabeçalho que casa VOTA (indice - numero) e vence o mais votado; o resultado
+    vale para todas as páginas, inclusive as que não têm cabeçalho legível.
+    """
+    from collections import Counter
+    votos = Counter()
+    for i, p in enumerate(paginas):
+        m = _RE_CABECALHO.match(p.strip())
+        if m:
+            votos[(i + 1) - int(m.group(2))] += 1
+    return votos.most_common(1)[0][0] if votos else 0
+
+
 def main():
     pdf = sys.argv[1]
     ini, fim = int(sys.argv[2]), int(sys.argv[3])
@@ -22,25 +43,30 @@ def main():
     doc = pdfium.PdfDocument(pdf)
     paginas = [doc[i].get_textpage().get_text_range() for i in range(len(doc))]
 
-    # o numero IMPRESSO costuma estar deslocado do indice do PDF: localiza pelo rodape
-    desloc = 0
-    for i, p in enumerate(paginas[:12]):
-        m = re.search(r"\n\s*(\d{1,3})\s*$", p.strip())
-        if m and int(m.group(1)) <= 12:
-            desloc = i + 1 - int(m.group(1))
-            break
+    # deslocamento único para o documento, decidido pela maioria dos cabeçalhos legíveis
+    desloc = deslocamento(paginas)
 
-    a, b = max(0, ini - 1 + desloc), min(len(paginas), fim + desloc)
-    trecho = "\n".join(paginas[a:b])
-    trecho = re.sub(r"[ \t]+", " ", trecho)
+    def impressa(i: int) -> int:
+        return (i + 1) - desloc
+
+    idxs = [i for i in range(len(paginas)) if ini <= impressa(i) <= fim] or \
+           list(range(max(0, ini - 1), min(len(paginas), fim)))
+    a, b = idxs[0], idxs[-1] + 1
+
+    # --- BURACO FECHADO (12/10/2026): o trecho era entregue como TEXTO CORRIDO, sem
+    # marcador de página — e o brief exige que cada questão cite a página. O modelo não
+    # tinha como saber o número e CHUTAVA. Agora cada página leva o número IMPRESSO.
+    partes = []
+    for i in range(a, b):
+        corpo = re.sub(r"[ \t]+", " ", paginas[i]).strip()
+        partes.append(f"[[p. {impressa(i)}]]\n{corpo}")
+    trecho = "\n".join(partes)
     trecho = re.sub(r"\n{3,}", "\n\n", trecho)
 
     open(saida, "w", encoding="utf-8").write(trecho)
-    print(f"pdf={len(paginas)} p | deslocamento detectado={desloc} | "
-          f"indice PDF {a+1}..{b} = paginas impressas {ini}..{fim}")
+    print(f"pdf={len(paginas)} p | deslocamento={desloc} | indice PDF {a+1}..{b} | "
+          f"paginas impressas {impressa(a)}..{impressa(b-1)}")
     print(f"chars={len(trecho)} -> {saida}")
-    print("--- primeiros 200 chars ---")
-    print(trecho[:200])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,93 @@
+{
+  "gerado_em": "2026-10-12",
+  "regra": "Cada tópico canônico aparece EXATAMENTE UMA VEZ. O script de cobertura confere as duas direções: nenhum canônico fora da alocação, nenhum alocado fora do canônico.",
+  "chave_do_bloco": "data + disciplina (16/10 tem DOIS blocos: ETN e DH)",
+  "escopo": "Dois dias de dianteira. O plano de cada bloco é gerado no dia anterior ao par; não se gera a semana inteira de uma vez.",
+  "disciplinas": {
+    "PCP": {
+      "notebook_id": "ee3921f8-385e-4e5e-8e1b-7c72b018a829",
+      "fonte_id": "4c9bc77a-46b8-497d-8bad-1fb48684224a",
+      "apostila": "Apostila PCP.pdf (254 p.)",
+      "prova": "2026-10-21",
+      "total_topicos": 14,
+      "blocos": [
+        {"data": "2026-10-12", "inicio": "16:00", "fim": "18:30", "min": 150, "topicos": [
+          {"id": "U1-T1", "pag": "3",  "titulo": "Sistemas de produção e objetivos de desempenho"},
+          {"id": "U1-T2", "pag": "23", "titulo": "As quatro etapas do PCP"}
+        ]},
+        {"data": "2026-10-13", "inicio": "14:50", "fim": "17:50", "min": 170, "topicos": [
+          {"id": "U1-T3", "pag": "37", "titulo": "Estudo da capacidade e indicadores"},
+          {"id": "U1-T4", "pag": "63", "titulo": "Gestão da demanda"}
+        ]},
+        {"data": "2026-10-15", "inicio": "15:00", "fim": "17:00", "min": 120, "topicos": [
+          {"id": "U2-T1", "pag": "75",  "titulo": "Previsão de demanda e análise de erros"},
+          {"id": "U2-T2", "pag": "105", "titulo": "Programa Mestre de Produção (PMP) e PVO"}
+        ]},
+        {"data": "2026-10-17", "inicio": "17:00", "fim": "20:48", "min": 210, "topicos": [
+          {"id": "U2-T3", "pag": "115", "titulo": "Controle de processos e melhoria contínua"},
+          {"id": "U2-T4", "pag": "147", "titulo": "Tecnologia de Grupo e leiaute celular"}
+        ]},
+        {"data": "2026-10-18", "inicio": "08:30", "fim": "11:30", "min": 180, "topicos": [
+          {"id": "U3-T1", "pag": "161", "titulo": "Sistemas de Administração da Produção (SAP)"},
+          {"id": "U3-T2", "pag": "173", "titulo": "Sistemas de Coordenação de Ordens (SCO)"}
+        ]},
+        {"data": "2026-10-19", "inicio": "15:00", "fim": "17:00", "min": 120, "topicos": [
+          {"id": "U3-T3", "pag": "189", "titulo": "MRP -> MRP II -> MRP III -> ERP"},
+          {"id": "U3-T4", "pag": "199", "titulo": "Teoria das Restrições (TOC)"}
+        ]},
+        {"data": "2026-10-21", "inicio": "17:00", "fim": "17:50", "min": 50, "topicos": [
+          {"id": "U3-T5", "pag": "209", "titulo": "Lógica do MRP: demanda dependente vs independente"},
+          {"id": "U3-T6", "pag": "225", "titulo": "JIT/Toyota, muda e Lean"}
+        ]}
+      ]
+    },
+    "Direitos Humanos": {
+      "notebook_id": "b502f678-cfba-41af-943d-12b4837c3d6d",
+      "fonte_id": "84670ff9-0bdd-4318-bf63-ed671b1d1aef",
+      "apostila": "Apostila direitos Humanos, cidadania e inclusão.pdf (46 p.)",
+      "prova": "2026-10-20",
+      "total_topicos": 18,
+      "nota_fonte": "As páginas citadas pelo Notebook (102-116, 195-211) são da edição completa; o PDF de 46 p. É o excerto, então a fonte do brief é o PDF inteiro.",
+      "blocos": [
+        {"data": "2026-10-14", "inicio": "14:45", "fim": "16:45", "min": 120, "topicos": [
+          {"id": "T5.1",  "titulo": "Moral e ética no dia a dia; relevância do meio"},
+          {"id": "T5.2",  "titulo": "Afetividade (Henri Wallon)"},
+          {"id": "T5.3",  "titulo": "Zeitgeist"},
+          {"id": "T5.4",  "titulo": "Padrões ESG e competitividade"},
+          {"id": "T5.5",  "titulo": "Diversidade e Inclusão"},
+          {"id": "T5.6",  "titulo": "Vieses inconscientes e grupos minorizados"},
+          {"id": "T5.7",  "titulo": "Lugar de Fala (Djamila Ribeiro)"},
+          {"id": "T5.8",  "titulo": "Racismo Estrutural (Silvio Almeida)"},
+          {"id": "T5.9",  "titulo": "O que é ética e moral; o exemplo do semáforo"},
+          {"id": "T5.10", "titulo": "Exercícios do Tema 5"}
+        ]},
+        {"data": "2026-10-16", "inicio": "16:15", "fim": "17:35", "min": 80, "topicos": [
+          {"id": "T9.1", "titulo": "Você, cidadão do mundo"},
+          {"id": "T9.2", "titulo": "A jornada do cidadão; evolução social e IA"},
+          {"id": "T9.3", "titulo": "Direitos humanos e cidadania"},
+          {"id": "T9.4", "titulo": "DUDH e CF: Artigos 1o e 5o"},
+          {"id": "T9.5", "titulo": "O Eu cidadão no Nós; conquista gradual de direitos"},
+          {"id": "T9.6", "titulo": "Evolução da dignidade e das relações humanas"},
+          {"id": "T9.7", "titulo": "Novos desafios e protagonismo social"},
+          {"id": "T9.8", "titulo": "Exercícios do Tema 9"}
+        ]},
+        {"data": "2026-10-18", "inicio": "08:00", "fim": "08:40", "min": 40, "topicos": [], "tipo": "REVISAO",
+         "nota": "Síntese dos Temas 5 e 9 — sem tópico novo. Cobre o risco de véspera."}
+      ]
+    },
+    "Relações Étnico-Raciais": {
+      "notebook_id": "5cd81a49-6f60-49f1-b107-beb09f31d2e4",
+      "fonte_id": "15819a16-a4bb-42e5-a026-6cad9e257db3",
+      "apostila": "Apostila Relações Étnico-Raciais.pdf (28 p.)",
+      "prova": "2026-10-20",
+      "total_topicos": 3,
+      "blocos": [
+        {"data": "2026-10-16", "inicio": "15:00", "fim": "16:00", "min": 60, "topicos": [
+          {"id": "ETN-T1", "pag": "8",  "titulo": "Condutas: devo/não posso; posso/não devo"},
+          {"id": "ETN-T2", "pag": "11", "titulo": "Ser ou não ser: eis a questão"},
+          {"id": "ETN-T3", "pag": "17", "titulo": "Explorando as diferenças culturais"}
+        ]}
+      ]
+    }
+  }
+}

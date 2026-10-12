@@ -3,38 +3,69 @@
 Documento de operação. Escrito em 11/10/2026, depois de a v1 do plano de PCP ir ao ar **desancorada**
 e só ser pega porque o Rafael perguntou *"você verificou?"*.
 
-## O fluxo (7 passos, 1 run de LLM)
+## O fluxo (1 run de LLM por bloco)
+
+**A esteira inteira é um comando:** `python3 /opt/data/scripts/pipeline_bloco.py <AAAA-MM-DD> [disciplina]`
+(disciplina é necessária em 16/10, que tem **dois** blocos: ETN e DH).
 
 ```
-1. FONTE     .agents/scripts/extrair_apostila.py <pdf> <ini> <fim> fonte.txt
-2. BRIEF     .agents/templates/brief_plano.md   -> copie, preencha os <<<>>> e embuta a fonte
+1. FONTE     extrair_apostila.py <pdf> <ini> <fim>      -> com marcador [[p. N]] por página
+2. BRIEF     montar_brief() do pipeline                 -> texto real da fonte + schema literal
 3. GERAÇÃO   agy -p "$(cat brief)" --model gemini-3.1-pro-high --output-format json
-4. AUDITORIA .agents/scripts/verificar_ancoragem.py <plano.json> <pdf> <ini> <fim>   (exit 0 = passou)
-5. MERGE     .agents/scripts/gerar_plano_html.py <plano.json> <saida/index.html>
-6. PORTÃO    .agents/scripts/validate_plan.py <saida/index.html>                      (exige [SUCESSO])
-7. NAVEGADOR abrir a página e conferir que ela INICIA  <-- o portão que faltava
-8. PUBLICA   git push + update_index.py + URL no evento da agenda
+4. MERGE     gerar_plano_html.py <plano.json> <index.html>
+5. PORTÃO 1  verificar_ancoragem.py <plano.json> <pdf> <ini> <fim>   (exit 0 = passou)
+6. PORTÃO 2  validate_plan.py <index.html>                           (exige [SUCESSO])
+7. PUBLICA   git push
+8. PORTÃO 3  portao_navegador.py <url pública>                       (exit 0 = passou)
+9. AGENDA    URL do plano + do vídeo no evento da sessão
 ```
 
-**Só o passo 3 é LLM.** Os outros sete são scripts ou verificação — por isso o custo por bloco é ~32 k tokens e ~23 s.
+**Só o passo 3 é LLM.** Todo o resto é script ou verificação — ~45 k tokens e ~2 min por bloco.
 
 ### São TRÊS portões, e cada um pega o que o outro não vê
 
 | # | portão | o que confere | o que ele NÃO vê |
 |---|---|---|---|
-| 4 | ancoragem | a citação existe na fonte? | estrutura do JSON |
-| 6 | forma | 6 questões, 4 alternativas, cronograma cabe | **`topics` dos módulos**, e se a página inicia |
-| 7 | navegador | **a página realmente abre** (roda o validador do próprio template) | se o conteúdo é verdadeiro |
+| 1 | ancoragem | a citação existe **na página citada**? | estrutura do JSON |
+| 2 | forma | 6 questões, 4 alternativas, cronograma cabe | **`topics` dos módulos**, e se a página inicia |
+| 3 | navegador | **a página realmente abre e renderiza** | se o conteúdo é verdadeiro |
 
-**O passo 7 é o único que valida o que o Rafael vê.** Em 11/10 o plano passou nos passos 4 e 6 e
+**Os três saem com código de saída — use o código, não a mensagem.**
+
+**O portão 3 é o único que valida o que o Rafael vê.** Em 11/10 o plano passou nos portões 1 e 2 e
 **quebrou no navegador**: o `agy` nomeou as chaves dos módulos como `contents`/`topic`/`pages` em vez de
 `topics` + `source`. O `validate_plan.py` **não checa `topics`** (a palavra não existe no script), e a
 auditoria de ancoragem é cega para estrutura. **O motor do template rejeitou a página inteira.**
 
-**Como rodar o passo 7:** abrir a página (`file://` antes de publicar, a URL pública depois), esperar o JS
-rodar e conferir que `fatalError` está oculto, `appMain` visível e os módulos renderizados.
-**Publique e teste a URL pública — e conte com o cache:** nas primeiras tentativas o Pages ainda serve a
-versão antiga (levou ~45 s e 3 tentativas em 11/10). Use `?cb=<timestamp>` e repita até a versão nova aparecer.
+```bash
+python3 .agents/scripts/portao_navegador.py <url1> [url2 ...]
+# usa o Chrome headless já de pé em 127.0.0.1:9222 (CDP); exige o venv gn (websocket-client)
+/opt/data/.local/venvs/gn/bin/python .agents/scripts/portao_navegador.py <url>
+```
+
+Ele conta `.module` / `.question` / `.option` no DOM **renderizado**, exige texto visível acima de 2 000 chars
+e procura mensagem de erro. **Conte com o cache do Pages:** ele serve a versão antiga por ~45–75 s depois do
+push — repita até a versão nova aparecer.
+
+## O que os portões aprenderam em 12/10/2026 (cinco defeitos no verificador)
+
+O portão de ancoragem dava **PASSOU** sem ter examinado **nada**. Cinco causas, todas no verificador — o plano
+estava certo:
+
+1. **Cegueira a aspas duplas.** O regex procurava `'...'`; o modelo escreve `"..."`. Zero citações reconhecidas
+   → `conf == len(citacoes)` vira `0 == 0` → **PASSOU vazio**. Agora exige ≥1 citação por questão.
+2. **Citação conferida contra a fonte INTEIRA.** Uma frase da p. 53 sustentava questão que dizia "p. 41".
+   Agora confere contra a **união das páginas citadas**.
+3. **Página impressa ≠ índice do PDF.** Em PCP o índice 53 é a **página impressa 41**. Resolver página a página
+   deixa buracos (página que abre com figura não casa o padrão). O deslocamento é do **documento**: cada
+   cabeçalho legível vota `(indice - numero)` e vence a maioria.
+4. **Brief exigia página e entregava texto corrido.** O modelo **chutava** o número (em DH errou por +1 nas seis).
+   O extrator agora emite `[[p. N]]` antes de cada página.
+5. **Não-caracteres da extração.** `indi\uFFFEvíduo`: o modelo cita "indivíduo" e a comparação falha. O
+   normalizador remove `Cc/Cf/Co/Cn` dos dois lados.
+
+**Extrator e verificador têm de usar a MESMA regra de numeração** — se divergirem, o portão reprova exatamente
+o que o brief mandou citar. E o teste é sempre nos dois sentidos: caso ruim tem de reprovar, caso bom tem de passar.
 
 
 ## Modelo (medido, não suposto)
