@@ -6,16 +6,23 @@ e só ser pega porque o Rafael perguntou *"você verificou?"*.
 ## O fluxo (7 passos, 1 run de LLM)
 
 ```
-1. FONTE     .agents/scripts/extrair_apostila.py   -> texto real do PDF (NÃO o resumo do Notebook)
-2. BRIEF     (montado à mão)                        -> fonte + schema + regras do portão + proibição de ferramenta
+1. FONTE     .agents/scripts/extrair_apostila.py <pdf> <ini> <fim> fonte.txt
+2. BRIEF     .agents/templates/brief_plano.md   -> copie, preencha os <<<>>> e embuta a fonte
 3. GERAÇÃO   agy -p "$(cat brief)" --model gemini-3.1-pro-high --output-format json
-4. AUDITORIA .agents/scripts/verificar_ancoragem.py -> cada citação literal conferida contra o PDF
-5. MERGE     .agents/scripts/gerar_plano_html.py    -> injeta o JSON no template (determinístico)
-6. PORTÃO    .agents/scripts/validate_plan.py       -> tem de devolver [SUCESSO]
+4. AUDITORIA .agents/scripts/verificar_ancoragem.py <plano.json> <pdf> <ini> <fim>   (exit 0 = passou)
+5. MERGE     .agents/scripts/gerar_plano_html.py <plano.json> <saida/index.html>
+6. PORTÃO    .agents/scripts/validate_plan.py <saida/index.html>                      (exige [SUCESSO])
 7. PUBLICA   git push + update_index.py + URL no evento da agenda
 ```
 
 **Só o passo 3 é LLM.** Os outros seis são scripts — por isso o custo por bloco é ~32 k tokens e ~23 s.
+
+**Os passos 4 e 6 são portões diferentes, e os dois são obrigatórios:**
+- **4 = verdade** (a citação existe na fonte?) — pega conteúdo desancorado
+- **6 = forma** (6 questões, 4 alternativas, cronograma cabe?) — pega plano malformado
+
+Um plano pode passar no 6 e reprovar no 4 — foi o que aconteceu com a v1. **Rodar só o 6 não garante nada.**
+
 
 ## Modelo (medido, não suposto)
 
