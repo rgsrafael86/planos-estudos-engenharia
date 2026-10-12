@@ -34,6 +34,28 @@ template. Acrescente a instrução: *(acrescente "modules" com os módulos acima
 Campos que o portão exige não-vazios: `id`, `title`, `discipline`, `studyDate`, `objective`.
 `student` deve ser exatamente `"R.G."` — nunca o nome completo.
 
+### 4-bis. SCHEMA DOS MÓDULOS — cole LITERALMENTE, não descreva
+
+**Este bloco existe porque um modelo renomeou as chaves e o plano não abriu no navegador.** Ele escreveu
+`contents` no lugar de `topics`, e `unit`/`topic`/`pages` soltos no lugar de `source`. O conteúdo estava
+certo; a chave, errada — e o motor do template rejeitou com *"Módulo m1 sem tópicos"*.
+
+```json
+"modules": [
+  {
+    "id": "m1",
+    "title": "string",
+    "duration": "55 min",
+    "topics": ["string", "string"],
+    "source": {"origin":"string","document":"string","location":"string","pages":"3–22","searchHint":"string","url":""},
+    "videos": [{"title":"string","url":"https://www.youtube.com/results?search_query=..."}]
+  }
+]
+```
+
+**`topics` é LISTA e o nome é `topics`.** Não use `contents`, `topic`, `conteudos` nem `tópicos`.
+Não invente chaves fora desta lista — o motor valida contra ela e **bloqueia a página inteira**.
+
 ## 5. AS QUESTÕES — exatamente 6
 
 ```json

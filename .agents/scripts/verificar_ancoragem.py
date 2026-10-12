@@ -62,6 +62,18 @@ def normalizar(s: str) -> str:
 
 def auditar(plano: dict, fonte_norm: str, rotulo: str) -> list[str]:
     erros: list[str] = []
+
+    # --- schema dos módulos: o motor do template BLOQUEIA a página inteira se faltar 'topics'.
+    # Custo de descobrir isso só no navegador: o Rafael abriu e viu "Módulo m1 sem tópicos".
+    for m in plano.get("modules", []):
+        mid = m.get("id", "?")
+        if not isinstance(m.get("topics"), list) or not m.get("topics"):
+            achou = [k for k in m if k in ("contents", "conteudos", "topic", "topicos", "tópicos")]
+            dica = f" — achou {achou!r} no lugar" if achou else ""
+            erros.append(f"{mid}: 'topics' ausente ou não é lista{dica} (o template BLOQUEIA a página)")
+        if not m.get("videos"):
+            erros.append(f"{mid}: sem vídeos")
+
     questoes = plano.get("questions", [])
     print(f"\n### {rotulo} — {len(questoes)} questões")
     for q in questoes:

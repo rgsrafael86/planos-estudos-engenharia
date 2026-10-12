@@ -12,16 +12,29 @@ e só ser pega porque o Rafael perguntou *"você verificou?"*.
 4. AUDITORIA .agents/scripts/verificar_ancoragem.py <plano.json> <pdf> <ini> <fim>   (exit 0 = passou)
 5. MERGE     .agents/scripts/gerar_plano_html.py <plano.json> <saida/index.html>
 6. PORTÃO    .agents/scripts/validate_plan.py <saida/index.html>                      (exige [SUCESSO])
-7. PUBLICA   git push + update_index.py + URL no evento da agenda
+7. NAVEGADOR abrir a página e conferir que ela INICIA  <-- o portão que faltava
+8. PUBLICA   git push + update_index.py + URL no evento da agenda
 ```
 
-**Só o passo 3 é LLM.** Os outros seis são scripts — por isso o custo por bloco é ~32 k tokens e ~23 s.
+**Só o passo 3 é LLM.** Os outros sete são scripts ou verificação — por isso o custo por bloco é ~32 k tokens e ~23 s.
 
-**Os passos 4 e 6 são portões diferentes, e os dois são obrigatórios:**
-- **4 = verdade** (a citação existe na fonte?) — pega conteúdo desancorado
-- **6 = forma** (6 questões, 4 alternativas, cronograma cabe?) — pega plano malformado
+### São TRÊS portões, e cada um pega o que o outro não vê
 
-Um plano pode passar no 6 e reprovar no 4 — foi o que aconteceu com a v1. **Rodar só o 6 não garante nada.**
+| # | portão | o que confere | o que ele NÃO vê |
+|---|---|---|---|
+| 4 | ancoragem | a citação existe na fonte? | estrutura do JSON |
+| 6 | forma | 6 questões, 4 alternativas, cronograma cabe | **`topics` dos módulos**, e se a página inicia |
+| 7 | navegador | **a página realmente abre** (roda o validador do próprio template) | se o conteúdo é verdadeiro |
+
+**O passo 7 é o único que valida o que o Rafael vê.** Em 11/10 o plano passou nos passos 4 e 6 e
+**quebrou no navegador**: o `agy` nomeou as chaves dos módulos como `contents`/`topic`/`pages` em vez de
+`topics` + `source`. O `validate_plan.py` **não checa `topics`** (a palavra não existe no script), e a
+auditoria de ancoragem é cega para estrutura. **O motor do template rejeitou a página inteira.**
+
+**Como rodar o passo 7:** abrir a página (`file://` antes de publicar, a URL pública depois), esperar o JS
+rodar e conferir que `fatalError` está oculto, `appMain` visível e os módulos renderizados.
+**Publique e teste a URL pública — e conte com o cache:** nas primeiras tentativas o Pages ainda serve a
+versão antiga (levou ~45 s e 3 tentativas em 11/10). Use `?cb=<timestamp>` e repita até a versão nova aparecer.
 
 
 ## Modelo (medido, não suposto)
