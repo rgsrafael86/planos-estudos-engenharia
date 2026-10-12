@@ -132,6 +132,27 @@ Não altere automaticamente para `COMPLETED`. Esse status depende de confirmaç�
 
 ## Geração do conteúdo
 
+### Modelo e ancoragem (medido em 11/10/2026 — não reabra sem medir de novo)
+
+**Modelo:** `agy --model gemini-3.1-pro-high`. Pool Gemini (renova a cada 5 h, dificilmente esgota), cita
+página 6/6, ~32 k tokens e ~23 s por bloco. **Não use `gemini-3.8-flash-high` para conteúdo auditável** — ele
+escreveu 6 questões sem citar página nenhuma; sem citação a ancoragem fica não verificável. Fallback:
+`claude-sonnet-5-5-high`. `claude-opus-5-5-high` só quando a citação literal for crítica (foi o único 100% verbatim).
+
+**Ancoragem — a regra que já falhou uma vez:** o brief leva **o TEXTO REAL da fonte**, nunca o resumo dela.
+A v1 deste plano foi gerada a partir do resumo do NotebookLM (~2 linhas por tópico); o executor completou com
+conhecimento geral e escreveu questões sobre SPT/EDD, MTO/ATO/MTS e nível-vs-perseguição — **nenhum desses
+termos existe nas 254 páginas da apostila**. Extraia o texto das páginas do PDF e embuta no brief.
+
+**Exija citação de página em cada item gerado.** É o que torna a ancoragem auditável em vez de declarada:
+`python3 .agents/scripts/verificar_ancoragem.py` confere cada citação literal contra o PDF. **Ao conferir, remova
+cabeçalho/rodapé e numeração de página do texto-fonte** — a apostila tem cabeçalho correndo no meio da frase
+e o conferidor acusa citação verdadeira como falsa.
+
+**Brief headless começa proibindo ferramenta:** *"NÃO use ferramentas: todo o material está neste brief,
+responda DIRETAMENTE"*. Sem isso o modelo tenta rodar comando, sofre soft-deny e devolve `status: SUCCESS`
+com resposta vazia — um run inteiro (~30 k tokens) perdido.
+
 Para cada sessão elegível:
 
 1. use data, horário e duração do `agenda_semestre.json`;
