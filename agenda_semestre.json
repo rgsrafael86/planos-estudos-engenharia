@@ -1969,9 +1969,9 @@
       "plan_validation": ""
     },
     {
-      "session_id": "planejamento-e-controle-da-produc-a-o-pcp-2026-10-12-1600",
+      "session_id": "planejamento-e-controle-da-produc-a-o-pcp-2026-10-13-1750",
       "calendar_event_id": "du4bo7p4kbdjd35hpa0qbtfn20",
-      "original_start": "2026-10-12T16:00:00-03:00",
+      "original_start": "2026-10-13T17:50:00-03:00",
       "date": "2026-10-12",
       "day_of_week": "segunda-feira",
       "discipline": "Planejamento e Controle da Produção (PCP)",
@@ -2002,7 +2002,9 @@
       "videos_count": 4,
       "validation_report": "v2 | 18/18 citacoes literais conferidas contra a apostila | 0 reincidencias de termo fora da fonte | respostas A2 B1 C1 D2 | validate_plan.py [SUCESSO] | URL publica HTTP 200",
       "error": "",
-      "published_commit": "20c0e26"
+      "published_commit": "20c0e26",
+      "original_end": "2026-10-13T20:20:00-03:00",
+      "notes": "Adiado de 12/10 (Dia das Criancas). Encosta no bloco das 14:50 — revisar encaixe em 13/10."
     },
     {
       "session_id": "automac-a-o-industrial-2026-10-12-1850",
