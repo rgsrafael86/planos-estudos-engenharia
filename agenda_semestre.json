@@ -1976,8 +1976,8 @@
       "day_of_week": "segunda-feira",
       "discipline": "Planejamento e Controle da Produção (PCP)",
       "discipline_slug": "planejamento-e-controle-da-produc-a-o-pcp",
-      "start": "16:00",
-      "end": "18:30",
+      "start": "17:50",
+      "end": "20:20",
       "available_minutes": 150,
       "session_type": "STUDY_BLOCK",
       "location": "",
@@ -2004,7 +2004,8 @@
       "error": "",
       "published_commit": "20c0e26",
       "original_end": "2026-10-13T20:20:00-03:00",
-      "notes": "Adiado de 12/10 (Dia das Criancas). Encosta no bloco das 14:50 — revisar encaixe em 13/10."
+      "notes": "Adiado de 12/10 (Dia das Criancas). Encosta no bloco das 14:50 — revisar encaixe em 13/10.",
+      "duration_min": 150
     },
     {
       "session_id": "automac-a-o-industrial-2026-10-12-1850",
