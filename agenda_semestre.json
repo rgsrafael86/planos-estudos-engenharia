@@ -1987,14 +1987,14 @@
       "plan_url": "https://rgsrafael86.github.io/planos-estudos-engenharia/planos/planejamento-e-controle-da-produc-a-o-pcp/2026-10-12/",
       "plan_validation": "APPROVED",
       "plan_generated_at": "2026-10-11T19:24:56-03:00",
-      "content_status": "READY",
+      "content_status": "CONCLUIDO",
       "notebook_name": "PCP — Planejamento e Controle da Produção",
       "notebook_id": "ee3921f8-385e-4e5e-8e1b-7c72b018a829",
       "sources_used": [
         "apostila PCP (254 p.) — texto integral das p. 3-36 (68.882 chars) embutido no brief"
       ],
       "previous_content": "",
-      "current_content": "Sistemas de produção e objetivos de desempenho; as quatro etapas do PCP (carregamento, sequenciamento, programação e controle)",
+      "current_content": "U1 T1 + U1 T2 — sistemas de produção, objetivos de desempenho e as quatro etapas do PCP (carregamento, sequenciamento, programação e controle). Concluído em 13/10/2026.",
       "next_content": "Estudo da capacidade: volume vs capacidade, níveis (projetada/efetiva/real) e indicadores — U1 T3, p. 37",
       "learning_objective": "Reconhecer as tipologias de produção e os objetivos de desempenho, e distinguir as quatro etapas do PCP na tomada de decisão.",
       "modules_count": 2,
@@ -2005,7 +2005,9 @@
       "published_commit": "20c0e26",
       "original_end": "2026-10-13T20:20:00-03:00",
       "notes": "Adiado de 12/10 (Dia das Criancas). Encosta no bloco das 14:50 — revisar encaixe em 13/10.",
-      "duration_min": 150
+      "duration_min": 150,
+      "content_reinforcement": "Quiz do plano: 50% de acertos em 13/10. Tópicos a reforçar: U1 T1 e U1 T2 — reforço a ser injetado no próximo bloco de PCP.",
+      "content_completed_at": "2026-10-13T20:20:00-03:00"
     },
     {
       "session_id": "automac-a-o-industrial-2026-10-12-1850",
