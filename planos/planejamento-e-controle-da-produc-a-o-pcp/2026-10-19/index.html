@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Plano de estudos interativo">
+<title>Template plano de estudos blindado</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<style>
+:root{--p:#1a73e8;--ok:#188038;--bad:#c5221f;--warn:#9a6700;--bg:#f4f7fb;--card:#fff;--soft:#f8fafc;--txt:#1e293b;--muted:#64748b;--line:#e2e8f0;--shadow:0 8px 24px rgba(15,23,42,.07);--r:16px}
+[data-theme="dark"]{--p:#8ab4f8;--ok:#81c995;--bad:#f28b82;--warn:#fdd663;--bg:#0f172a;--card:#1e293b;--soft:#334155;--txt:#f8fafc;--muted:#a8b3c5;--line:#475569;--shadow:0 8px 24px rgba(0,0,0,.28)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}button,input{font:inherit}button,a{touch-action:manipulation}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #fbbc04;outline-offset:3px}.container{width:min(1040px,calc(100% - 24px));margin:auto}.hero{padding:25px 0 29px;background:linear-gradient(135deg,#1e40af,#1d4ed8 60%,#3b82f6);color:#fff;border-radius:0 0 24px 24px}.hero-grid{display:grid;grid-template-columns:1fr auto;gap:16px}.eyebrow{margin:0 0 6px;font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.07em}.hero h1{margin:0;font-size:clamp(24px,5vw,36px);line-height:1.18}.subtitle{margin:8px 0 0;max-width:760px;font-size:14px}.toolbar{display:flex;flex-wrap:wrap;gap:8px}.tool,.primary,.danger{padding:10px 13px;border-radius:11px;font-weight:750;cursor:pointer}.tool{color:#fff;background:#ffffff1f;border:1px solid #ffffff66}.primary{color:#fff;background:var(--p);border:1px solid var(--p)}.danger{color:var(--bad);background:transparent;border:1px solid var(--bad)}.status{margin:14px auto 0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--muted);font-weight:700}.status.ok{color:var(--ok);border-color:var(--ok)}.status.error{color:var(--bad);border-color:var(--bad)}.fatal{margin:20px auto;padding:20px;border:2px solid var(--bad);border-radius:14px;background:var(--card)}.fatal h2{color:var(--bad);margin-top:0}.fatal li{margin:5px 0}.progress-shell{position:sticky;top:0;z-index:50;padding:11px 0;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}.progress-row{display:flex;gap:12px;align-items:center}.track{height:10px;flex:1;background:var(--line);border-radius:999px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--p),var(--ok));transition:.3s}.progress-text{min-width:170px;text-align:right;color:var(--muted);font-size:13px;font-weight:800}main{padding:18px 0 56px}.section{margin-top:22px}.section h2{margin:0 0 11px;font-size:20px}.intro{margin:-3px 0 12px;color:var(--muted);font-size:13.5px}.card,.metric{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}.card{padding:18px;margin-bottom:12px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.metric{padding:14px;text-align:center}.metric strong{display:block;color:var(--p);font-size:22px}.metric span{color:var(--muted);font-size:12px}.details{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 18px}.detail{padding-bottom:8px;border-bottom:1px solid var(--line)}.label{display:block;color:var(--muted);font-size:11px;font-weight:850;text-transform:uppercase}.value{font-weight:650}.schedule{display:grid}.slot{display:grid;grid-template-columns:112px 74px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.slot:last-child{border:0}.slot-time{color:var(--p);font-weight:850}.slot-duration{color:var(--muted);font-size:13px}.slot-activity{font-weight:650}.modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}.module{display:flex;flex-direction:column;gap:10px}.module h3{margin:0;font-size:17px}.meta{color:var(--muted);font-size:13px}.topics{margin:0;padding-left:20px;font-size:14px}.source,.video-card{padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}.box-title{margin:0 0 6px;color:var(--p);font-size:11px;font-weight:900;text-transform:uppercase}.small{margin:4px 0;font-size:13px;overflow-wrap:anywhere}.small b{color:var(--muted)}.video-list{display:grid;gap:8px}.video-title{margin:0;font-size:14px}.video-meta{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:6px;color:var(--muted);font-size:12px}.video-purpose{margin:7px 0 0;font-size:13px}.video-warning{margin:7px 0 0;color:var(--warn);font-size:12px;font-weight:800}.video-link{display:flex;justify-content:center;margin-top:9px;padding:9px 12px;border-radius:9px;background:var(--p);color:#fff;text-decoration:none;font-size:13px;font-weight:800}.check{display:flex;align-items:center;gap:10px;margin-top:auto;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--soft);font-weight:750}.check input{width:21px;height:21px;accent-color:var(--ok)}.q-head{display:flex;justify-content:space-between;gap:12px}.q-no{color:var(--p);font-size:11px;font-weight:900;text-transform:uppercase}.q-title{margin:4px 0 12px;font-size:16px;font-weight:750}.badge{white-space:nowrap;padding:4px 9px;border:1px solid var(--line);border-radius:999px;background:var(--soft);color:var(--muted);font-size:11px;font-weight:850}.options{display:grid;gap:9px}.option{display:flex;align-items:center;gap:12px;width:100%;padding:13px 14px;text-align:left;color:var(--txt);background:var(--card);border:1.5px solid var(--line);border-radius:11px;cursor:pointer}.option:hover:not(:disabled){border-color:var(--p);background:var(--soft)}.option:disabled{opacity:1;cursor:default}.letter{display:grid;place-items:center;min-width:31px;height:31px;border:1px solid var(--line);border-radius:50%;background:var(--soft);color:var(--p);font-weight:850}.correct,.reveal{background:color-mix(in srgb,var(--ok) 10%,var(--card))!important;border-color:var(--ok)!important}.wrong{background:color-mix(in srgb,var(--bad) 10%,var(--card))!important;border-color:var(--bad)!important}.correct .letter,.reveal .letter{background:var(--ok);color:#fff}.wrong .letter{background:var(--bad);color:#fff}.feedback{display:none;margin-top:12px;padding:13px;border-left:4px solid;border-radius:9px}.feedback.correct,.feedback.wrong{display:block}.feedback.correct{border-color:var(--ok)}.feedback.wrong{border-color:var(--bad)}.result{text-align:center}.score{font-size:50px;color:var(--p);font-weight:900}.actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.hidden{display:none!important}footer{padding:20px 0;border-top:1px solid var(--line);color:var(--muted);text-align:center;font-size:12px}
+@media(max-width:760px){.hero-grid,.grid3,.details{grid-template-columns:1fr}.toolbar{margin-top:8px}.slot{grid-template-columns:1fr;gap:2px}.progress-row{flex-direction:column;align-items:stretch}.progress-text{text-align:left}.q-head{flex-direction:column}}
+@media print{.toolbar,.progress-shell,.actions,.check,.status{display:none!important}body{background:#fff!important;color:#000!important;font-size:10.5pt}.container{width:100%;max-width:none}.hero{padding:8px 0;background:#fff!important;color:#000!important;border-bottom:2px solid #222}.card,.metric,.source,.video-card,.option{box-shadow:none!important;background:#fff!important;color:#000!important;border-color:#999!important;break-inside:avoid}.video-link{color:#000!important;background:#fff!important;border:1px solid #777}.question{break-inside:avoid}@page{size:A4;margin:12mm}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="container hero-grid"><div><p class="eyebrow" id="course"></p><h1 id="title">Carregando plano...</h1><p class="subtitle" id="subtitle"></p></div><div class="toolbar"><button class="tool" id="themeBtn" type="button">🌙 Tema</button><button class="tool" id="printBtn" type="button">🖨️ Imprimir</button><button class="tool" id="resetTop" type="button">↻ Reiniciar</button></div></div></header>
+<div class="container status" id="appStatus" role="status" data-ready="false">Carregando e validando o plano de estudos...</div>
+<section class="container fatal hidden" id="fatalError" role="alert"><h2>O plano não pôde ser iniciado</h2><p>Foram encontrados erros no arquivo:</p><ul id="fatalErrorList"></ul></section>
+<div class="progress-shell"><div class="container progress-row"><div class="track" id="track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar" id="bar"></div></div><span class="progress-text" id="progressText">0 de 0 etapas • 0%</span></div></div>
+<main class="container" id="appMain">
+<section class="section"><h2>Visão geral</h2><div class="grid3" id="metrics"></div></section>
+<section class="section"><h2>Identificação</h2><div class="card details" id="details"></div></section>
+<section class="section"><h2>Objetivo de aprendizagem</h2><div class="card" id="objective"></div></section>
+<section class="section" id="scheduleSection"><h2>Cronograma da sessão</h2><p class="intro" id="scheduleIntro"></p><div class="card schedule" id="schedule"></div></section>
+<section class="section"><h2>Roteiro de estudos</h2><p class="intro">As fontes e os vídeos ficam no módulo correspondente.</p><div class="modules" id="modules"></div></section>
+<section class="section"><h2 id="quizTitle">Verificação da aprendizagem</h2><p class="intro">Cada questão aceita uma tentativa e mostra a explicação imediatamente.</p><div id="quiz"></div></section>
+<section class="section hidden" id="result"><div class="card result"><h2>Resultado final</h2><div class="score" id="score">0%</div><p id="resultMsg"></p><p id="resultDetail"></p><div class="actions"><button class="primary" id="reviewBtn" type="button">Revisar questões</button><button class="danger" id="resetBottom" type="button">Reiniciar agora</button></div></div></section>
+</main>
+<footer><div class="container" id="footer"></div></footer>
+
+<!--
+======================================================================
+TEMPLATE BLINDADO DE PLANO DE ESTUDOS
+INSTRUÇÕES OBRIGATÓRIAS PARA O AGENTE GERADOR
+Motor: RAFAEL-STUDY-ENGINE v3.0.0
+======================================================================
+
+FINALIDADE
+Este arquivo é um motor fixo para gerar planos de estudos interativos.
+O agente deve produzir somente dados acadêmicos em JSON. O agente não
+é autorizado a reconstruir, resumir, reformatar ou editar o motor.
+
+ÁREA AUTORIZADA
+1. Substitua somente o conteúdo JSON existente no final deste arquivo.
+2. A área autorizada está delimitada por:
+   STUDY_PLAN_START
+   STUDY_PLAN_END
+3. Preserve os dois marcadores e a tag script verdadeira.
+4. Não escreva "const STUDY_PLAN". Forneça apenas JSON válido.
+
+ÁREA PROTEGIDA
+Não altere nenhum conteúdo fora da área autorizada, incluindo:
+- DOCTYPE, html, head e body;
+- meta tags e links do KaTeX;
+- CSS, cores, classes, responsividade e impressão;
+- IDs dos elementos e contêineres;
+- HTML estrutural;
+- funções JavaScript;
+- validação, renderização e auditoria;
+- progresso, resultado, reinício, tema e impressão;
+- configuração matemática;
+- TEMPLATE_ENGINE_ID e TEMPLATE_ENGINE_VERSION.
+
+REGRAS DE JSON
+- Use obrigatoriamente aspas duplas em propriedades e textos.
+- Não use comentários dentro do JSON.
+- Não use funções, variáveis, template literals ou código JavaScript.
+- Não use vírgula depois do último item de objetos ou listas.
+- Escape aspas internas com barra invertida.
+- Para uma barra invertida que precise chegar ao LaTeX, use duas barras
+  no JSON. Exemplo: "$\\frac{A}{B}$".
+- Não inclua tags script, style, iframe ou código executável nos textos.
+- Não copie o HTML já renderizado para metrics, details, schedule,
+  modules, quiz ou result.
+
+IDENTIFICAÇÃO DO PLANO
+- id: obrigatório, único e estável.
+- Formato recomendado: disciplina-aaaa-mm-dd-assunto.
+- title: assunto principal da sessão.
+- subtitle: contexto curto da sessão.
+- institution, course, discipline e disciplineCode: use dados confirmados.
+- professor: deixe vazio quando não estiver confirmado. Não invente.
+- student: "Rafael Guimaraes dos Santos" em planos pessoais.
+- classGroup: turma, semestre ou local somente quando confirmado.
+- author: "Gemini Spark".
+- targetDate e studyDate: DD/MM/AAAA.
+- estimatedTime: deve corresponder à janela real da agenda.
+- availableMinutes: número inteiro, sem "min".
+
+GOOGLE AGENDA E CRONOGRAMA
+- Consulte o Google Agenda antes de gerar o plano.
+- Use scheduledStart e scheduledEnd no formato HH:MM de 24 horas.
+- Não invente horários ausentes.
+- schedule deve ser sempre uma lista, mesmo quando vazia.
+- Cada item precisa de start, end, duration e activity.
+- Os itens devem estar em ordem cronológica.
+- Não crie sobreposição de horários.
+- A primeira atividade não pode começar antes de scheduledStart.
+- A última atividade não pode terminar depois de scheduledEnd.
+- A soma dos intervalos não pode ultrapassar availableMinutes.
+- duration deve corresponder ao intervalo start-end.
+- A quantidade de módulos e exercícios deve caber nessa janela.
+- Vídeos devem ocupar tempo real no cronograma.
+
+NOTEBOOKLM E FONTES
+- Consulte o NotebookLM correspondente à disciplina.
+- Use somente informações apoiadas nas fontes disponíveis.
+- Não invente páginas, capítulos, documentos, autores ou links.
+- Cada módulo deve possuir source com:
+  origin, document, location, pages, searchHint e url.
+- Campos não confirmados devem ficar vazios.
+- searchHint deve ajudar Rafael a localizar o assunto rapidamente.
+- url deve ficar vazio ou conter uma URL HTTPS confirmada.
+
+MÓDULOS
+- modules deve conter pelo menos um módulo.
+- A quantidade de módulos é variável conforme o tempo da agenda.
+- Cada módulo precisa de id único, title, duration, topics, source e videos.
+- topics deve ser uma lista com pelo menos um tópico.
+- videos deve ser sempre uma lista.
+- Quando não existir vídeo adequado, use "videos": [].
+- Não crie um módulo separado apenas para simular uma questão.
+
+VÍDEOS
+- A quantidade de vídeos é variável e pode ser zero.
+- Prefira no máximo um vídeo principal por módulo e três por sessão.
+- Inclua somente vídeos relevantes, abertos e verificados.
+- Para cada vídeo, informe:
+  title, platform, channel, duration, watchFrom, watchTo, purpose,
+  relatedTopic, url, verifiedAt e verificationStatus.
+- url deve começar com https://.
+- duration e trecho recomendado devem caber no cronograma.
+- verifiedAt deve usar DD/MM/AAAA.
+- Se o vídeo estiver aprovado, use verificationStatus vazio.
+- Use verificationStatus apenas para pendências ou alertas reais.
+- Não afirme que um vídeo foi verificado sem abri-lo.
+
+QUESTÕES
+- questions deve conter pelo menos quatro questões.
+- Ajuste a quantidade de questões ao tempo disponível:
+  até 30 min: 4 a 6;
+  31 a 60 min: 6 a 8;
+  61 a 90 min: 8 a 12;
+  acima de 90 min: 10 a 15.
+- Cada questão precisa de id único, prompt, options, answer e explanation.
+- options deve conter exatamente quatro alternativas não vazias.
+- Deve existir somente uma resposta inequivocamente correta.
+- answer é um índice inteiro: 0=A, 1=B, 2=C, 3=D.
+- Não escreva A), B), C) ou D) dentro das alternativas.
+- explanation deve ensinar o conceito, não apenas repetir a resposta.
+- Combine recordação, compreensão, aplicação e análise.
+- Evite alternativas absurdas, pegadinhas e ambiguidade.
+
+FÓRMULAS
+- Use fórmulas somente quando contribuírem para o estudo.
+- Fórmulas simples podem usar Unicode: ×, ÷, ≤, ≥, ≠, ² e ³.
+- Para fórmulas complexas, use LaTeX entre $...$ ou $$...$$.
+- No JSON, duplique barras invertidas.
+- Exemplo correto: "$MTTR = \\frac{T}{N}$".
+- Não altere a função renderMath nem os delimitadores do KaTeX.
+
+NOME E GRAVAÇÃO DO ARQUIVO
+- Nome recomendado: AAAA-MM-DD_Disciplina_Assunto.html.
+- Salve como HTML real em UTF-8 e MIME type text/html.
+- Não crie Google Docs, DOCX, ZIP ou arquivo renomeado para .html.
+- O conteúdo final deve começar com <!DOCTYPE html>.
+- Preserve a URL-base do Web App publicada por Rafael.
+- A URL final segue o padrão URL_BASE?id=ID_DO_ARQUIVO_NO_DRIVE.
+
+VALIDAÇÃO ANTES DE PUBLICAR
+- Confirme que o JSON pode ser analisado por JSON.parse.
+- Confirme que o motor continua RAFAEL-STUDY-ENGINE v3.0.0.
+- Confirme que o HTML não contém conteúdo estático duplicado.
+- Confirme que módulos, questões e alternativas foram renderizados.
+- Responda uma questão e confirme feedback e progresso.
+- Responda todas as questões e confirme o resultado final.
+- Marque e desmarque um módulo e confirme o progresso.
+- Teste Reiniciar e confirme retorno a zero.
+- Teste os links dos vídeos.
+- Teste a URL final fornecida pelo Apps Script.
+- Registre "Plano criado e validado" somente após todos os testes.
+- Se qualquer teste falhar, não publique a URL como plano pronto.
+
+COMPORTAMENTO EM CASO DE ERRO
+- Não tente corrigir o motor.
+- Não preencha contêineres manualmente.
+- Não simplifique removendo progresso, resultado ou questões.
+- Interrompa a publicação e registre o erro real.
+- Corrija somente o JSON ou solicite manutenção do template.
+
+CHECKLIST FINAL DO AGENTE
+[ ] Agenda consultada
+[ ] NotebookLM consultado
+[ ] JSON válido
+[ ] ID único
+[ ] Cronograma dentro da agenda
+[ ] Fontes confirmadas
+[ ] Vídeos confirmados ou lista vazia
+[ ] Questões válidas e suficientes
+[ ] Motor e versão preservados
+[ ] HTML salvo como text/html
+[ ] URL do Apps Script abre
+[ ] Progresso funciona
+[ ] Resultado final funciona
+[ ] Reinício funciona
+[ ] Registro no documento dos agentes concluído
+
+Se for necessário alterar qualquer elemento fora do JSON, interrompa a
+execução. O agente não possui autorização para modificar o motor.
+======================================================================
+-->
+<!-- STUDY_PLAN_START -->
+<script id="studyPlanData" type="application/json">
+{
+  "id": "plano-2026-10-19",
+  "title": "Plano de Estudos: Planejamento e Controle da Produção (PCP) — Evolução MRP a ERP e Teoria das Restrições (TOC)",
+  "subtitle": "Preparação para a AV1",
+  "institution": "UNIASSELVI",
+  "course": "Engenharia de Produção",
+  "discipline": "Planejamento e Controle da Produção (PCP)",
+  "disciplineCode": "",
+  "professor": "",
+  "student": "R.G.",
+  "classGroup": "",
+  "author": "Hermes Jidoka",
+  "estimatedTime": "120 min",
+  "level": "Graduação",
+  "targetDate": "21/10/2026",
+  "studyDate": "19/10/2026",
+  "scheduledStart": "15:00",
+  "scheduledEnd": "17:00",
+  "availableMinutes": 120,
+  "scheduleSource": "Google Agenda",
+  "contentSource": "Apostila via Gemini Notebook",
+  "objective": "Compreender a evolução dos sistemas MRP até o ERP e dominar os princípios, etapas e sistemática de gestão da Teoria das Restrições (TOC/OPT) no PCP.",
+  "schedule": [
+    {
+      "start": "15:00",
+      "end": "15:45",
+      "duration": "45 min",
+      "activity": "Estudo do Módulo U3-T3: Sistemas ERP, MRP, MRPII e MRPIII"
+    },
+    {
+      "start": "15:45",
+      "end": "16:35",
+      "duration": "50 min",
+      "activity": "Estudo do Módulo U3-T4: Teoria das Restrições (TOC / OPT)"
+    },
+    {
+      "start": "16:35",
+      "end": "17:00",
+      "duration": "25 min",
+      "activity": "Resolução e fixação das 14 questões das Autoatividades"
+    }
+  ],
+  "modules": [
+    {
+      "id": "m1",
+      "title": "U3-T3: MRP -> MRP II -> MRP III -> ERP",
+      "duration": "50 min",
+      "topics": [
+        "Evolução histórica do MRP ao ERP",
+        "Lógica de cálculo e fatores influentes no Programa-Mestre de Produção",
+        "Integração funcional e simulações com o MRP II",
+        "Incorporação dos conceitos de kanban no MRP III",
+        "Socialização das informações, visibilidade, riscos de customização e conexão em rede no ERP"
+      ],
+      "source": {
+        "origin": "Apostila",
+        "document": "Apostila PCP.pdf (254 p.)",
+        "location": "Unidade 3, Tópico 3",
+        "pages": "189-198",
+        "searchHint": "ERPs",
+        "url": ""
+      },
+      "videos": [
+        {
+          "title": "CÁLCULO MRP - PLANEJAMENTO DAS NECESSIDADES DE MATERIAIS",
+          "url": "https://www.youtube.com/watch?v=0UP7fAd0-bo",
+          "channel": "Janice Queiroz Pinho Gonçalves",
+          "duration": "33:17",
+          "verifiedAt": "2026-10-13"
+        }
+      ]
+    },
+    {
+      "id": "m2",
+      "title": "U3-T4: Teoria das Restrições (TOC)",
+      "duration": "70 min",
+      "topics": [
+        "Conceito e tipologia de restrições (físicas, comerciais e administrativas)",
+        "Etapas estruturadas para identificação e tratamento de restrições",
+        "Objetivo da OPT: ganhar dinheiro por meio de ganho, redução de estoques e despesas",
+        "Nove princípios da Teoria das Restrições (recursos, preparação, lotes e incertezas)",
+        "Mecanismo Tambor-Pulmão-Corda (drum-buffer-rope) e ciclo de melhoria contínua da OPT"
+      ],
+      "source": {
+        "origin": "Apostila",
+        "document": "Apostila PCP.pdf (254 p.)",
+        "location": "Unidade 3, Tópico 4",
+        "pages": "199-208",
+        "searchHint": "OPT (OPTIMIZED PRODUCTION TECHNOLOGY)",
+        "url": ""
+      },
+      "videos": [
+        {
+          "title": "Vídeo da disciplina — OPT / Teoria das Restrições (u03t04 e 05)",
+          "url": "https://www.youtube.com/watch?v=FQi-x7OrmzM",
+          "channel": "NEAD Kit Pedagógico (trilha AVA)",
+          "duration": "",
+          "verifiedAt": "2026-10-13"
+        },
+        {
+          "title": "Introdução do Tambor-Pulmão-Corda (TPC)",
+          "url": "https://www.youtube.com/watch?v=AKgn4OMnlS0",
+          "channel": "Teoria das Restrições na Prática",
+          "duration": "28:31",
+          "verifiedAt": "2026-10-13"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Em relação ao funcionamento do MRP (Materials Requirements Planning), como se dá a definição dos volumes a serem produzidos?",
+      "options": [
+        "Os volumes a serem produzidos decorrem unicamente da capacidade máxima instalada do maquinário fabril, desconsiderando carteira de pedidos ou estoques.",
+        "Os volumes são resultados da contraposição das necessidades brutas apontadas pelas previsões e pela carteira de pedidos, com os estoques existentes, gerando as necessidades líquidas.",
+        "Os volumes são estipulados exclusivamente pelo estoque mínimo de segurança da fábrica, sem qualquer influência das previsões de vendas futuras.",
+        "Os volumes a serem produzidos equivalem à totalidade das ordens de compra enviadas pelos fornecedores, sem cruzamento com produtos acabados ou em processo."
+      ],
+      "answer": 1,
+      "explanation": "Conforme a p. 190, Autoatividade U3 T3, questão 1: \"Com base neste cruzamento de informações é possível determinar o que deve ser produzido (ordens de produção)\". As necessidades líquidas surgem da contraposição das necessidades brutas (pedidos e previsões) com os estoques existentes."
+    },
+    {
+      "id": "q2",
+      "prompt": "As necessidades líquidas identificadas pelo MRP e a elaboração do Programa-Mestre de Produção (PMP) são influenciadas por diversos fatores. Quais fatores compõem esse conjunto?",
+      "options": [
+        "Apenas custos de mão de obra direta, taxa de juros do mercado financeiro e depreciação fiscal do ativo imobilizado.",
+        "Somente o tempo padrão de cronoanálise, custos contábeis de armazenagem e o fluxo de caixa projetado para o próximo exercício.",
+        "A carteira de pedidos, a previsão da demanda, níveis de estoques, restrições-chave de capacidade, necessidade de estoques de segurança, demanda por peças de reposição, necessidades para exposições e promoções, demanda de P&D e demanda de empresa coligada.",
+        "Exclusivamente a disponibilidade de crédito bancário e as ordens de compra emitidas pelos clientes de menor porte."
+      ],
+      "answer": 2,
+      "explanation": "Conforme a p. 191, Autoatividade U3 T3, questão 2: \"Como o ponto de partida é o Programa-Mestre de Produção, é importante conhecer os dados que influenciam na sua elaboração, o que pode ser visto na figura a seguir\". Fatores como pedidos, previsão de demanda, níveis de estoques, estoques de segurança, restrições de capacidade, P&D e reposição influenciam diretamente o cálculo."
+    },
+    {
+      "id": "q3",
+      "prompt": "Qual a diferença básica entre o MRPII (Planejamento dos Recursos de Manufatura) e o MRP III?",
+      "options": [
+        "O MRP II foi a inclusão de módulos para atender outras funções organizacionais (finanças, RH etc.), enquanto o MRP III foi a incorporação dos conceitos de kanban, levando à emissão de necessidades baseadas em lotes de transferência (tamanho do kanban).",
+        "O MRP II opera exclusivamente com kanbans físicos no chão de fábrica, enquanto o MRP III eliminou o uso de computadores e retornou ao controle visual manual.",
+        "O MRP II calcula somente compras de matérias-primas básicas, ao passo que o MRP III é restrito à folha de pagamento e aos recursos humanos.",
+        "O MRP II trabalha apenas com lotes padronizados de transferência, enquanto o MRP III prevê quantidades contínuas sem qualquer relação com ferramentas japonesas."
+      ],
+      "answer": 0,
+      "explanation": "Conforme a p. 192, Autoatividade U3 T3, questão 3: \"Assim, o MRP III passou a lidar com os lotes padronizados de fornecimento dos itens fornecidos através do kanban\". Enquanto o MRP II integrou funções corporativas gerando números financeiros, o MRP III adaptou o sistema aos lotes padronizados do kanban."
+    },
+    {
+      "id": "q4",
+      "prompt": "Por que a visibilidade e a socialização das informações proporcionadas pelo sistema ERP são benéficas para a organização?",
+      "options": [
+        "Porque permitem que cada departamento trabalhe isoladamente em suas próprias planilhas sem precisar comunicar suas alterações aos demais setores.",
+        "Porque eliminam a necessidade de pontualidade no lançamento de dados fabris, tornando os processos mais flexíveis e tolerantes a erros.",
+        "Porque restringem as decisões corporativas apenas à diretoria financeira, ocultando os dados produtivos das áreas operacionais.",
+        "Porque cria um efeito sinérgico dentro da organização com melhor cooperação e responsabilidade, além de aumentar a velocidade na identificação de problemas e impor disciplina na operação com dados pontuais e corretos."
+      ],
+      "answer": 3,
+      "explanation": "Conforme a p. 193, Autoatividade U3 T3, questão 4: \"A visibilidade em função da informação compartilhada e a disciplina corporativa imposta pelo software melhoram o desempenho nas organizações que se utilizam de um sistema de ERP\". A transparência cria efeito sinérgico entre os setores, rapidez na detecção de problemas e disciplina operacional com dados corretos."
+    },
+    {
+      "id": "q5",
+      "prompt": "Quais são os principais riscos envolvidos na implantação de um sistema ERP em uma empresa?",
+      "options": [
+        "A impossibilidade técnica de utilização de bancos de dados relacionais e o risco de o sistema operar apenas desconectado de redes locais.",
+        "A implantação do software com excesso de customizações que podem influenciar na confiabilidade e o risco de acelerar o surgimento de problemas caso um processo ruim seja automatizado sem as correções necessárias.",
+        "A substituição obrigatória de todos os operadores de produção fabril por programadores especialistas em arquitetura de dados.",
+        "O bloqueio irrestrito da integração externa da empresa com fornecedores, distribuidores e parceiros de negócios."
+      ],
+      "answer": 1,
+      "explanation": "Conforme a p. 194, Autoatividade U3 T3, questão 5: \"No primeiro, a customização pode criar falhas no projeto do software, o que pode ser potencialmente perigoso para os resultados obtidos, abrindo brechas no modelo inicialmente projetado para o ERP\". Além disso, automatizar processos deficientes acelera os problemas operacionais."
+    },
+    {
+      "id": "q6",
+      "prompt": "Que impactos significativos a integração com a internet proporciona a uma empresa que adota o sistema ERP?",
+      "options": [
+        "Possibilita conexão externa direta com fornecedores, clientes e parceiros, dando aos processos empresariais uma velocidade nunca antes alcançada.",
+        "Elimina a exigência de manutenções periódicas na plataforma corporativa e extingue os servidores locais de bancos de dados da companhia.",
+        "Dispensa a separação de segurança entre a infraestrutura do ERP interno e as plataformas de e-commerce da empresa.",
+        "Força a organização a abandonar o planejamento estruturado da manufatura para operar unicamente sob demandas emergenciais de rede."
+      ],
+      "answer": 0,
+      "explanation": "Conforme a p. 195, Autoatividade U3 T3, questão 6: \"Dessa forma, é possível conexão externa direta com fornecedores, clientes e parceiros, dando aos processos empresariais uma velocidade nunca antes alcançada\"."
+    },
+    {
+      "id": "q7",
+      "prompt": "No contexto da Teoria das Restrições (TOC / OPT), como se define formalmente uma restrição?",
+      "options": [
+        "A quantidade total de refugos e peças reprovadas pelo controle estatístico de processo ao término da jornada de trabalho.",
+        "O somatório dos custos fixos indiretos absorvidos pelos setores de manutenção preventiva do parque fabril.",
+        "Qualquer fator que limite o desempenho de um sistema e restrinja o seu resultado.",
+        "A reserva de capacidade ociosa obrigatória estabelecida por convenções coletivas de trabalho nas estações operacionais."
+      ],
+      "answer": 2,
+      "explanation": "Conforme a p. 199, Autoatividade U3 T4, questão 1, restrição é conceituada como: \"qualquer fator que limite o desempenho de um sistema e restrinja o seu resultado\"."
+    },
+    {
+      "id": "q8",
+      "prompt": "Segundo Heizer e Render (2001), quais são as etapas estruturadas para o gerente de produção identificar e tratar as restrições?",
+      "options": [
+        "Etapa 1: cálculo do custo padrão; Etapa 2: emissão de ordens de corte; Etapa 3: contratação de horas extras; Etapa 4: terceirização de montagens; Etapa 5: fechamento contábil.",
+        "Etapa 1: descarte imediato dos estoques pulmão; Etapa 2: nivelamento da capacidade em 100% de todos os postos; Etapa 3: renegociação de prazos; Etapa 4: paralisação do tambor; Etapa 5: auditoria.",
+        "Etapa 1: padronização dos tempos de setup; Etapa 2: eliminação dos kanbans; Etapa 3: redução do mix de produtos; Etapa 4: inspeção amostral de lotes; Etapa 5: avaliação de desempenho.",
+        "Etapa 1: identificação das restrições; Etapa 2: estabelecimento de um plano que solucione essas restrições identificadas; Etapa 3: definir recursos para a etapa 2; Etapa 4: agir sobre as restrições aumentando a sua capacidade ou descarregando trabalho, assegurando que todos saibam que se trata de um gargalo; Etapa 5: uma vez corrigida a restrição, retornar à etapa 1 e identificar a próxima restrição a ser combatida."
+      ],
+      "answer": 3,
+      "explanation": "Conforme a p. 199-200, Autoatividade U3 T4, questão 2: \"Heizer e Render (2001) afirmam que identificar e tratar essas restrições está entre as principais atribuições do gerente de produção. E vão além, oferecendo as etapas deste trabalho\". O ciclo envolve identificar, planejar solução, definir recursos, agir sobre as restrições e retornar à etapa 1."
+    },
+    {
+      "id": "q9",
+      "prompt": "De acordo com a OPT (Teoria das Restrições), qual é o objetivo maior de uma organização empresarial e quais atividades básicas levam à sua consolidação?",
+      "options": [
+        "O objetivo maior é ganhar dinheiro; para isso são necessárias três atividades: aumentar o ganho dos materiais que atravessam a fábrica e são vendidos, reduzir os estoques e reduzir as despesas operacionais.",
+        "O objetivo maior é maximizar a ocupação nominal das máquinas fabris; as atividades são ativar todos os recursos a 100%, estocar matérias-primas e elevar custos de mão de obra.",
+        "O objetivo maior é manter a estabilidade funcional interna; as atividades são balancear a capacidade das máquinas, ampliar lotes de processamento e elevar estoques intermediários.",
+        "O objetivo maior é minimizar as despesas de marketing; as atividades são paralisar a produção do recurso gargalo, reter pedidos de clientes e aumentar investimentos em ativos fixos."
+      ],
+      "answer": 0,
+      "explanation": "Conforme a p. 200, Autoatividade U3 T4, questão 3: \"Corrêa e Corrêa (2006) afirmam que a OPT advoga que o objetivo básico de uma organização empresarial é “ganhar dinheiro”\". Para atingi-lo, a manufatura atua em três frentes: aumentar o ganho dos materiais vendidos, reduzir estoques e reduzir despesas operacionais."
+    },
+    {
+      "id": "q10",
+      "prompt": "Quais são e o que preconizam os três princípios da OPT direcionados aos recursos (Princípios 1, 2 e 3)?",
+      "options": [
+        "Princípio 1: balanceie a capacidade e não o fluxo; Princípio 2: recursos não gargalo devem trabalhar em disponibilidade máxima; Princípio 3: ativação e utilização são sempre termos sinônimos.",
+        "Princípio 1: reduza o mix de produtos a um único item; Princípio 2: recursos gargalo operam conforme a disponibilidade dos operadores; Princípio 3: produzir acima do gargalo gera ganho imediato de capital.",
+        "Princípio 1: balanceie o fluxo e não a capacidade; Princípio 2: a utilização de um recurso não gargalo não é determinada por sua disponibilidade, mas por alguma outra restrição do sistema; Princípio 3: utilização e ativação de um recurso não são sinônimos (o recurso ativado além do gargalo só aumenta estoques, enquanto o recurso utilizado gera ganho real).",
+        "Princípio 1: mantenha capacidades idênticas em todos os postos de trabalho; Princípio 2: as horas disponíveis determinam a eficiência global; Princípio 3: o gargalo deve parar sempre que os não gargalos estiverem ociosos."
+      ],
+      "answer": 2,
+      "explanation": "Conforme a p. 202, Autoatividade U3 T4, questão 4: \"Utilização e ativação de um recurso não são sinônimos. Quando o recurso é ativado, ele produz além da capacidade do gargalo, logo, não gera ganhos, pois está aumentando estoques\". Os princípios para recursos também determinam balancear o fluxo produtivo e subordinar os não gargalos às restrições do sistema."
+    },
+    {
+      "id": "q11",
+      "prompt": "Em relação à preparação de máquinas (setups), como a OPT explica os Princípios 4 e 5?",
+      "options": [
+        "Princípio 4: horas ganhas no gargalo são irrelevantes para o PCP; Princípio 5: horas ganhas em recursos não gargalo duplicam a receita de vendas da organização.",
+        "Princípio 4: uma hora ganha num recurso gargalo é uma hora ganha para o sistema global; Princípio 5: uma hora ganha num recurso não gargalo não é nada, é só uma miragem (pois apenas aumenta a ociosidade, já que a demanda continua reprimida pelo gargalo).",
+        "Princípio 4: preparações de máquinas devem ser executadas unicamente fora do horário comercial; Princípio 5: reduzir o tempo de setup em não gargalos elimina totalmente os custos operacionais.",
+        "Princípio 4: a capacidade do sistema independe do recurso gargalo; Princípio 5: qualquer redução de preparação fabril converte-se automaticamente em faturamento imediato de produtos acabados."
+      ],
+      "answer": 1,
+      "explanation": "Conforme a p. 202-203, Autoatividade U3 T4, questão 5: \"Uma hora ganha num recurso não gargalo não é nada, é só uma miragem. Como pode ser percebido, o tempo ganho na preparação de um processo não gargalo não significa ganho, apenas um aumento da ociosidade\". Já no recurso gargalo, uma hora ganha representa ganho real para o sistema global."
+    },
+    {
+      "id": "q12",
+      "prompt": "Quais são as diretrizes estabelecidas pela OPT para o dimensionamento dos lotes de produção (Princípios 6 e 7)?",
+      "options": [
+        "Princípio 6: o lote de transferência deve ser rigidamente idêntico ao lote de processamento; Princípio 7: o lote de processamento deve ser constante e fixo em toda a linha fabril.",
+        "Princípio 6: o lote de transferência deve abranger a produção mensal total; Princípio 7: os custos de preparação sempre aumentam à medida que o lote processado cresce.",
+        "Princípio 6: lotes de transferência não devem ser aplicados no fluxo produtivo; Princípio 7: o dimensionamento do lote deve desconsiderar restrições e custos de estoques.",
+        "Princípio 6: o lote de transferência pode não ser e, frequentemente, não deveria ser igual ao lote de processamento (sob a ótica do fluxo, o lote de transferência ganha peso); Princípio 7: o lote de processamento deve ser variável e não fixo, balanceando o fluxo e ponderando custos e tipologia dos recursos."
+      ],
+      "answer": 3,
+      "explanation": "Conforme a p. 203, Autoatividade U3 T4, questão 6: \"Portanto, do ponto de vista do recurso, o lote de processamento é o mais importante. Sob a ótica do fluxo o que ganha peso é o lote de transferência\". Ademais, pelo Princípio 7, o lote de processamento deve ser variável e não fixo."
+    },
+    {
+      "id": "q13",
+      "prompt": "O que estabelecem os Princípios 8 e 9 da OPT em relação ao efeito das incertezas no PCP?",
+      "options": [
+        "Princípio 8: os gargalos não só determinam o fluxo do sistema, mas também definem seus estoques (com estoques de segurança anteriores para protegê-los); Princípio 9: a programação de atividades e a capacidade produtiva devem ser consideradas simultânea e não sequencialmente (os lead times resultam da programação e não podem ser assumidos a priori).",
+        "Princípio 8: os estoques devem se concentrar unicamente no depósito de expedição de produtos prontos; Princípio 9: os lead times são parâmetros fixos determinados a priori antes da programação fabril.",
+        "Princípio 8: os recursos não gargalo são os verdadeiros limitantes do fluxo do sistema; Princípio 9: a capacidade produtiva deve ser analisada isoladamente antes de qualquer tentativa de programação.",
+        "Princípio 8: estoques de segurança devem ser eliminados antes dos gargalos para conter despesas; Princípio 9: os lead times dependem exclusivamente de previsões teóricas do setor de vendas."
+      ],
+      "answer": 0,
+      "explanation": "Conforme a p. 204, Autoatividade U3 T4, questão 7: \"Os lead times são o resultado da programação e não podem ser assumidos a priori. Ou seja, não é possível determinar o lead time de uma determinada operação sem que seja feita a programação\". Além disso, os gargalos ditam o fluxo e determinam a posição e dimensão dos estoques de segurança."
+    },
+    {
+      "id": "q14",
+      "prompt": "Como se estrutura o processo de gerenciamento contínuo da OPT para a tomada de decisão operacional?",
+      "options": [
+        "1. Eliminar postos de trabalho de alto custo; 2. Subordinar a demanda às limitações operacionais; 3. Descarregar lotes contínuos; 4. Paralisar os fluxos; 5. Encerrar o ciclo de melhoria.",
+        "1. Projetar o plano mestre ignorando restrições; 2. Aumentar os setups em todas as estações; 3. Maximizar estoques intermediários; 4. Desconsiderar flutuações estatísticas; 5. Estabilizar a restrição permanentemente.",
+        "1. Identificar as restrições do processo (RRC); 2. Explorar as RRC (utilizar ao máximo, eliminando barreiras); 3. Subordinar todas as demais decisões às RRC; 4. Relaxar a RRC (obter meios para aumentar sua capacidade); 5. Voltar ao início para identificar a nova restrição e recomeçar o processo.",
+        "1. Nivelar a capacidade nominal dos equipamentos; 2. Impor ritmo acelerado nos postos não gargalo; 3. Reduzir as margens de segurança de entrega; 4. Desativar o tambor fabril; 5. Retornar ao passo 2."
+      ],
+      "answer": 2,
+      "explanation": "Conforme a p. 205, Autoatividade U3 T4, questão 8: \"Uma RRC sempre existirá. Quando uma tiver sido otimizada, outra tomará o seu lugar. É necessário identificá-la e recomeçar o processo de melhoria\". O método gerencial da OPT baseia-se em identificar, explorar, subordinar, relaxar a restrição e recomeçar o ciclo."
+    }
+  ]
+}
+</script>
+<!-- STUDY_PLAN_END -->
+
+<script>
+(() => {
+"use strict";
+const TEMPLATE_ENGINE_ID = "RAFAEL-STUDY-ENGINE";
+const TEMPLATE_ENGINE_VERSION = "3.0.0";
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let STUDY_PLAN = null;
+let state = {done:{},answers:{},theme:"light"};
+let storageKey = "";
+
+const $ = id => document.getElementById(id);
+const esc = value => String(value ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+const text = (id,value) => { const el=$(id); if(el) el.textContent=value ?? ""; };
+const safeLink = url => /^https:\/\//i.test(String(url || "").trim()) ? String(url).trim() : "";
+const parseMinutes = value => { const m=String(value||"").match(/^(\d{1,2}):(\d{2})$/); if(!m) return null; const h=+m[1],min=+m[2]; return h<24&&min<60?h*60+min:null; };
+const duplicateValues = values => values.filter((v,i,a)=>v&&a.indexOf(v)!==i);
+
+function parsePlan(){
+  const raw=$("studyPlanData")?.textContent || "";
+  try { return JSON.parse(raw); }
+  catch(error){ throw new Error("JSON do STUDY_PLAN inválido: " + error.message); }
+}
+
+function validatePlan(plan){
+  const errors=[];
+  const required=["id","title","discipline","studyDate","objective"];
+  required.forEach(k=>{if(!String(plan?.[k]??"").trim()) errors.push(`Campo obrigatório ausente: ${k}.`);});
+  if(!Array.isArray(plan?.modules)||!plan.modules.length) errors.push("O plano deve possuir pelo menos um módulo.");
+  if(!Array.isArray(plan?.questions)||plan.questions.length<4) errors.push("O plano deve possuir pelo menos quatro questões.");
+  if(!Array.isArray(plan?.schedule)) errors.push("O campo schedule deve ser uma lista.");
+  const modules=Array.isArray(plan?.modules)?plan.modules:[];
+  const questions=Array.isArray(plan?.questions)?plan.questions:[];
+  const ids=[...modules,...questions].map(x=>x?.id);
+  const duplicates=duplicateValues(ids);
+  if(duplicates.length) errors.push("IDs duplicados: "+[...new Set(duplicates)].join(", ")+".");
+  modules.forEach((m,i)=>{
+    if(!m?.id||!m?.title) errors.push(`Módulo ${i+1} sem id ou título.`);
+    if(!Array.isArray(m?.topics)||!m.topics.length) errors.push(`Módulo ${m?.id||i+1} sem tópicos.`);
+    if(m?.videos!==undefined&&!Array.isArray(m.videos)) errors.push(`videos do módulo ${m?.id||i+1} deve ser uma lista.`);
+    (Array.isArray(m?.videos)?m.videos:[]).forEach((v,j)=>{
+      if(!v?.title) errors.push(`Vídeo ${j+1} do módulo ${m.id} sem título.`);
+      if(!safeLink(v?.url)) errors.push(`Vídeo ${j+1} do módulo ${m.id} sem URL HTTPS válida.`);
+    });
+  });
+  questions.forEach((q,i)=>{
+    if(!q?.id||!q?.prompt) errors.push(`Questão ${i+1} sem id ou enunciado.`);
+    if(!Array.isArray(q?.options)||q.options.length!==4) errors.push(`Questão ${q?.id||i+1} deve possuir exatamente quatro alternativas.`);
+    if(!Number.isInteger(q?.answer)||q.answer<0||q.answer>3) errors.push(`Questão ${q?.id||i+1} possui resposta inválida.`);
+    if(!String(q?.explanation??"").trim()) errors.push(`Questão ${q?.id||i+1} sem explicação.`);
+  });
+  const start=parseMinutes(plan?.scheduledStart),end=parseMinutes(plan?.scheduledEnd);
+  if((plan?.scheduledStart||plan?.scheduledEnd)&&(start===null||end===null||end<=start)) errors.push("Horário inicial/final inválido.");
+  const schedule=Array.isArray(plan?.schedule)?plan.schedule:[];
+  let previousEnd=null,totalSchedule=0;
+  schedule.forEach((item,i)=>{
+    const a=parseMinutes(item?.start),b=parseMinutes(item?.end);
+    if(a===null||b===null||b<=a) errors.push(`Horário inválido no item ${i+1} do cronograma.`);
+    else { if(previousEnd!==null&&a<previousEnd) errors.push(`Sobreposição no item ${i+1} do cronograma.`); previousEnd=b; totalSchedule+=b-a; }
+  });
+  if(Number.isFinite(Number(plan?.availableMinutes))&&totalSchedule>Number(plan.availableMinutes)) errors.push("O cronograma ultrapassa availableMinutes.");
+  if(start!==null&&end!==null&&schedule.length){const first=parseMinutes(schedule[0].start),last=parseMinutes(schedule.at(-1).end);if(first<start||last>end) errors.push("O cronograma ultrapassa a janela da agenda.");}
+  return errors;
+}
+
+function showFatal(errors){
+  $("fatalErrorList").innerHTML=errors.map(e=>`<li>${esc(e)}</li>`).join("");
+  $("fatalError").classList.remove("hidden");
+  $("appMain").classList.add("hidden");
+  $("appStatus").className="container status error";
+  text("appStatus","Falha de validação. Este plano não deve ser publicado.");
+  document.title="Erro no plano de estudos";
+}
+
+function clearContainers(){["metrics","details","objective","schedule","modules","quiz"].forEach(id=>$(id)?.replaceChildren());}
+function defaults(){return{done:{},answers:{},theme:"light"};}
+function loadState(){try{return{...defaults(),...(JSON.parse(localStorage.getItem(storageKey))||{})};}catch{return defaults();}}
+function saveState(){try{localStorage.setItem(storageKey,JSON.stringify(state));}catch{}}
+
+function renderHeader(){
+ document.title=`${STUDY_PLAN.title} | Plano de estudos`;
+ text("course",[STUDY_PLAN.institution,STUDY_PLAN.course,STUDY_PLAN.disciplineCode].filter(Boolean).join(" • "));
+ text("title",STUDY_PLAN.title); text("subtitle",STUDY_PLAN.subtitle); text("objective",STUDY_PLAN.objective);
+ text("footer",`${STUDY_PLAN.author||"Plano de estudos"} • ${TEMPLATE_ENGINE_ID} v${TEMPLATE_ENGINE_VERSION} • Progresso salvo localmente`);
+ $("metrics").innerHTML=[[STUDY_PLAN.estimatedTime,"Tempo estimado"],[STUDY_PLAN.level,"Nível"],[STUDY_PLAN.targetDate,"Data-alvo"]].filter(x=>x[0]).map(([v,l])=>`<div class="metric"><strong>${esc(v)}</strong><span>${esc(l)}</span></div>`).join("");
+ $("details").innerHTML=[["Instituição",STUDY_PLAN.institution],["Curso",STUDY_PLAN.course],["Disciplina",STUDY_PLAN.discipline],["Código",STUDY_PLAN.disciplineCode],["Professor(a)",STUDY_PLAN.professor],["Estudante",STUDY_PLAN.student],["Turma / semestre",STUDY_PLAN.classGroup]].filter(x=>x[1]).map(([l,v])=>`<div class="detail"><span class="label">${esc(l)}</span><span class="value">${esc(v)}</span></div>`).join("");
+}
+function renderSchedule(){
+ const list=STUDY_PLAN.schedule||[]; if(!list.length){$("scheduleSection").classList.add("hidden");return;}
+ text("scheduleIntro",[STUDY_PLAN.studyDate,[STUDY_PLAN.scheduledStart,STUDY_PLAN.scheduledEnd].filter(Boolean).join("–"),STUDY_PLAN.availableMinutes?`${STUDY_PLAN.availableMinutes} minutos`:"",STUDY_PLAN.scheduleSource?`Fonte: ${STUDY_PLAN.scheduleSource}`:""].filter(Boolean).join(" • "));
+ $("schedule").innerHTML=list.map(x=>`<div class="slot"><span class="slot-time">${esc(x.start)}–${esc(x.end)}</span><span class="slot-duration">${esc(x.duration||"")}</span><span class="slot-activity">${esc(x.activity)}</span></div>`).join("");
+}
+function sourceBox(s){if(!s)return"";const rows=[["Origem",s.origin],["Documento",s.document],["Localização",s.location],["Páginas",s.pages],["Buscar por",s.searchHint]].filter(x=>x[1]);const link=safeLink(s.url);if(!rows.length&&!link)return"";return`<aside class="source"><p class="box-title">Onde encontrar o assunto</p>${rows.map(([l,v])=>`<p class="small"><b>${esc(l)}:</b> ${esc(v)}</p>`).join("")}${link?`<a class="video-link" href="${esc(link)}" target="_blank" rel="noopener noreferrer">Abrir fonte</a>`:""}</aside>`;}
+function videoBox(list){if(!Array.isArray(list)||!list.length)return"";const cards=list.map(v=>{const url=safeLink(v.url);if(!url)return"";const range=[v.watchFrom,v.watchTo].filter(Boolean).join("–");const meta=[["Canal",v.channel],["Duração",v.duration],["Trecho",range],["Relacionado a",v.relatedTopic],["Verificado em",v.verifiedAt]].filter(x=>x[1]);return`<article class="video-card"><h4 class="video-title">${esc(v.title)}</h4><div class="video-meta">${meta.map(([l,x])=>`<span>${esc(l)}: ${esc(x)}</span>`).join("")}</div>${v.purpose?`<p class="video-purpose"><b>Por que assistir:</b> ${esc(v.purpose)}</p>`:""}${v.verificationStatus?`<p class="video-warning">${esc(v.verificationStatus)}</p>`:""}<a class="video-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">▶ Abrir vídeo</a></article>`;}).filter(Boolean).join("");return cards?`<section class="video-list"><p class="box-title">Vídeos complementares</p>${cards}</section>`:"";}
+function renderModules(){const el=$("modules");el.innerHTML=STUDY_PLAN.modules.map(m=>`<article class="card module"><div><h3>${esc(m.title)}</h3><div class="meta">⏱ ${esc(m.duration||"")}</div></div><ul class="topics">${m.topics.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>${sourceBox(m.source)}${videoBox(m.videos)}<label class="check"><input type="checkbox" data-module="${esc(m.id)}" ${state.done[m.id]?"checked":""}> Etapa concluída</label></article>`).join("");el.addEventListener("change",e=>{const input=e.target.closest("[data-module]");if(!input)return;state.done[input.dataset.module]=input.checked;saveState();updateProgress();});}
+function renderQuiz(){const el=$("quiz");el.innerHTML=STUDY_PLAN.questions.map((q,n)=>`<article class="card question" id="card-${esc(q.id)}"><div class="q-head"><div><div class="q-no">Questão ${n+1} de ${STUDY_PLAN.questions.length}</div><div class="q-title">${esc(q.prompt)}</div></div><span class="badge">Não respondida</span></div><div class="options">${q.options.map((o,i)=>`<button class="option" type="button" data-q="${esc(q.id)}" data-i="${i}"><span class="letter">${letters[i]}</span><span>${esc(o)}</span></button>`).join("")}</div><div class="feedback" role="status"></div></article>`).join("");el.addEventListener("click",e=>{const b=e.target.closest(".option");if(!b||b.disabled)return;answer(b.dataset.q,+b.dataset.i);});Object.entries(state.answers).forEach(([id,i])=>paint(id,+i));renderMath(document.body);}
+function answer(id,i){if(Object.hasOwn(state.answers,id))return;state.answers[id]=i;saveState();paint(id,i);updateProgress();updateResult();}
+function paint(id,i){const q=STUDY_PLAN.questions.find(x=>x.id===id),card=$(`card-${id}`);if(!q||!card)return;const ok=i===q.answer;card.querySelectorAll(".option").forEach((b,n)=>{b.disabled=true;if(n===q.answer)b.classList.add(n===i?"correct":"reveal");if(n===i&&!ok)b.classList.add("wrong");});const badge=card.querySelector(".badge");badge.textContent=ok?"Correta":"Revisar";badge.style.color=ok?"var(--ok)":"var(--bad)";const f=card.querySelector(".feedback");f.className=`feedback ${ok?"correct":"wrong"}`;f.innerHTML=`<strong>${ok?"Resposta correta!":`Resposta incorreta. A correta é ${letters[q.answer]}.`}</strong><p>${esc(q.explanation)}</p>`;renderMath(f);}
+function stats(){const qs=STUDY_PLAN.questions.filter(q=>Object.hasOwn(state.answers,q.id));return{answered:qs.length,correct:qs.filter(q=>Number(state.answers[q.id])===Number(q.answer)).length,done:STUDY_PLAN.modules.filter(m=>Boolean(state.done[m.id])).length};}
+function updateProgress(){const s=stats(),total=STUDY_PLAN.questions.length+STUDY_PLAN.modules.length,completed=s.answered+s.done,p=total?Math.min(100,Math.round(completed/total*100)):0;$("bar").style.width=`${p}%`;$("track").setAttribute("aria-valuenow",String(p));text("progressText",`${completed} de ${total} etapas • ${p}%`);}
+function updateResult(){const s=stats(),total=STUDY_PLAN.questions.length,sec=$("result");if(!total||s.answered<total){sec.classList.add("hidden");return;}const p=Math.round(s.correct/total*100);text("score",`${p}%`);text("resultDetail",`${s.correct} acerto(s) em ${total} questão(ões).`);text("resultMsg",p>=80?"Ótimo desempenho. Você concluiu a verificação.":p>=60?"Bom avanço. Revise os itens marcados.":"Reforce os módulos e tente novamente.");sec.classList.remove("hidden");sec.scrollIntoView({behavior:"smooth",block:"start"});}
+function renderMath(el=document.body,attempt=0){if(window.renderMathInElement){try{window.renderMathInElement(el,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false},{left:"\\(",right:"\\)",display:false},{left:"\\[",right:"\\]",display:true}],throwOnError:false});}catch(error){console.warn("KaTeX:",error);}return;}if(attempt<30)setTimeout(()=>renderMath(el,attempt+1),100);}
+function applyTheme(t){state.theme=t==="dark"?"dark":"light";document.documentElement.dataset.theme=state.theme;text("themeBtn",state.theme==="dark"?"☀️ Tema":"🌙 Tema");saveState();}
+function resetPlan(e){e?.preventDefault();state.done={};state.answers={};saveState();document.querySelectorAll("[data-module]").forEach(x=>x.checked=false);document.querySelectorAll(".question").forEach(c=>{c.querySelectorAll(".option").forEach(b=>{b.disabled=false;b.classList.remove("correct","wrong","reveal");});const badge=c.querySelector(".badge");badge.textContent="Não respondida";badge.style.color="";const f=c.querySelector(".feedback");f.className="feedback";f.replaceChildren();});$("result").classList.add("hidden");updateProgress();$("modules").scrollIntoView({behavior:"smooth"});}
+function printPlan(e){e?.preventDefault();const b=$("printBtn"),old=b.textContent,oldTheme=document.documentElement.dataset.theme;b.textContent="Abrindo impressão...";document.documentElement.dataset.theme="light";let restored=false;const restore=()=>{if(restored)return;restored=true;b.textContent=old;document.documentElement.dataset.theme=oldTheme||state.theme;};addEventListener("afterprint",restore,{once:true});try{window.focus();window.print();}catch{restore();alert("Use Ctrl+P no navegador para imprimir.");}setTimeout(restore,2000);}
+function renderAudit(){const errors=[];if(document.querySelectorAll(".module").length!==STUDY_PLAN.modules.length)errors.push("Quantidade de módulos renderizados incorreta.");if(document.querySelectorAll(".question").length!==STUDY_PLAN.questions.length)errors.push("Quantidade de questões renderizadas incorreta.");if(document.querySelectorAll(".option").length!==STUDY_PLAN.questions.length*4)errors.push("Quantidade de alternativas renderizadas incorreta.");const ids=[...document.querySelectorAll("[id]")].map(x=>x.id).filter(Boolean);if(new Set(ids).size!==ids.length)errors.push("Existem IDs HTML duplicados.");return errors;}
+function bind(){$("themeBtn").addEventListener("click",()=>applyTheme(state.theme==="dark"?"light":"dark"));$("printBtn").addEventListener("click",printPlan);$("resetTop").addEventListener("click",resetPlan);$("resetBottom").addEventListener("click",resetPlan);$("reviewBtn").addEventListener("click",()=>{const q=STUDY_PLAN.questions.find(q=>state.answers[q.id]!==q.answer);$(q?`card-${q.id}`:"quizTitle").scrollIntoView({behavior:"smooth"});});}
+function init(){
+ try{
+  STUDY_PLAN=parsePlan(); const errors=validatePlan(STUDY_PLAN); if(errors.length){showFatal(errors);return;}
+  storageKey=`study-plan:${STUDY_PLAN.id}`; state=loadState();
+  state.answers=Object.fromEntries(Object.entries(state.answers||{}).filter(([id])=>STUDY_PLAN.questions.some(q=>q.id===id)));
+  state.done=Object.fromEntries(Object.entries(state.done||{}).filter(([id])=>STUDY_PLAN.modules.some(m=>m.id===id))); saveState();
+  clearContainers(); renderHeader(); renderSchedule(); renderModules(); renderQuiz(); bind(); applyTheme(state.theme); updateProgress(); updateResult();
+  const audit=renderAudit(); if(audit.length){showFatal(audit);return;}
+  $("appStatus").dataset.ready="true"; $("appStatus").style.display = "none";
+ }catch(error){showFatal([error.message||String(error)]);}
+}
+setTimeout(()=>{if($("appStatus")?.dataset.ready!=="true"&&!$("appStatus")?.classList.contains("error")){showFatal(["O motor não concluiu a inicialização em 5 segundos."]);}},5000);
+init();
+})();
+</script>
+</body>
+</html>
