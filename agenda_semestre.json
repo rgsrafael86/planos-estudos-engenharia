@@ -2473,6 +2473,27 @@
       "plan_validation": ""
     },
     {
+      "session_id": "planejamento-e-controle-da-produc-a-o-pcp-2026-10-21-1700",
+      "calendar_event_id": "glkkgm1nhufj7k5dg2rnj0see0",
+      "recurring_event_id": "",
+      "original_start": "2026-10-21T17:00:00-03:00",
+      "date": "2026-10-21",
+      "day_of_week": "quarta-feira",
+      "discipline": "Planejamento e Controle da Produção (PCP)",
+      "discipline_slug": "planejamento-e-controle-da-produc-a-o-pcp",
+      "start": "17:00",
+      "end": "17:50",
+      "available_minutes": 50,
+      "session_type": "STUDY_BLOCK",
+      "location": "",
+      "original_description": "[ESTUDO] PCP — revisão pré-prova (U3 T5 e T6), 50 min antes da AV1 (21/10, 18:00). Criado em 14/10/2026 por decisão de Rafael para fechar a sequência da matéria.",
+      "academic_cycle": "BETWEEN_N1_N2",
+      "plan_status": "PUBLISHED",
+      "plan_url": "https://rgsrafael86.github.io/planos-estudos-engenharia/planos/planejamento-e-controle-da-produc-a-o-pcp/2026-10-21/",
+      "plan_generated_at": "2026-10-14T03:00:00-03:00",
+      "plan_validation": "APPROVED — 3 portões (forma, verdade, navegador) em 2026-10-14"
+    },
+    {
       "session_id": "planejamento-e-controle-da-producao-pcp-2026-10-21-1800",
       "calendar_event_id": "ouq3408h4ln8v7vhld9runggsg",
       "recurring_event_id": null,
